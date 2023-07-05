@@ -47,4 +47,14 @@ class Order extends Model
     {
         return $this->belongsToMany(Ebook::class, 'ebook_order');
     }
+
+    /**
+     * payment
+     *
+     * @return void
+     */
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }

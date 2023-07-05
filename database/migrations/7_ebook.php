@@ -23,8 +23,6 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('author')->onDelete('cascade');
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payment')->onDelete('cascade');
         });
     }
 

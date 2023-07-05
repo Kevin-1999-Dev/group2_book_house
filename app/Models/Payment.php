@@ -16,6 +16,7 @@ class Payment extends Model
      */
     protected $fillable = [
         'name',
+        'amount'
     ];
 
     /**
@@ -25,23 +26,14 @@ class Payment extends Model
      */
     public $timestamps = false;
 
+    
     /**
-     * ebook
+     * order
      *
      * @return void
      */
-    public function ebook()
+    public function order()
     {
-        return $this->belongsToMany(Ebook::class, 'ebook_payment');
-    }
-
-    /**
-     * book
-     *
-     * @return void
-     */
-    public function book()
-    {
-        return $this->belongsToMany(Book::class, 'book_payment');
+        return $this->belongsTo(Order::class);
     }
 }

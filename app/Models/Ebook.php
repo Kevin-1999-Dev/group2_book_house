@@ -54,16 +54,6 @@ class Ebook extends Model
     }
 
     /**
-     * payment
-     *
-     * @return void
-     */
-    public function payment()
-    {
-        return $this->belongsToMany(Payment::class, 'ebook_payment');
-    }
-
-    /**
      * order
      *
      * @return void
