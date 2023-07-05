@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ebook_order', function (Blueprint $table) {
+        Schema::create('ebook_orders', function (Blueprint $table) {
             $table->unsignedBigInteger('ebook_id');
-            $table->foreign('ebook_id')->references('id')->on('ebook')->onDelete('cascade');
+            $table->foreign('ebook_id')->references('id')->on('ebooks')->onDelete('cascade');
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('order')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });
     }
 

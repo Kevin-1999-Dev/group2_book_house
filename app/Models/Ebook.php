@@ -30,7 +30,7 @@ class Ebook extends Model
      */
     public function user()
     {
-        return $this->belongsToMany(User::class, 'user_ebook');
+        return $this->belongsToMany(User::class, 'user_ebooks');
     }
 
     /**
@@ -40,7 +40,7 @@ class Ebook extends Model
      */
     public function author()
     {
-        return $this->belongsToMany(Author::class, 'ebook_author');
+        return $this->belongsToMany(Author::class, 'ebook_authors');
     }
 
     /**
@@ -50,7 +50,7 @@ class Ebook extends Model
      */
     public function category()
     {
-        return $this->belongsToMany(Category::class, 'ebook_category');
+        return $this->belongsToMany(Category::class, 'ebook_categories');
     }
 
     /**
@@ -60,6 +60,6 @@ class Ebook extends Model
      */
     public function order()
     {
-        return $this->belongsToMany(Order::class, 'ebook_order');
+        return $this->belongsToMany(Order::class, 'ebook_orders');
     }
 }

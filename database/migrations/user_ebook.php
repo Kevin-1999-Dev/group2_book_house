@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_ebook', function (Blueprint $table) {
+        Schema::create('user_ebooks', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('ebook_id');
-            $table->foreign('ebook_id')->references('id')->on('ebook')->onDelete('cascade');
+            $table->foreign('ebook_id')->references('id')->on('ebooks')->onDelete('cascade');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_ebook');
+        Schema::dropIfExists('user_ebooks');
     }
 };

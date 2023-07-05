@@ -32,7 +32,7 @@ class Category extends Model
      */
     public function ebook()
     {
-        return $this->belongsToMany(Ebook::class, 'ebook_category');
+        return $this->belongsToMany(Ebook::class, 'ebook_categories');
     }
 
     /**
@@ -42,6 +42,6 @@ class Category extends Model
      */
     public function book()
     {
-        return $this->belongsToMany(Book::class, 'book_category');
+        return $this->belongsToMany(Book::class, 'book_categories');
     }
 }

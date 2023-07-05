@@ -32,7 +32,7 @@ class Author extends Model
      */
     public function ebook()
     {
-        return $this->belongsToMany(Ebook::class, 'ebook_author');
+        return $this->belongsToMany(Ebook::class, 'ebook_authors');
     }
 
     /**
@@ -42,6 +42,6 @@ class Author extends Model
      */
     public function book()
     {
-        return $this->belongsToMany(Book::class, 'book_author');
+        return $this->belongsToMany(Book::class, 'book_authors');
     }
 }
