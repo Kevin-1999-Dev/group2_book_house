@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'twofactor',
+        'address',
+        'image',
+        'role',
+        'active',
         'password',
     ];
 
@@ -30,7 +35,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -39,7 +43,52 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($query) {
+            $query->image = 'default.png';
+            $query->role = 'user';
+            $query->role = false;
+            $query->active = true;
+        });
+    }
+
+    /**
+     * ebook
+     *
+     * @return void
+     */
+    public function ebook()
+    {
+        return $this->belongsToMany(Ebook::class, 'user_ebook');
+    }
+
+    /**
+     * order
+     *
+     * @return void
+     */
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * passreset
+     *
+     * @return void
+     */
+    public function passreset()
+    {
+        return $this->hasMany(Passreset::class);
+    }
 }
