@@ -53,7 +53,6 @@ class User extends Authenticatable
         parent::boot();
         static::creating(function ($query) {
             $query->image = 'default.png';
-            $query->role = 'user';
             $query->role = false;
             $query->active = true;
         });
