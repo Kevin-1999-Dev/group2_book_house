@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('ebook', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('cover');
-            $table->string('description');
+            $table->string('cover')->nullable();
+            $table->string('description')->nullable();
             $table->string('link');
             $table->integer('pagecount');
             $table->integer('price');
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('author')->onDelete('cascade');
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payment')->onDelete('cascade');
         });
     }
 

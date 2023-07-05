@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('passreset', function (Blueprint $table) {
-            $table->string('email');
             $table->string('token');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }
 
