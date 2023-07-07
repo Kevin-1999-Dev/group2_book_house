@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Knowhere',
             'password' => bcrypt('admin'),
             'role' => true,
+            'active' => true,
         ]);
 
         User::create([
