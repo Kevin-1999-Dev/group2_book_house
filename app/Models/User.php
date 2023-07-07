@@ -60,4 +60,42 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($query) {
+            $query->role = false;
+        });
+    }
+
+    /**
+     * ebook
+     *
+     * @return void
+     */
+    public function ebook()
+    {
+        return $this->belongsToMany(Ebook::class, 'user_ebooks');
+    }
+
+    /**
+     * order
+     *
+     * @return void
+     */
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * passreset
+     *
+     * @return void
+     */
+    public function passreset()
+    {
+        return $this->hasMany(Passreset::class);
+    }
 }
