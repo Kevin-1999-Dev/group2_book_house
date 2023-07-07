@@ -26,8 +26,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'address',
+        'image',
         'role',
     ];
 
@@ -51,23 +53,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($query) {
-            $query->role = false;
-        });
-    }
 
     /**
      * ebook
