@@ -17,6 +17,7 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Models\UserEbook;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'phone' => '09111111111',
             'address' => 'Knowhere',
-            'password' => bcrypt('admin'),
+            'password' => Hash::make('admin'),
             'role' => true,
         ]);
 
@@ -39,8 +40,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'u1@gmail.com',
             'phone' => '09222222222',
             'address' => 'Knowhere',
-            'password' => bcrypt('user1'),
-            'role' => true,
+            'password' =>  Hash::make('user'),
+            'role' => false,
         ]);
 
         Author::create([
