@@ -1,48 +1,45 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
-        <x-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {{-- Css --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {{-- bootstrap-css --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {{-- bootstrap-bundle --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      {{-- google fonts --}}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="cmn-inner row">
+            <div class="col-6 offset-3">
+                <img class="col-5 offset-4" src="{{ asset('images/img_bookhouse_logo.png') }}" alt="">
+                <form action="" class="shadow-lg p-5 border border-danger">
+                    <h2 class="text-center">Login Form</h2>
+                    <div class="form-group mt-3">
+                        <label for="" class="form-label">Email</label>
+                        <input type="email" name="" class="form-control" id="" placeholder="Enter Your Email...">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="" class="form-label">Password</label>
+                        <input type="passoword" name="" class="form-control" id="" placeholder="Enter Your Password...">
+                    </div>
+                    <p class="mt-2"><a href="" class="text-decoration-none">Forget Password</a></p>
+                    <p class="mt-3 text-center"> Don't you have account? <a href="{{ route('auth.registerPage') }}" class="text-decoration-none">Sign Up</a></p>
+                    <div class="float-end mb-5">
+                        <input type="submit" value="Login" class="btn btn-primary">
+                    </div>
+                </form>
             </div>
-        @endif
+        </div>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+body{
+    max-width: 1920px;
+    margin: auto 0;
+    font-family: 'Nunito', sans-serif;
+}
+img{
+    width: 20%;
+}
+.cmn-inner{
+    max-width: 1400px;
+    margin: auto 0;
+}
+.container{
+    width: 80%;
+}
+
+
