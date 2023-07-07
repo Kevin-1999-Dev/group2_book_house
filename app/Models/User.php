@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use HasApiTokens;
     use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,12 +26,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'twofactor',
-        'address',
-        'image',
-        'role',
-        'active',
         'password',
+        'address',
+        'role',
     ];
 
     /**
@@ -32,6 +38,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -40,51 +49,15 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'password' => 'hashed',
+        'email_verified_at' => 'datetime',
     ];
 
     /**
-     * The "booting" method of the model.
+     * The accessors to append to the model's array form.
      *
-     * @return void
+     * @var array<int, string>
      */
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($query) {
-            $query->image = 'default.png';
-            $query->role = false;
-            $query->active = true;
-        });
-    }
-
-    /**
-     * ebook
-     *
-     * @return void
-     */
-    public function ebook()
-    {
-        return $this->belongsToMany(Ebook::class, 'user_ebooks');
-    }
-
-    /**
-     * order
-     *
-     * @return void
-     */
-    public function order()
-    {
-        return $this->hasMany(Order::class);
-    }
-
-    /**
-     * passreset
-     *
-     * @return void
-     */
-    public function passreset()
-    {
-        return $this->hasMany(Passreset::class);
-    }
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

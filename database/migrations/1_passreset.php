@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('passresets', function (Blueprint $table) {
             $table->string('token');
-            $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
