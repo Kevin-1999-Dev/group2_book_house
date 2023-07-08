@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,22 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // admin routes
     Route::group(['prefix' => 'admin', 'middleware' => 'admin_auth'], function () {
-
+        Route::prefix('category')->group(function (){
+            Route::get('/', [AdminController::class, 'categoryIndex'])->name(('admin.category.index'));
+            Route::get('/create', [AdminController::class, 'categoryCreate'])->name(('admin.category.create'));
+            Route::post('/store', [AdminController::class, 'categoryStore'])->name(('admin.category.store'));
+            Route::get('/edit/{id}', [AdminController::class, 'categoryEdit'])->name(('admin.category.edit'));
+            Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name(('admin.category.update'));
+            Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name(('admin.category.delete'));
+        });
+        Route::prefix('author')->group(function (){
+            Route::get('/', [AdminController::class, 'authorIndex'])->name(('admin.author.index'));
+            Route::get('/create', [AdminController::class, 'authorCreate'])->name(('admin.author.create'));
+            Route::post('/store', [AdminController::class, 'authorStore'])->name(('admin.author.store'));
+            Route::get('/edit/{id}', [AdminController::class, 'authorEdit'])->name(('admin.author.edit'));
+            Route::post('/update/{id}', [AdminController::class, 'authorUpdate'])->name(('admin.author.update'));
+            Route::get('/delete/{id}', [AdminController::class, 'authorDelete'])->name(('admin.author.delete'));
+        });
     });
 
     // user routes
