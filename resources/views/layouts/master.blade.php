@@ -19,10 +19,11 @@
 </head>
 
 <body>
-  @include('layouts.nav')
-
-  @yield('content')
-
+  
+    @include('layouts.nav')
+<div class="container">
+    @yield('content')
+  </div>
 </body>
 
 </html>
