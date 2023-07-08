@@ -22,7 +22,7 @@ class AuthController extends Controller
     //Check Role afer Login and Register
     public function checkRole(){
         if(Auth::user()->role == 1){
-            return redirect()->route('admin.testAdmin');
+            return redirect()->route('admin.dashboard');
         }
         return redirect()->route('user.testUser');
     }
