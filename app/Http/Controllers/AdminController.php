@@ -9,7 +9,7 @@ use App\Http\Requests\AuthorRequest;
 class AdminController extends Controller
 {
     public function adminDash(){
-        return view('admin.layouts.master');
+        return view('admin.dashboard');
     }
     private $adminService;
 
