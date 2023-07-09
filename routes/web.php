@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ Route::middleware(['admin_auth'])->group(function () {
     Route::get('/homePage', [AuthController::class, 'home'])->name('auth.homePage');
     Route::get('/loginPage', [AuthController::class, 'login'])->name('auth.loginPage');
     Route::get('/registerPage', [AuthController::class, 'register'])->name('auth.registerPage');
+
+    Route::get('/books', [PublicController::class, 'index'])->name('public.book');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
