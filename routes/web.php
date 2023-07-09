@@ -52,6 +52,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // user routes
     Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
-        
+
     });
 });
