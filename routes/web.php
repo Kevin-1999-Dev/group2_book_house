@@ -23,6 +23,8 @@ Route::middleware(['admin_auth'])->group(function () {
     Route::get('/registerPage', [AuthController::class, 'register'])->name('auth.registerPage');
 
     Route::get('/books', [PublicController::class, 'index'])->name('public.book');
+    Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
+    Route::get('/home', [PublicController::class, 'home'])->name('public.home');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {

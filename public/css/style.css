@@ -4,16 +4,30 @@ body{
     margin: auto 0;
     font-family: 'Nunito', sans-serif;
 }
-img{
+
+.logo {
     width: 30%;
 }
-.container{
-    width: 80%;
-    margin: auto 0;
+img{
+    width: 100%;
 }
 
 a:hover{
     cursor: pointer;
 }
 
+.price,
+.up-date {
+    font-size: 14px;
+}
 
+.bookhouse {
+    color: rgb(102, 212, 5);
+  }
+
+  .mark-txt {
+    color: rgb(7, 96, 174);
+  }
+  .alert-txt {
+    color:rgb(255, 17, 0);
+  }

@@ -14,8 +14,18 @@ class PublicService implements PublicServiceInterface
         $this->publicDao = $publicDao;
     }
 
+    public function getAll(): object
+    {
+        return $this->publicDao->getAll();
+    }
+
     public function getBooks(): object
     {
         return $this->publicDao->getBooks();
+    }
+
+    public function getEbooks(): object
+    {
+        return $this->publicDao->getEbooks();
     }
 }

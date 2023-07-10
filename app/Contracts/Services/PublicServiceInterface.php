@@ -7,6 +7,10 @@ namespace App\Contracts\Services;
  */
 interface PublicServiceInterface
 {
+  public function getAll(): object;
+
   public function getBooks(): object;
+
+  public function getEbooks(): object;
 
 }
