@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' =>'admin',
+            'name' => 'admin',
             'email' => 'admin@gmail.com',
             'phone' => '09111111111',
             'address' => 'Knowhere',
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' =>'user1',
+            'name' => 'user1',
             'email' => 'u1@gmail.com',
             'phone' => '09222222222',
             'address' => 'Knowhere',
@@ -55,12 +55,6 @@ class DatabaseSeeder extends Seeder
         Order::create([
             'user_id' => 1,
             'comment' => 'Will pickup at 4pm.',
-        ]);
-
-        Payment::create([
-            'name' => 'Cash',
-            'amount' => 20000,
-            'order_id' => 1,
         ]);
 
         Book::create([

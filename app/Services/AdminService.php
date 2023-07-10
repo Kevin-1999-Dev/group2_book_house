@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Contracts\Services\AdminServiceInterface;
+use Illuminate\Http\Request;
 
 class AdminService implements AdminServiceInterface
 {
@@ -30,7 +31,7 @@ class AdminService implements AdminServiceInterface
     }
     public function updateCategory(array $data, int $id)
     {
-        $this->adminDao->updateCategory($data,$id);
+        $this->adminDao->updateCategory($data, $id);
     }
 
     public function deleteCategoryById(int $id)
@@ -55,11 +56,32 @@ class AdminService implements AdminServiceInterface
 
     public function updateAuthor(array $data, int $id)
     {
-        $this->adminDao->updateAuthor($data,$id);
+        $this->adminDao->updateAuthor($data, $id);
     }
 
     public function deleteAuthorById(int $id)
     {
         $this->adminDao->deleteAuthorById($id);
+    }
+
+
+    public function getOrders(Request $r)
+    {
+        return $this->adminDao->getOrders($r);
+    }
+
+    public function getOrderById(int $id)
+    {
+        return $this->adminDao->getOrderById($id);
+    }
+
+    public function acceptOrderById(int $id)
+    {
+        $this->adminDao->acceptOrderById($id);
+    }
+
+    public function declineOrderById(int $id)
+    {
+        $this->adminDao->declineOrderById($id);
     }
 }

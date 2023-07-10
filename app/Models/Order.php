@@ -15,6 +15,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
+        'status',
         'comment',
     ];
 
@@ -46,15 +47,5 @@ class Order extends Model
     public function ebook()
     {
         return $this->belongsToMany(Ebook::class, 'ebook_orders');
-    }
-
-    /**
-     * payment
-     *
-     * @return void
-     */
-    public function payment()
-    {
-        return $this->hasOne(Payment::class);
     }
 }

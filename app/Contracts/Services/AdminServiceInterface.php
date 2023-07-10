@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Services;
 
+use Illuminate\Http\Request;
+
 /**
  * Interface for user service
  */
@@ -26,4 +28,12 @@ interface AdminServiceInterface
     public function updateAuthor(array $data, int $id);
 
     public function deleteAuthorById(int $id);
+
+    public function getOrders(Request $r);
+
+    public function getOrderById(int $id);
+
+    public function acceptOrderById(int $id);
+
+    public function declineOrderById(int $id);
 }
