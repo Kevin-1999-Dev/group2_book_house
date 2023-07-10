@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Contracts\Services\AdminServiceInterface;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\AuthorRequest;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function adminDash(){
+    public function adminDash()
+    {
         return view('admin.dashboard');
     }
     private $adminService;
@@ -86,7 +88,7 @@ class AdminController extends Controller
     {
         $this->adminService->updateAuthor($request->only([
             'name',
-        ]),$id);
+        ]), $id);
         return redirect()->route('admin.author.index');
     }
 
@@ -95,5 +97,28 @@ class AdminController extends Controller
         $this->adminService->deleteAuthorById($id);
         return redirect()->route('admin.author.index');
     }
-}
 
+    public function orderIndex(Request $r)
+    {
+        $orders = $this->adminService->getOrders($r);
+        return view('admin.order.index', compact('orders'));
+    }
+
+    public function orderDetail(int $id)
+    {
+        $order = $this->adminService->getOrderById($id);
+        return view('admin.order.detail', compact('order'));
+    }
+
+    public function orderAccept(int $id)
+    {
+        $this->adminService->acceptOrderById($id);
+        return redirect()->route('admin.order.index');
+    }
+
+    public function orderDecline(int $id)
+    {
+        $this->adminService->declineOrderById($id);
+        return redirect()->route('admin.order.index');
+    }
+}
