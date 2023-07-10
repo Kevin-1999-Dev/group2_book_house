@@ -12,7 +12,7 @@
         <ul class="navbar-nav">
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
-            <li class="nav-item mx-3 fw-bold"><a href="#" class="nav-link">Ebook</a></li>
+            <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
         </ul>
        </div>
     <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
