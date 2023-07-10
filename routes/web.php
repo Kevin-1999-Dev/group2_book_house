@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 //public pages for user and admin
 Route::redirect('/', 'homePage', 301);
-Route::get('/homePage', [AuthController::class, 'home'])->name('auth.homePage');
+Route::get('/homePage', [PublicController::class, 'home'])->name('public.index');
 Route::get('/books', [PublicController::class, 'index'])->name('public.book');
 Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
 
