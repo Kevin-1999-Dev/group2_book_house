@@ -24,13 +24,6 @@ class AuthController extends Controller
         if(Auth::user()->role == 1){
             return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('user.testUser');
-    }
-
-    public function testAdmin(){
-        return view('admin.test');
-    }
-    public function testUser(){
-        return view('user.test');
+        return redirect()->route('user.dashboard');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//public login register
+//public pages for user and admin
+Route::redirect('/', 'homePage', 301);
+Route::get('/homePage', [AuthController::class, 'home'])->name('auth.homePage');
+Route::get('/books', [PublicController::class, 'index'])->name('public.book');
+
+//login register
 Route::middleware(['admin_auth'])->group(function () {
-    Route::redirect('/', 'homePage', 301);
-    Route::get('/homePage', [AuthController::class, 'home'])->name('auth.homePage');
     Route::get('/loginPage', [AuthController::class, 'login'])->name('auth.loginPage');
     Route::get('/registerPage', [AuthController::class, 'register'])->name('auth.registerPage');
-
-    Route::get('/books', [PublicController::class, 'index'])->name('public.book');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -59,6 +61,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // user routes
     Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
-
+        Route::get('dashboard', [UserController::class, 'userDash'])->name('user.dashboard');
     });
 });
