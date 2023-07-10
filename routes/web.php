@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'homePage', 301);
 Route::get('/homePage', [AuthController::class, 'home'])->name('auth.homePage');
 Route::get('/books', [PublicController::class, 'index'])->name('public.book');
+Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
 
 //login register
 Route::middleware(['admin_auth'])->group(function () {
