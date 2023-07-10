@@ -1,10 +1,15 @@
 @extends('admin.layouts.master')
 
+@section('tile')
+    Admin Dashboard
+@endsection
+
 @section('content')
 <section>
     <div class="pt-5">
         <div class="container text-center pt-5">
-            <h2>Welcome <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
+            <h2>Hello <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
+            <p>Welcome From Admin Dashboard</p>
            <div class="mt-5 row">
             <div class="col-5 shadow bg-body rounded p-2">
                 <div class="my-3 w-100">
