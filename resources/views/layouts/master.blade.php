@@ -17,12 +17,29 @@
   {{-- google fonts --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200;400;700&family=Ysabeau:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    a {
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
     @include('layouts.nav')
+    <div class="body-content">
     @yield('content')
+    </div>
 </body>
 
+<footer class="bg-body-secondary py-2 px-5">
+    <div class="row">
+      <div class="col-3 col-md-2 col-lg-1">
+      <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida">
+      </div>
+      <div class="col-9 col-md-10 col-lg-11 text-end pt-2 pt-md-4">
+        &copy; 2023 All Rignt Reserved.
+      </div>
+    </div>
+</footer>
 </html>

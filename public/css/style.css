@@ -1,22 +1,29 @@
 @charset "UTF-8";
-body{
+
+* {
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+}
+
+body {
     width: 100%;
     margin: auto 0;
     font-family: 'Nunito', sans-serif;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
+
 .logo {
     width: 30%;
 }
-img{
+
+img {
     width: 100%;
 }
 
-a:hover{
+a:hover {
     cursor: pointer;
+}
+
+.body-content {
+    padding-top: 100px;
 }
 
 .price,
@@ -24,9 +31,17 @@ a:hover{
     font-size: 14px;
 }
 
+.md-img {
+    margin-bottom: 100px;
+}
+
 .bookhouse {
-    color: rgb(102, 212, 5);
-  }
+    color: #66d405;
+}
+
+.mv-txt {
+    background: url("../images/img_index_bg1.png") no-repeat center/contain;
+}
 
   .mark-txt {
     color: rgb(7, 96, 174);
@@ -34,3 +49,20 @@ a:hover{
   .alert-txt {
     color:rgb(255, 17, 0);
   }
+
+.mark-txt {
+    color: #0760ae;
+}
+
+.alert-txt {
+    color: #ff1100;
+}
+
+.book-card:hover {
+    box-shadow: 0 0 15px #e3e7e0;
+    opacity: 0.9;
+}
+
+.profile {
+    width: 50px;
+}
