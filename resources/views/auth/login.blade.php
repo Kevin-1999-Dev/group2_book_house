@@ -30,7 +30,7 @@
                     <h2 class="text-center">Login Form</h2>
                     <div class="form-group mt-3">
                         <label for="" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="" placeholder="Enter Your Email...">
+                        <input type="email" name="email" class="form-control" id="" value="{{ old('email') }}" placeholder="Enter Your Email...">
                         @error('email')
                             <i class="text-danger">{{ $message }}</i>
                         @enderror
