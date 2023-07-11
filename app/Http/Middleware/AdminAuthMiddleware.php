@@ -20,7 +20,6 @@ class AdminAuthMiddleware
             if (
                 url()->current() == route('auth.loginPage')
                 || url()->current() == route('auth.registerPage')
-                || url()->current() == route('auth.homePage')
             ) {
                 return back();
             }

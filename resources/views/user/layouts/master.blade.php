@@ -22,10 +22,10 @@
 </head>
 <body>
     <section>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle">
                 <div class="container-fluid">
                    <div class="container d-flex">
-                    <h1 class=" navbar-brand">
+                    <h1 class="navbar-brand">
                         <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
                     </h1>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,13 +33,23 @@
                       </button>
                    <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link active" aria-current="page">Dashboard</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('user.dashboard') }}" class="nav-link active" aria-current="page">Dashboard</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link">Home</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+                        <li class="nav-item ms-5 fw-bold">
+                            <button type="button" class="btn btn-dark position-relative">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                  99+
+                                  <span class="visually-hidden">unread messages</span>
+                                </span>
+                              </button>
+                        </li>
                     </ul>
                    </div>
                    <div class="dropdown col-3 offset-1 float-right text-center">
-                    <img src="{{ asset('images/female.jpg') }}" alt="default" class="w-25 rounded-circle dropdown-toggle"
+                    <img src="{{ asset('images/female.jpg') }}" alt="default" class="w-25 mt-3 rounded-circle dropdown-toggle"
                         type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     <ul class="dropdown-menu dropdown-menu-dark w-75" aria-labelledby="dropdownMenu2">
                         <li><a class="dropdown-item p-3">Profile</a></li>

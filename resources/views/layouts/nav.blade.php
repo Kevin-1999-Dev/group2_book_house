@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle">
-  <div class="container-fluid">
+  <div class="container-fluid container">
     <h1>
       <a href="{{ route('public.book') }}">
       <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
@@ -13,6 +13,15 @@
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+            <li class="nav-item ms-5 fw-bold">
+                <button type="button" class="btn btn-dark position-relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
+            </li>
         </ul>
        </div>
     <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
@@ -28,9 +37,9 @@
         @else
          @if (Auth::user()->role == 1)
          <div class="dropdown col-3 offset-1 float-right text-center">
-            <img src="{{ asset('images/male.png') }}" alt="default" class="w-25 rounded-circle dropdown-toggle"
+            <img src="{{ asset('images/male.png') }}" alt="default" class="w-50 rounded-circle dropdown-toggle"
                 type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-            <ul class="dropdown-menu dropdown-menu-dark w-75" aria-labelledby="dropdownMenu2">
+            <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
                 <li><a class="dropdown-item p-3">Profile</a></li>
                 <li><a class="dropdown-item p-3">Change Password</a></li>
                 <li class="p-2">
@@ -48,9 +57,9 @@
           </ul>
           @else
           <div class="dropdown col-3 offset-1 float-right text-center">
-            <img src="{{ asset('images/female.jpg') }}" alt="default" class="w-25 rounded-circle dropdown-toggle"
+            <img src="{{ asset('images/female.jpg') }}" alt="default" class="w-50 rounded-circle dropdown-toggle"
                 type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-            <ul class="dropdown-menu dropdown-menu-dark w-75" aria-labelledby="dropdownMenu2">
+            <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
                 <li><a class="dropdown-item p-3">Profile</a></li>
                 <li><a class="dropdown-item p-3">Change Password</a></li>
                 <li class="p-2">

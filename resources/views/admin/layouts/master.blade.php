@@ -24,7 +24,7 @@
 
 <body>
     <section>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle">
                 <div class="container-fluid">
                    <div class="container d-flex">
                     <h1 class=" navbar-brand">
@@ -35,9 +35,19 @@
                       </button>
                    <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link active" aria-current="page">Dasboard</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('admin.dashboard') }}" class="nav-link active" aria-current="page">Dasboard</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link">Home</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+                        <li class="nav-item ms-5 fw-bold">
+                            <button type="button" class="btn btn-dark position-relative">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                  99+
+                                  <span class="visually-hidden">unread messages</span>
+                                </span>
+                              </button>
+                        </li>
                     </ul>
                    </div>
                    <div class="dropdown col-3 offset-1 float-right text-center">

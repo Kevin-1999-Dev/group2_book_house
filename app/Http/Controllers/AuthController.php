@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     //direct Home Page
     public function home(){
-        return view('layouts.master');
+        return view('public.index');
     }
     //direct login Page
     public function login(){
@@ -21,9 +21,9 @@ class AuthController extends Controller
     }
     //Check Role afer Login and Register
     public function checkRole(){
-        if(Auth::user()->role == 1){
-            return redirect()->route('admin.dashboard');
-        }
-        return redirect()->route('user.dashboard');
+            if(Auth::user()->role == 1){
+                return redirect()->route('admin.dashboard');
+            }
+            return redirect()->route('user.dashboard');
     }
 }
