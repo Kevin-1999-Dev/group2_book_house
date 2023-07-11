@@ -39,7 +39,7 @@
                    <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('user.dashboard') }}" class="nav-link active" aria-current="page">Dashboard</a></li>
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('auth.homePage') }}" class="nav-link">Home</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link">Home</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
                         <li class="nav-item ms-5 fw-bold">
@@ -72,6 +72,15 @@
           </nav>
     </section>
     @yield('content')
-
+    <footer class="bg-body-secondary py-2 px-5">
+        <div class="row">
+          <div class="col-3 col-md-2 col-lg-1">
+          <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida">
+          </div>
+          <div class="col-9 col-md-10 col-lg-11 text-end pt-2 pt-md-4">
+            &copy; 2023 All Rignt Reserved.
+          </div>
+        </div>
+    </footer>
 </body>
 </html>

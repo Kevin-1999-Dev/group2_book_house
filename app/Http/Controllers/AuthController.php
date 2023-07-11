@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //direct Home Page
-    public function home(){
-        return view('public.index');
-    }
     //direct login Page
     public function login(){
         return view('auth.login');

@@ -22,7 +22,7 @@
 
     <div class="container">
         <div class="cmn-inner row">
-            <a href="{{ route('auth.homePage') }}" class="text-decoration-none text-dark col6 offset-1 mt-3"> <i class="fa-sharp fa-solid fa-arrow-left"></i> <h5 class="d-inline">Return Home Page</h5></a>
+            <a href="{{ route('public.index') }}" class="text-decoration-none text-dark col6 offset-1 mt-3"> <i class="fa-sharp fa-solid fa-arrow-left"></i> <h5 class="d-inline">Return Home Page</h5></a>
             <div class="col-6 offset-3">
                 <img class="col-5 offset-4" src="{{ asset('images/img_bookhouse_logo.png') }}" alt="">
                 <form action="{{ route('login') }}" method="POST" class="shadow-lg p-5 border border-danger">
