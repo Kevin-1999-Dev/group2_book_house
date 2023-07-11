@@ -10,11 +10,13 @@ class PublicDao implements PublicDaoInterface
 {
     public function getAll(): object
     {
-        $books = Book::all();
-        return $books;
+        $books = Book::take(12)->get();
+        $ebooks = Ebook::take(12)->get();
 
-        $ebooks = Ebook::all();
-        return $ebooks;
+        return (object) [
+            'books' => $books,
+            'ebooks' => $ebooks,
+        ];
     }
 
     public function getBooks(): object
