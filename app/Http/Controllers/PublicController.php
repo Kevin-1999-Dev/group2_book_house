@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\PublicServiceInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FeedbackRequest;
+use App\Models\Feedback;
+
 class PublicController extends Controller
 {
     private $publicService;
@@ -48,5 +51,22 @@ class PublicController extends Controller
         $ebook = $this->publicService->getEbookById($id);
 
         return view('public.ebook_detail', compact('ebook'));
+    }
+
+    public function feedback()
+    {
+        return view('public.contact_us');
+    }
+
+    public function storeFeedback(FeedbackRequest $request)
+    {
+        $this->publicService->createFeedback($request->only([
+            'name',
+            'email',
+            'address',
+            'subject',
+            'message',
+        ]));
+        return redirect()->route('public.contact_us');
     }
 }

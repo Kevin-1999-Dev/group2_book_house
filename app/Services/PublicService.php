@@ -38,4 +38,9 @@ class PublicService implements PublicServiceInterface
     {
         return $this->publicDao->getEbookById($id);
     }
+
+    public function createFeedback(array $data): void
+    {
+        $this->publicDao->createFeedback($data);
+    }
 }

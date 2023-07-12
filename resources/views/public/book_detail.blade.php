@@ -18,7 +18,7 @@
         <p class="fs-5 m-0">
         Category : 
         @foreach ($book->category as $category)
-          <span class="bg-info px-1 rounded-2 fs-6">{{$category->name}}</span>
+          <span class="bg-info px-1 rounded-1 fs-6">{{$category->name}}</span>
           @endforeach
         </p>
         <p class="fs-5 m-0">
@@ -34,7 +34,7 @@
         </p>
         <h5 class="m-0">Description:</h5>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;{{$book->description}}</p>
-        <button class="btn btn-success btn-sm col-6" type="button">Add to Cart</button>
+        <button class="btn btn-dark btn-sm col-6" type="button">Add to Cart</button>
       </div>
 
     </div>
