@@ -35,4 +35,18 @@ class PublicController extends Controller
 
         return view('public.ebook', compact('ebooks'));
     }
+
+    public function show_book($id)
+    {
+        $book = $this->publicService->getBookById($id);
+
+        return view('public.book_detail', compact('book'));
+    }
+
+    public function show_ebook($id)
+    {
+        $ebook = $this->publicService->getEbookById($id);
+
+        return view('public.ebook_detail', compact('ebook'));
+    }
 }

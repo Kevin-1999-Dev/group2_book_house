@@ -6,7 +6,7 @@
       <p>Explore our collection and choose a book that satisfies your reading cravings. You will get the ebook download link.</p>
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
         @foreach ($ebooks as $ebook)
-        <a href="">
+        <a href="{{ route('public.ebook_detail', $ebook->id) }}">
             <div class="col book-card">
               <div class="card shadow-sm bg-body-secondary">
                 <div class="card-body">
