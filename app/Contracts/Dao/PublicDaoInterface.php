@@ -21,4 +21,8 @@ interface PublicDaoInterface
      */
     public function getEbooks(): object;
 
+    public function getBookById(int $id): object;
+
+    public function getEbookById(int $id): object;
+
 }

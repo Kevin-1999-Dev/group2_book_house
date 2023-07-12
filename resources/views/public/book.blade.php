@@ -6,7 +6,7 @@
       <p>Explore our collection and choose a book that satisfies your reading cravings.</p>
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
         @foreach ($books as $book)
-        <a href="">
+        <a href="{{ route('public.book_detail', $book->id) }}">
             <div class="col book-card">
               <div class="card shadow-sm bg-body-secondary">
                 <div class="card-body">

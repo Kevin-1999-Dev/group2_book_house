@@ -23,7 +23,11 @@ a:hover {
 }
 
 .body-content {
-    padding-top: 100px;
+    padding-top: 6.944vw;
+}
+
+.detail {
+    min-height: 60vh;
 }
 
 .price,
@@ -37,6 +41,10 @@ a:hover {
 
 .bookhouse {
     color: #66d405;
+}
+
+.green-txt{
+    color: #81d405;
 }
 
 .mv-txt {

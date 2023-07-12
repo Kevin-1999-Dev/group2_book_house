@@ -21,6 +21,8 @@ Route::redirect('/', 'homePage', 301);
 Route::get('/homePage', [PublicController::class, 'home'])->name('public.index');
 Route::get('/books', [PublicController::class, 'index'])->name('public.book');
 Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
+Route::get('/book/{id}', [PublicController::class, 'show_book'])->name('public.book_detail');
+Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public.ebook_detail');
 
 //login register
 Route::middleware(['admin_auth'])->group(function () {

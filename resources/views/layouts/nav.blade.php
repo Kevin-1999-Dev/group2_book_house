@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle fixed-top shadow">
+<nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle fixed-top shadow-sm">
   <div class="container-fluid">
     <h1>
       <a href="{{ route('public.index') }}">

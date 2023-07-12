@@ -37,4 +37,20 @@ class PublicDao implements PublicDaoInterface
         return $ebooks;
     }
 
+    public function getBookById($id): object
+{
+    $book = Book::findOrFail($id);
+    $book['date'] = date_format($book->created_at, "M-d-Y");
+    
+    return $book;
+}
+
+    public function getEbookById($id): object
+    {
+        $ebook = Ebook::findOrFail($id);
+    $ebook['date'] = date_format($ebook->created_at, "M-d-Y");
+    
+    return $ebook;
+    }
+
 }

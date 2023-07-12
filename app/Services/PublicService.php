@@ -28,4 +28,14 @@ class PublicService implements PublicServiceInterface
     {
         return $this->publicDao->getEbooks();
     }
+
+    public function getBookById(int $id): object
+    {
+        return $this->publicDao->getBookById($id);
+    }
+
+    public function getEbookById(int $id): object
+    {
+        return $this->publicDao->getEbookById($id);
+    }
 }
