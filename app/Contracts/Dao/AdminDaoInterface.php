@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Dao;
 
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\EbookRequest;
 use Illuminate\Http\Request;
 
 /**
@@ -37,4 +39,24 @@ interface AdminDaoInterface
     public function acceptOrderById(int $id);
 
     public function declineOrderById(int $id);
+
+    public function getBooks(Request $r);
+
+    public function getBookById($id);
+
+    public function createBook(BookRequest $data);
+
+    public function updateBook(array $data,int $id);
+
+    public function deleteBookById(int $id);
+
+    public function getEbooks(Request $r);
+
+    public function getEbookById($id);
+
+    public function createEbook(EbookRequest $data);
+
+    public function updateEbook(array $data,int $id);
+
+    public function deleteEbookById(int $id);
 }

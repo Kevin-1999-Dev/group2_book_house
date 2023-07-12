@@ -3,9 +3,17 @@
 namespace App\Dao;
 
 use App\Models\User;
-use App\Models\Order;
-use App\Models\Author;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\EbookRequest;
 use App\Models\Category;
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\BookAuthor;
+use App\Models\BookCategory;
+use App\Models\Ebook;
+use App\Models\EbookAuthor;
+use App\Models\EbookCategory;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -92,10 +100,10 @@ class AdminDao implements AdminDaoInterface
         $s = $r->get('s');
         $s = strtolower($s);
         $orders = Order::whereHas('user', function ($query) use ($s) {
-            $query->where('name', 'LIKE', '%' . $s . '%');
-        })->orWhere('id', 'LIKE', '%' . $s . '%')
-            ->orWhere('comment', 'LIKE', '%' . $s . '%')
-            ->orWhere('status', 'LIKE', '%' . $s . '%')
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('id', 'LIKE', "%$s%")
+            ->orWhere('comment', 'LIKE', "%$s%")
+            ->orWhere('status', 'LIKE', "%$s%")
             ->get();
         foreach ($orders as $order) {
             $total_amount = 0;
@@ -137,5 +145,123 @@ class AdminDao implements AdminDaoInterface
         return Order::findOrFail($id)->update([
             'status' => 'declined',
         ]);
+    }
+
+    public function getBooks(Request $r)
+    {
+        $s = strtolower($r->get('s'));
+        return Book::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->get();
+    }
+
+    public function getBookById($id)
+    {
+        return Book::findOrFail($id);
+    }
+
+    public function createBook(BookRequest $data)
+    {
+        $book = Book::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'pagecount' => $data['pagecount'],
+            'price' => $data['price'],
+        ]);
+        foreach ($data['authors'] as $author) {
+            BookAuthor::create([
+                'book_id' => $book->id,
+                'author_id' => $author,
+            ]);
+        }
+        foreach ($data['categories'] as $category) {
+            BookCategory::create([
+                'book_id' => $book->id,
+                'category_id' => $category,
+            ]);
+        }
+        $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
+        $path = $data->file('cover')->storeAs('uploads', $filename, 'public');
+        $book->cover = '/storage/' . $path;
+        $book->save();
+    }
+
+    public function updateBook(array $data, int $id)
+    {
+        Book::findOrFail($id)->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'pagecount' => $data['pagecount'],
+            'price' => $data['price'],
+        ]);
+    }
+
+    public function deleteBookById(int $id)
+    {
+        Book::findOrFail($id)->delete();
+    }
+
+    public function getEbooks(Request $r)
+    {
+        $s = strtolower($r->get('s'));
+        return Ebook::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->get();
+    }
+
+    public function getEbookById($id)
+    {
+        return Ebook::findOrFail($id);
+    }
+
+    public function createEbook(EbookRequest $data)
+    {
+        $ebook = Ebook::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'pagecount' => $data['pagecount'],
+            'price' => $data['price'],
+            'link' => $data['link'],
+        ]);
+        foreach ($data['authors'] as $author) {
+            EbookAuthor::create([
+                'ebook_id' => $ebook->id,
+                'author_id' => $author,
+            ]);
+        }
+        foreach ($data['categories'] as $category) {
+            EbookCategory::create([
+                'ebook_id' => $ebook->id,
+                'category_id' => $category,
+            ]);
+        }
+        $filename = $ebook->id . "-ebook-" . $data->file('cover')->getClientOriginalName();
+        $path = $data->file('cover')->storeAs('uploads', $filename, 'public');
+        $ebook->cover = '/storage/' . $path;
+        $ebook->save();
+    }
+
+    public function updateEbook(array $data, int $id)
+    {
+        Ebook::findOrFail($id)->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'pagecount' => $data['pagecount'],
+            'price' => $data['price'],
+            'link' => $data['link'],
+        ]);
+    }
+
+    public function deleteEbookById(int $id)
+    {
+        Ebook::findOrFail($id)->delete();
     }
 }

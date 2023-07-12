@@ -16,8 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- google fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200;400;700&family=Ysabeau:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200;400;700&family=Ysabeau:wght@400;700&display=swap" rel="stylesheet">
+    {{-- jquery js --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    {{-- select2--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     <style>
         a {
             text-decoration: none;
@@ -28,8 +34,8 @@
 <body>
     <section>
         <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle">
-                <div class="container-fluid">
-                   <div class="container d-flex">
+            <div class="container-fluid">
+                <div class="container d-flex">
                     <h1 class=" navbar-brand">
                         <a href="{{ route('public.index') }}">
                             <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
@@ -51,7 +57,7 @@
                                   99+
                                   <span class="visually-hidden">unread messages</span>
                                 </span>
-                              </button>
+                            </button>
                         </li>
                     </ul>
                    </div>
