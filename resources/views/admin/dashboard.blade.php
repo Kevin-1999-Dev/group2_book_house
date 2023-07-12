@@ -52,6 +52,11 @@
                         <button class="btn  btn-dark w-50"><i class="fa-solid fa-money-bill-1-wave"></i> Payment</button>
                     </a>
                 </div>
+                <div class="my-3 w-100">
+                    <a href="" class="text-decoration-none">
+                        <button class="btn  btn-dark w-50"><i class="fa-solid fa-money-bill-1-wave"></i> FeedBack List</button>
+                    </a>
+                </div>
             </div>
            </div>
         </div>

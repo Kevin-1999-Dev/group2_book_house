@@ -28,13 +28,18 @@ Route::middleware(['admin_auth'])->group(function () {
     Route::get('/registerPage', [AuthController::class, 'register'])->name('auth.registerPage');
 });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     //route for Role(After login and Register)
     Route::get('checkRole', [AuthController::class, 'checkRole'])->name('auth.checkRole');
 
     // admin routes
     Route::group(['prefix' => 'admin', 'middleware' => 'admin_auth'], function () {
         Route::get('dashboard', [AdminController::class, 'adminDash'])->name('admin.dashboard');
+        // Admin Profile
+        Route::prefix('profile')->group(function () {
+            Route::get('password', [AdminController::class, 'changePasswordPage'])->name('admin.changePasswordPage');
+            Route::post('password/change', [AdminController::class, 'changePassword'])->name('admin.changePassword');
+        });
         Route::prefix('category')->group(function () {
             Route::get('/', [AdminController::class, 'categoryIndex'])->name('admin.category.index');
             Route::get('/create', [AdminController::class, 'categoryCreate'])->name('admin.category.create');

@@ -2,14 +2,34 @@
 
 namespace App\Dao;
 
-use App\Contracts\Dao\AdminDaoInterface;
-use App\Models\Category;
-use App\Models\Author;
+use App\Models\User;
 use App\Models\Order;
+use App\Models\Author;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Contracts\Dao\AdminDaoInterface;
 
 class AdminDao implements AdminDaoInterface
 {
+    public function password(array $data)
+    {
+        $id = Auth::user()->id;
+        $user = User::select('password')->where('id', $id)->first();
+        $dbPassword = $user->password;
+        $userOldPassword = $data['oldPassword'];
+
+        if(Hash::check($userOldPassword,$dbPassword)){
+            User::where('id', $id)->update([
+                'password' => Hash::make($data['newPassword']),
+            ]);
+            Auth::logout();
+        }
+        
+
+
+    }
     public function getCategories()
     {
         return Category::all();
