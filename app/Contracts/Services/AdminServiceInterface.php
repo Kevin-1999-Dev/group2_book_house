@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
  */
 interface AdminServiceInterface
 {
+    public function password(array $data);
     public function getCategories();
 
     public function createCategory(array $data);

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-  <div class="row g-3">
+  <div class="row g-3 d-flex align-items-center">
     <div class="col-md-6 col-sm-12">
       <div class="">
         <div class="card-body p-5">
@@ -47,78 +47,78 @@
     <!-- Books -->
     <div class="col-md-6 mb-2">
       <div class="card shadow-sm">
-      <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable Books</h3>
+        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable Books</h3>
         <div class="card-body">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($books as $book)
-            <a href="">
-            <div class="col book-card">
-              <div class="card shadow-sm bg-body-secondary">
-                <div class="card-body">
-                  <img src="{{$book->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
-                  <h2 class="fs-5">{{$book->title}}</h2>
-                  <p class="m-0">
-                    @foreach ($book->author as $author)
-                    {{$author->name}}<br>
-                    @endforeach
-                    @foreach ($book->category as $category)
-                    <span class="bg-info px-1 rounded-2">{{$category->name}}</span><br>
-                    @endforeach
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
-                      <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                    </svg>
-                    <span class="price">: {{$book->price}}MMK</span>
-                  </p>
+            <a href="{{ route('public.book_detail', $book->id) }}">
+              <div class="col book-card">
+                <div class="card shadow-sm bg-body-secondary">
+                  <div class="card-body">
+                    <img src="{{$book->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
+                    <h2 class="fs-5">{{$book->title}}</h2>
+                    <p class="m-0">
+                      @foreach ($book->author as $author)
+                      {{$author->name}}<br>
+                      @endforeach
+                      @foreach ($book->category as $category)
+                      <span class="bg-info px-1 rounded-2">{{$category->name}}</span><br>
+                      @endforeach
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                        <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                      </svg>
+                      <span class="price">: {{$book->price}}MMK</span>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
             </a>
             @endforeach
           </div>
           <div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-success" type="button">See More</button>
-</div>
+            <button class="btn btn-success" type="button">See More</button>
+          </div>
         </div>
       </div>
     </div>
     <!-- Ebooks -->
     <div class="col-md-6">
       <div class="card shadow-sm">
-      <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable E-books</h3>
+        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable E-books</h3>
         <div class="card-body">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($ebooks as $ebook)
-            <a href="">
-            <div class="col book-card">
-              <div class="card shadow-sm bg-body-secondary">
-                <div class="card-body">
-                  <img src="{{$ebook->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
-                  <h2 class="fs-5">{{$ebook->title}}</h2>
-                  <p class="m-0">
-                    @foreach ($ebook->author as $author)
-                    {{$author->name}}<br>
-                    @endforeach
-                    @foreach ($ebook->category as $category)
-                    <span class="bg-info px-1 rounded-2">{{$category->name}}</span><br>
-                    @endforeach
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
-                      <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                    </svg>
-                    <span class="price">: {{$ebook->price}}MMK</span>
-                  </p>
+            <a href="{{ route('public.ebook_detail', $ebook->id) }}">
+              <div class="col book-card">
+                <div class="card shadow-sm bg-body-secondary">
+                  <div class="card-body">
+                    <img src="{{$ebook->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
+                    <h2 class="fs-5">{{$ebook->title}}</h2>
+                    <p class="m-0">
+                      @foreach ($ebook->author as $author)
+                      {{$author->name}}<br>
+                      @endforeach
+                      @foreach ($ebook->category as $category)
+                      <span class="bg-info px-1 rounded-2">{{$category->name}}</span><br>
+                      @endforeach
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                        <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                      </svg>
+                      <span class="price">: {{$ebook->price}}MMK</span>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
             </a>
             @endforeach
           </div>
           <div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-success" type="button">See More</button>
-</div>
+            <button class="btn btn-success" type="button">See More</button>
+          </div>
         </div>
       </div>
     </div>

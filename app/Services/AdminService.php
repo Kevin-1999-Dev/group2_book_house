@@ -17,7 +17,9 @@ class AdminService implements AdminServiceInterface
     {
         $this->adminDao = $adminDao;
     }
-
+    public function password(array $data){
+        $this->adminDao->password($data);
+    }
     public function getCategories()
     {
         return $this->adminDao->getCategories();
