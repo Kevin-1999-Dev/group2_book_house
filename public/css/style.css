@@ -39,24 +39,14 @@ a:hover {
     margin-bottom: 100px;
 }
 
-.bookhouse {
+.bookhouse,
+.green-txt {
     color: #66d405;
-}
-
-.green-txt{
-    color: #81d405;
 }
 
 .mv-txt {
     background: url("../images/img_index_bg1.png") no-repeat center/contain;
 }
-
-  .mark-txt {
-    color: rgb(7, 96, 174);
-  }
-  .alert-txt {
-    color:rgb(255, 17, 0);
-  }
 
 .mark-txt {
     color: #0760ae;

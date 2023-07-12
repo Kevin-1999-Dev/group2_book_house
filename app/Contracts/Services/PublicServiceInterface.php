@@ -17,4 +17,6 @@ interface PublicServiceInterface
 
   public function getEbookById(int $id): object;
 
+  public function createFeedback(array $data): void;
+
 }

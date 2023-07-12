@@ -5,6 +5,7 @@ namespace App\Dao;
 use App\Contracts\Dao\PublicDaoInterface;
 use App\Models\Book;
 use App\Models\Ebook;
+use App\Models\Feedback;
 
 class PublicDao implements PublicDaoInterface
 {
@@ -23,7 +24,7 @@ class PublicDao implements PublicDaoInterface
     {
         $books = Book::all();
         foreach ($books as $book) {
-            $book['date'] = date_format($book->created_at,"m/d/Y");
+            $book['date'] = date_format($book->created_at, "m/d/Y");
         }
         return $books;
     }
@@ -32,25 +33,35 @@ class PublicDao implements PublicDaoInterface
     {
         $ebooks = Ebook::all();
         foreach ($ebooks as $ebook) {
-            $ebook['date'] = date_format($ebook->created_at,"m/d/Y");
+            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
         }
         return $ebooks;
     }
 
     public function getBookById($id): object
-{
-    $book = Book::findOrFail($id);
-    $book['date'] = date_format($book->created_at, "M-d-Y");
-    
-    return $book;
-}
+    {
+        $book = Book::findOrFail($id);
+        $book['date'] = date_format($book->created_at, "M-d-Y");
+
+        return $book;
+    }
 
     public function getEbookById($id): object
     {
         $ebook = Ebook::findOrFail($id);
-    $ebook['date'] = date_format($ebook->created_at, "M-d-Y");
-    
-    return $ebook;
+        $ebook['date'] = date_format($ebook->created_at, "M-d-Y");
+
+        return $ebook;
     }
 
+    public function createFeedback(array $data): void
+    {
+        Feedback::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'subject' => $data['subject'],
+            'message' => $data['message'],
+        ]);
+    }
 }

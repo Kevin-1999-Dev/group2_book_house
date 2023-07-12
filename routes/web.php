@@ -23,6 +23,8 @@ Route::get('/books', [PublicController::class, 'index'])->name('public.book');
 Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
 Route::get('/book/{id}', [PublicController::class, 'show_book'])->name('public.book_detail');
 Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public.ebook_detail');
+Route::get('/Contact', [PublicController::class, 'feedback'])->name('public.contact_us');
+Route::post('/Contact', [PublicController::class, 'storeFeedback'])->name('feedbacks.store');
 
 //login register
 Route::middleware(['admin_auth'])->group(function () {

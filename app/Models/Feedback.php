@@ -19,6 +19,6 @@ class Feedback extends Model
         'email',
         'address',
         'subject',
-        'message'
+        'message',
     ];
 }
