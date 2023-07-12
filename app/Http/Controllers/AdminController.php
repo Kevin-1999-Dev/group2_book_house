@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Contracts\Services\AdminServiceInterface;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\AuthorRequest;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\EbookRequest;
+use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -120,5 +124,99 @@ class AdminController extends Controller
     {
         $this->adminService->declineOrderById($id);
         return redirect()->route('admin.order.index');
+    }
+
+    public function bookIndex(Request $r)
+    {
+        $books = $this->adminService->getBooks($r);
+        return view('admin.book.index', compact('books'));
+    }
+
+    public function bookCreate()
+    {
+        $categories = $this->adminService->getCategories();
+        $authors = $this->adminService->getAuthors();
+        return view('admin.book.create', compact(['categories', 'authors']));
+    }
+
+    public function bookStore(BookRequest $request)
+    {
+        $this->adminService->createBook($request);
+        return redirect()->route('admin.book.index');
+    }
+
+    public function bookEdit(int $id)
+    {
+        $book = $this->adminService->getBookById($id);
+        $categories = $this->adminService->getCategories();
+        $authors = $this->adminService->getAuthors();
+        return view('admin.book.edit', compact(['categories', 'authors', 'book']));
+    }
+
+    public function bookUpdate(BookRequest $request, int $id)
+    {
+        $this->adminService->updateBook($request->only([
+            'title',
+            'description',
+            'pagecount',
+            'price',
+        ]), $id);
+        return redirect()->route('admin.book.index');
+    }
+
+    public function bookDelete(int $id)
+    {
+        $this->adminService->deleteBookById($id);
+        return redirect()->route('admin.book.index');
+    }
+
+    public function getCategoryByBookId(int $id)
+    {
+        echo Book::findOrFail($id)->category[0]->name;
+    }
+
+    public function ebookIndex(Request $r)
+    {
+        $ebooks = $this->adminService->getEbooks($r);
+        return view('admin.ebook.index', compact('ebooks'));
+    }
+
+    public function ebookCreate()
+    {
+        $categories = $this->adminService->getCategories();
+        $authors = $this->adminService->getAuthors();
+        return view('admin.ebook.create', compact(['categories', 'authors']));
+    }
+
+    public function ebookStore(EbookRequest $request)
+    {
+        $this->adminService->createEbook($request);
+        return redirect()->route('admin.ebook.index');
+    }
+
+    public function ebookEdit(int $id)
+    {
+        $ebook = $this->adminService->getEbookById($id);
+        $categories = $this->adminService->getCategories();
+        $authors = $this->adminService->getAuthors();
+        return view('admin.ebook.edit', compact(['categories', 'authors', 'ebook']));
+    }
+
+    public function ebookUpdate(EbookRequest $request, int $id)
+    {
+        $this->adminService->updateEbook($request->only([
+            'title',
+            'description',
+            'pagecount',
+            'price',
+            'link',
+        ]), $id);
+        return redirect()->route('admin.ebook.index');
+    }
+
+    public function ebookDelete(int $id)
+    {
+        $this->adminService->deleteEbookById($id);
+        return redirect()->route('admin.ebook.index');
     }
 }

@@ -58,6 +58,25 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('/accept/{id}', [AdminController::class, 'orderAccept'])->name('admin.order.accept');
             Route::get('/decline/{id}', [AdminController::class, 'orderDecline'])->name('admin.order.decline');
         });
+
+        Route::prefix('book')->group(function () {
+            Route::get('/', [AdminController::class, 'bookIndex'])->name('admin.book.index');
+            Route::get('/detail/{id}', [AdminController::class, 'bookDetail'])->name('admin.book.detail');
+            Route::get('/create', [AdminController::class, 'bookCreate'])->name('admin.book.create');
+            Route::post('/store', [AdminController::class, 'bookStore'])->name('admin.book.store');
+            Route::get('/edit/{id}', [AdminController::class, 'bookEdit'])->name('admin.book.edit');
+            Route::post('/update/{id}', [AdminController::class, 'bookUpdate'])->name('admin.book.update');
+            Route::get('/delete/{id}', [AdminController::class, 'bookDelete'])->name('admin.book.delete');
+        });
+        Route::prefix('ebook')->group(function () {
+            Route::get('/', [AdminController::class, 'ebookIndex'])->name('admin.ebook.index');
+            Route::get('/detail/{id}', [AdminController::class, 'ebookDetail'])->name('admin.ebook.detail');
+            Route::get('/create', [AdminController::class, 'ebookCreate'])->name('admin.ebook.create');
+            Route::post('/store', [AdminController::class, 'ebookStore'])->name('admin.ebook.store');
+            Route::get('/edit/{id}', [AdminController::class, 'ebookEdit'])->name('admin.ebook.edit');
+            Route::post('/update/{id}', [AdminController::class, 'ebookUpdate'])->name('admin.ebook.update');
+            Route::get('/delete/{id}', [AdminController::class, 'ebookDelete'])->name('admin.ebook.delete');
+        });
     });
 
     // user routes

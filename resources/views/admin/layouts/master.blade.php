@@ -18,6 +18,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200;400;700&family=Ysabeau:wght@400;700&display=swap" rel="stylesheet">
+    {{-- jquery js --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    {{-- select2--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     <style>
         a {
             text-decoration: none;
@@ -28,8 +34,8 @@
 <body>
     <section>
         <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle">
-                <div class="container-fluid">
-                   <div class="container d-flex">
+            <div class="container-fluid">
+                <div class="container d-flex">
                     <h1 class=" navbar-brand">
                         <a href="{{ route('public.index') }}">
                             <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
@@ -37,41 +43,40 @@
                     </h1>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                      </button>
-                   <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('admin.dashboard') }}" class="nav-link active" aria-current="page">Dasboard</a></li>
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link">Home</a></li>
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
-                        <li class="nav-item ms-5 fw-bold">
-                            <button type="button" class="btn btn-dark position-relative">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                  99+
-                                  <span class="visually-hidden">unread messages</span>
-                                </span>
-                              </button>
-                        </li>
-                    </ul>
-                   </div>
-                   <div class="dropdown col-3 offset-1 float-right text-center">
-                    <img src="{{ asset('images/male.png') }}" alt="default" class="w-25 rounded-circle dropdown-toggle"
-                        type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <ul class="dropdown-menu dropdown-menu-dark w-75" aria-labelledby="dropdownMenu2">
-                        <li><a class="dropdown-item p-3">Profile</a></li>
-                        <li><a class="dropdown-item p-3">Change Password</a></li>
-                        <li class="p-2">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button class="dropdown-item bg-primary text-white p-2 text-center rounded-pill" type="submit">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item mx-3 fw-bold"><a href="{{ route('admin.dashboard') }}" class="nav-link active" aria-current="page">Dasboard</a></li>
+                            <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link">Home</a></li>
+                            <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
+                            <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+                            <li class="nav-item ms-5 fw-bold">
+                                <button type="button" class="btn btn-dark position-relative">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        99+
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown col-3 offset-1 float-right text-center">
+                        <img src="{{ asset('images/male.png') }}" alt="default" class="w-25 rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <ul class="dropdown-menu dropdown-menu-dark w-75" aria-labelledby="dropdownMenu2">
+                            <li><a class="dropdown-item p-3">Profile</a></li>
+                            <li><a class="dropdown-item p-3">Change Password</a></li>
+                            <li class="p-2">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item bg-primary text-white p-2 text-center rounded-pill" type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                   </div>
-                  </div>
-          </nav>
+            </div>
+        </nav>
     </section>
     <div class="container">
         @yield('content')

@@ -8,7 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class EbookAuthor extends Model
 {
     use HasFactory;
-    
+
+    /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'ebook_id',
+        'author_id',
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *

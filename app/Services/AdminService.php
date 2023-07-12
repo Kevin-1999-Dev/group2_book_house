@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Contracts\Services\AdminServiceInterface;
+use App\Dao\AdminDao;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\EbookRequest;
 use Illuminate\Http\Request;
 
 class AdminService implements AdminServiceInterface
@@ -83,5 +86,55 @@ class AdminService implements AdminServiceInterface
     public function declineOrderById(int $id)
     {
         $this->adminDao->declineOrderById($id);
+    }
+
+    public function getBooks(Request $r)
+    {
+        return $this->adminDao->getBooks($r);
+    }
+
+    public function getBookById($id)
+    {
+        return $this->adminDao->getBookById($id);
+    }
+
+    public function createBook(BookRequest $data)
+    {
+        $this->adminDao->createBook($data);
+    }
+
+    public function updateBook(array $data, int $id)
+    {
+        $this->adminDao->updateBook($data, $id);
+    }
+
+    public function deleteBookById(int $id)
+    {
+        $this->adminDao->deleteBookById($id);
+    }
+
+    public function getEbooks(Request $r)
+    {
+        return $this->adminDao->getEbooks($r);
+    }
+
+    public function getEbookById($id)
+    {
+        return $this->adminDao->getEbookById($id);
+    }
+
+    public function createEbook(EbookRequest $data)
+    {
+        $this->adminDao->createEbook($data);
+    }
+
+    public function updateEbook(array $data, int $id)
+    {
+        $this->adminDao->updateEbook($data, $id);
+    }
+
+    public function deleteEbookById(int $id)
+    {
+        $this->adminDao->deleteEbookById($id);
     }
 }
