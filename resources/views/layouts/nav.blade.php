@@ -10,6 +10,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            @if (!empty(Auth::user()))
+            @if (Auth::user()->role == 1)
+            <li class="nav-item mx-3 fw-bold"><a href="{{ route('admin.dashboard') }}" class="nav-link active" aria-current="page">Dashboard</a></li>
+            @else
+            <li class="nav-item mx-3 fw-bold"><a href="{{ route('user.dashboard') }}" class="nav-link active" aria-current="page">Dashboard</a></li>
+            @endif
+            @endif
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
@@ -36,12 +43,12 @@
           </ul>
         @else
          @if (Auth::user()->role == 1)
-         <div class="dropdown col-3 offset-1 float-right text-center">
+         <div class="dropdown col-6  float-right text-center">
             <img src="{{ asset('images/male.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
                 type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
                 <li><a class="dropdown-item p-3">Profile</a></li>
-                <li><a class="dropdown-item p-3">Change Password</a></li>
+                <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-3">Change Password</a></li>
                 <li class="p-2">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -50,13 +57,8 @@
                 </li>
             </ul>
         </div>
-         <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item me-lg-2">
-              <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Dashboard</a>
-            </li>
-          </ul>
           @else
-          <div class="dropdown col-3 offset-1 float-right text-center">
+          <div class="dropdown col-6  float-right text-center">
             <img src="{{ asset('images/female.jpg') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
                 type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
@@ -70,11 +72,6 @@
                 </li>
             </ul>
         </div>
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item me-lg-2">
-              <a href="{{ route('user.dashboard') }}" class="btn btn-primary">Dashboard</a>
-            </li>
-          </ul>
          @endif
         @endif
     </div>

@@ -19,14 +19,19 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
     <div class="container">
         <div class="cmn-inner row">
             <a href="{{ route('public.index') }}" class="text-decoration-none text-dark col6 offset-1 mt-3"> <i class="fa-sharp fa-solid fa-arrow-left"></i> <h5 class="d-inline">Return Home Page</h5></a>
             <div class="col-6 offset-3">
                 <img class="col-5 offset-4" src="{{ asset('images/img_bookhouse_logo.png') }}" alt="">
-                <form action="{{ route('login') }}" method="POST" class="shadow-lg p-5 border border-danger">
+                <form action="{{ route('login') }}" method="POST" class="shadow-lg p-5 border rounded">
                     @csrf
+                    @if (session('successPwChange'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i>  {{ session('successPwChange') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                    @endif
                     <h2 class="text-center">Login Form</h2>
                     <div class="form-group mt-3">
                         <label for="" class="form-label">Email</label>
