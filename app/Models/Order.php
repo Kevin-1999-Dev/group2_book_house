@@ -36,7 +36,7 @@ class Order extends Model
      */
     public function book()
     {
-        return $this->belongsToMany(Book::class, 'book_orders');
+        return $this->belongsToMany(Book::class, 'book_orders')->withPivot('quantity');
     }
 
     /**
@@ -47,5 +47,15 @@ class Order extends Model
     public function ebook()
     {
         return $this->belongsToMany(Ebook::class, 'ebook_orders');
+    }
+
+    /**
+     * payment
+     *
+     * @return void
+     */
+    public function payment()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -12,6 +12,7 @@ use App\Models\Ebook;
 use App\Models\EbookAuthor;
 use App\Models\EbookCategory;
 use App\Models\EbookOrder;
+use App\Models\Feedback;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
@@ -101,12 +102,21 @@ class DatabaseSeeder extends Seeder
 
         BookOrder::create([
             'book_id' => 1,
-            'order_id' => 1
+            'order_id' => 1,
+            'quantity' => 3,
         ]);
 
         EbookOrder::create([
             'ebook_id' => 1,
             'order_id' => 1
+        ]);
+
+        Feedback::create([
+            'name' => 'Summer',
+            'email' => 'summer@gmail.com',
+            'address' => 'Summer Avenue ',
+            'subject' => 'Whatcha doin?',
+            'message' => 'What are you doing?',
         ]);
     }
 }
