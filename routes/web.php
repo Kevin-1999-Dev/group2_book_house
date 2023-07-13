@@ -65,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [AdminController::class, 'authorUpdate'])->name('admin.author.update');
             Route::get('/delete/{id}', [AdminController::class, 'authorDelete'])->name('admin.author.delete');
         });
-
+        //order
         Route::prefix('order')->group(function () {
             Route::get('/', [AdminController::class, 'orderIndex'])->name('admin.order.index');
             Route::get('/detail/{id}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');

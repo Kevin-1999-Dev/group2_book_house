@@ -39,7 +39,7 @@
             </div>
             <div class="col-5 shadow bg-body rounded p-2">
                 <div class="my-3 w-100">
-                    <a href="" class="text-decoration-none">
+                    <a href="{{ route('admin.user.index') }}" class="text-decoration-none">
                         <button class="btn btn-dark w-50"><i class="fa-solid fa-users"></i> User List</button>
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                     </a>
                 </div>
                 <div class="my-3 w-100">
-                    <a href="" class="text-decoration-none">
+                    <a href="{{ route('admin.feedback.index') }}" class="text-decoration-none">
                         <button class="btn  btn-dark w-50"><i class="fa-solid fa-money-bill-1-wave"></i> FeedBack List</button>
                     </a>
                 </div>
