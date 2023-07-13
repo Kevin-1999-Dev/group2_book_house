@@ -15,7 +15,7 @@
     <!-- Message -->
     <div class="col-md-6 px-md-3 px-lg-5">
       <div class="mb-3">
-        <span class="fs-3 border-bottom border-primary-subtle">Feedbach here</span>
+        <span class="fs-3 border-bottom border-primary-subtle">Feedback here</span>
       </div>
       <form class="row g-3" action="{{ route('feedbacks.store') }}" method="post">
         @csrf

@@ -107,5 +107,13 @@ Route::middleware(['auth'])->group(function () {
     // user routes
     Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
         Route::get('dashboard', [UserController::class, 'userDash'])->name('user.dashboard');
+
+        Route::prefix('profile')->group(function () {
+            Route::get('password', [UserController::class, 'changePasswordPage'])->name('user.changePasswordPage');
+            Route::post('password/change', [UserController::class, 'changePassword'])->name('user.changePassword');
+            Route::get('details', [UserController::class, 'profilePage'])->name('user.details');
+            Route::get('editPage', [UserController::class, 'editPage'])->name('user.editPage');
+            Route::post('update/{id}', [UserController::class, 'updateUser'])->name('user.updateUser');
+        });
     });
 });

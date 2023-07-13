@@ -15,7 +15,7 @@
             @endif
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.updateAdmin', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.updateUser', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row p-3">
                     <div class="col-3 offset-3">

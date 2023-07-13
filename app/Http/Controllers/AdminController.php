@@ -46,7 +46,6 @@ class AdminController extends Controller
     public function updateAdmin(ProfileRequest $request,int $id){
         $this->adminService->adminProfile($request,$id);
         return redirect()->route('admin.details');
-
     }
 
     public function categoryIndex()
