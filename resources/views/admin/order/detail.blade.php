@@ -15,14 +15,16 @@ Order Status
                     <thead>
                         <tr>
                             <th scope="col">Title</th>
-                            <th scope="col" style="text-align:end;">Price</th>
+                            <td scope="col">Price</td>
+                            <td scope="col">Quantity</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($order->book as $book)
                         <tr>
                             <td>{{$book->title}}</td>
-                            <td style="text-align:end;">{{$book->price}} MMK</td>
+                            <td>{{$book->price}} MMK</td>
+                            <td>{{$book->pivot->quantity}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -39,19 +41,22 @@ Order Status
                     <thead>
                         <tr>
                             <th scope="col">Title</th>
-                            <th scope="col" style="text-align:end;">Price</th>
+                            <td scope="col">Price</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($order->ebook as $ebook)
                         <tr>
                             <td>{{$ebook->title}}</td>
-                            <td style="text-align:end;">{{$ebook->price}} MMK</td>
+                            <td>{{$ebook->price}} MMK</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="float-start mt-3">
+            <h5>Status : {{$order->status}}</h5>
         </div>
         <div class="float-end mt-3 mb-2">
             <h5>Total : {{ $order->total_amount }} MMK</h5>

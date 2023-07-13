@@ -101,7 +101,8 @@ class DatabaseSeeder extends Seeder
 
         BookOrder::create([
             'book_id' => 1,
-            'order_id' => 1
+            'order_id' => 1,
+            'quantity' => 3,
         ]);
 
         EbookOrder::create([
