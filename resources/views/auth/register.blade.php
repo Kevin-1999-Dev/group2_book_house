@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="" class="form-label">Email</label>
-                        <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="" placeholder="example@gmail.com">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="" placeholder="example@gmail.com">
                         @error('email')
                         <i class="text-danger">{{ $message }}</i>
                     @enderror

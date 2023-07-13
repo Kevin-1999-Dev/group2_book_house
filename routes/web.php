@@ -39,11 +39,15 @@ Route::middleware(['auth'])->group(function () {
     // admin routes
     Route::group(['prefix' => 'admin', 'middleware' => 'admin_auth'], function () {
         Route::get('dashboard', [AdminController::class, 'adminDash'])->name('admin.dashboard');
-        // Admin Profile
+        //profile
         Route::prefix('profile')->group(function () {
             Route::get('password', [AdminController::class, 'changePasswordPage'])->name('admin.changePasswordPage');
             Route::post('password/change', [AdminController::class, 'changePassword'])->name('admin.changePassword');
+            Route::get('details', [AdminController::class, 'profilePage'])->name('admin.details');
+            Route::get('editPage', [AdminController::class, 'editPage'])->name('admin.editPage');
+            Route::post('update/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
         });
+        //category
         Route::prefix('category')->group(function () {
             Route::get('/', [AdminController::class, 'categoryIndex'])->name('admin.category.index');
             Route::get('/create', [AdminController::class, 'categoryCreate'])->name('admin.category.create');
@@ -52,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('admin.category.update');
             Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('admin.category.delete');
         });
+        //author
         Route::prefix('author')->group(function () {
             Route::get('/', [AdminController::class, 'authorIndex'])->name('admin.author.index');
             Route::get('/create', [AdminController::class, 'authorCreate'])->name('admin.author.create');
@@ -67,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/accept/{id}', [AdminController::class, 'orderAccept'])->name('admin.order.accept');
             Route::get('/decline/{id}', [AdminController::class, 'orderDecline'])->name('admin.order.decline');
         });
-
+        //book
         Route::prefix('book')->group(function () {
             Route::get('/', [AdminController::class, 'bookIndex'])->name('admin.book.index');
             Route::get('/detail/{id}', [AdminController::class, 'bookDetail'])->name('admin.book.detail');
@@ -77,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [AdminController::class, 'bookUpdate'])->name('admin.book.update');
             Route::get('/delete/{id}', [AdminController::class, 'bookDelete'])->name('admin.book.delete');
         });
+        //ebook
         Route::prefix('ebook')->group(function () {
             Route::get('/', [AdminController::class, 'ebookIndex'])->name('admin.ebook.index');
             Route::get('/detail/{id}', [AdminController::class, 'ebookDetail'])->name('admin.ebook.detail');

@@ -1,12 +1,13 @@
-@extends('admin.layouts.master')
+@extends('layouts.master')
 
-@section('tile')
-    Admin Dashboard
+@section('title')
+     Admin Dashboard
 @endsection
 
 @section('content')
 <section>
     <div class="pt-5">
+        {{ Auth::user()->role }}
         <div class="container text-center pt-5">
             <h2>Hello <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
             <p>Welcome From Admin Dashboard</p>
@@ -23,12 +24,12 @@
                         </a>
                     </div>
                     <div class="my-3 w-100">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('admin.book.index') }}" class="text-decoration-none">
                             <button class="btn  btn-dark w-50"><i class="fa-solid fa-book"></i> Book</button>
                         </a>
                     </div>
                     <div class="my-3 w-100">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('admin.ebook.index') }}" class="text-decoration-none">
                             <button class="btn  btn-dark w-50"><i class="fa-solid fa-book"></i> EBook</button>
                         </a>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Contracts\Dao;
 
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 /**
@@ -12,6 +13,8 @@ use Illuminate\Http\Request;
 interface AdminDaoInterface
 {
     public function password(array $data);
+
+    public function adminProfile(ProfileRequest $data,int $id);
     public function getCategories();
 
     public function createCategory(array $data);

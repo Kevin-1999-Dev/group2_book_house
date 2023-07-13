@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+    Contact Us Page
+@endsection
 @section('content')
 <div class="container-fluid py-5">
   <div class="row">

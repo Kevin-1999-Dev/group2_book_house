@@ -42,6 +42,7 @@
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link">Home</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
                         <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.contact_us') }}" class="nav-link">Contact Us</a></li>
                         <li class="nav-item ms-5 fw-bold">
                             <button type="button" class="btn btn-dark position-relative">
                                 <i class="fa-solid fa-cart-shopping"></i>

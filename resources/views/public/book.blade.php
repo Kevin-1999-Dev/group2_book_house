@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+    Book Page
+@endsection
 @section('content')
 <div class="container-fluid container mt-2">
       <h2>Discover a World of Available Books</h2>

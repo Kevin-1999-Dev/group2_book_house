@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle fixed-top shadow-sm">
-  <div class="container-fluid">
+  <div class="container-fluid container">
     <h1>
       <a href="{{ route('public.index') }}">
       <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
@@ -20,6 +20,7 @@
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.index') }}" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.book') }}" class="nav-link">Book</a></li>
             <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.ebook') }}" class="nav-link">Ebook</a></li>
+            <li class="nav-item mx-3 fw-bold"><a href="{{ route('public.contact_us') }}" class="nav-link">Contact us</a></li>
             <li class="nav-item ms-5 fw-bold">
                 <button type="button" class="btn btn-dark position-relative">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -44,10 +45,15 @@
         @else
          @if (Auth::user()->role == 1)
          <div class="dropdown col-6  float-right text-center">
-            <img src="{{ asset('images/male.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
-                type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            @if (Auth::user()->image == null)
+            <img src="{{ asset('images/default.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            @else
+            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            @endif
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
-                <li><a class="dropdown-item p-3">Profile</a></li>
+                <li><a href="{{ route('admin.details') }}" class="dropdown-item p-3">Profile</a></li>
                 <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-3">Change Password</a></li>
                 <li class="p-2">
                     <form action="{{ route('logout') }}" method="POST">
@@ -62,7 +68,7 @@
             <img src="{{ asset('images/female.jpg') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
                 type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
-                <li><a class="dropdown-item p-3">Profile</a></li>
+                <li><a href="{{ route('admin.details') }}" class="dropdown-item p-3">Profile</a></li>
                 <li><a class="dropdown-item p-3">Change Password</a></li>
                 <li class="p-2">
                     <form action="{{ route('logout') }}" method="POST">
