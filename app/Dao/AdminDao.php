@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Contracts\Dao\AdminDaoInterface;
-
+use App\Models\Feedback;
 
 class AdminDao implements AdminDaoInterface
 {
@@ -32,14 +32,16 @@ class AdminDao implements AdminDaoInterface
         $dbPassword = $user->password;
         $userOldPassword = $data['oldPassword'];
 
-        if(Hash::check($userOldPassword,$dbPassword)){
+        if (Hash::check($userOldPassword, $dbPassword)) {
             User::where('id', $id)->update([
                 'password' => Hash::make($data['newPassword']),
             ]);
             Auth::logout();
         }
-    }
 
+
+
+    }
     public function adminProfile(ProfileRequest $data,int $id)
     {
         $input = [
@@ -158,17 +160,10 @@ class AdminDao implements AdminDaoInterface
         return $order;
     }
 
-    public function acceptOrderById(int $id)
+    public function updateOrder(array $data, int $id)
     {
-        return Order::findOrFail($id)->update([
-            'status' => 'accepted',
-        ]);
-    }
-
-    public function declineOrderById(int $id)
-    {
-        return Order::findOrFail($id)->update([
-            'status' => 'declined',
+        Order::findOrFail($id)->update([
+            'status' => $data['status'],
         ]);
     }
 
@@ -288,5 +283,53 @@ class AdminDao implements AdminDaoInterface
     public function deleteEbookById(int $id)
     {
         Ebook::findOrFail($id)->delete();
+    }
+
+    public function getUsers(Request $r)
+    {
+        $s = strtolower($r->get('s'));
+        return User::Where('name', 'LIKE', "%$s%")
+            ->orWhere('email', 'LIKE', "%$s%")
+            ->get();
+    }
+
+    public function getUserById($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    public function updateUser(array $data, int $id)
+    {
+        User::findOrFail($id)->update([
+            'role' => $data['role'] == "admin" ? 1 : 0,
+            'active' => $data['active'] == "enable" ? 1 : 0,
+        ]);
+        //dd($data['active']);
+    }
+
+    public function deleteUser(int $id)
+    {
+        User::findOrFail($id)->delete();
+    }
+
+    public function getFeedback(Request $r)
+    {
+        $s = strtolower($r->get('s'));
+        return Feedback::Where('name', 'LIKE', "%$s%")
+            ->orWhere('email', 'LIKE', "%$s%")
+            ->orWhere('address', 'LIKE', "%$s%")
+            ->orWhere('subject', 'LIKE', "%$s%")
+            ->orWhere('message', 'LIKE', "%$s%")
+            ->get();
+    }
+
+    public function getFeedbackById($id)
+    {
+        return Feedback::findOrFail($id);
+    }
+
+    public function deleteFeedback(int $id)
+    {
+        Feedback::findOrFail($id)->delete();
     }
 }

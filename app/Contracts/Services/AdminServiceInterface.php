@@ -39,9 +39,7 @@ interface AdminServiceInterface
 
     public function getOrderById(int $id);
 
-    public function acceptOrderById(int $id);
-
-    public function declineOrderById(int $id);
+    public function updateOrder(array $data, int $id);
 
     public function getBooks(Request $r);
 
@@ -49,7 +47,7 @@ interface AdminServiceInterface
 
     public function createBook(BookRequest $data);
 
-    public function updateBook(array $data,int $id);
+    public function updateBook(array $data, int $id);
 
     public function deleteBookById(int $id);
 
@@ -59,7 +57,21 @@ interface AdminServiceInterface
 
     public function createEbook(EbookRequest $data);
 
-    public function updateEbook(array $data,int $id);
+    public function updateEbook(array $data, int $id);
 
     public function deleteEbookById(int $id);
+
+    public function getUsers(Request $r);
+
+    public function getUserById($id);
+
+    public function updateUser(array $data, int $id);
+
+    public function deleteUser(int $id);
+
+    public function getFeedback(Request $r);
+
+    public function getFeedbackById($id);
+
+    public function deleteFeedback(int $id);
 }
