@@ -1,4 +1,8 @@
 @extends('layouts.master')
+
+@section('title')
+    Home Page
+@endsection
 @section('content')
 <div class="container">
   <div class="row g-3 d-flex align-items-center">

@@ -2,21 +2,24 @@
 
 namespace App\Dao;
 
+
+use App\Models\Book;
 use App\Models\User;
+use App\Models\Ebook;
+use App\Models\Order;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\BookAuthor;
+use App\Models\EbookAuthor;
+use App\Models\BookCategory;
+use Illuminate\Http\Request;
+use App\Models\EbookCategory;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
-use App\Models\Category;
-use App\Models\Author;
-use App\Models\Book;
-use App\Models\BookAuthor;
-use App\Models\BookCategory;
-use App\Models\Ebook;
-use App\Models\EbookAuthor;
-use App\Models\EbookCategory;
-use App\Models\Order;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Models\Feedback;
 
@@ -35,6 +38,32 @@ class AdminDao implements AdminDaoInterface
             ]);
             Auth::logout();
         }
+
+
+
+    }
+    public function adminProfile(ProfileRequest $data,int $id)
+    {
+        $input = [
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'phone'=>$data['phone'],
+            'address'=>$data['address'],
+        ];
+        if($data->hasFile('image')){
+            $dbImage = User::where('id', $id)->first();
+            $dbImage = $dbImage['image'];
+
+            if($dbImage != null){
+                Storage::delete('public/' . $dbImage);
+            }
+
+            $getFile = uniqid() . $data->file('image')->getClientOriginalName();
+            $data->file('image')->storeAs('public', $getFile);
+           $input['image'] = $getFile;
+        }
+         User::where('id', $id)->update($input);
+
     }
     public function getCategories()
     {

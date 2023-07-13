@@ -7,6 +7,7 @@ use App\Contracts\Services\AdminServiceInterface;
 use App\Dao\AdminDao;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class AdminService implements AdminServiceInterface
@@ -20,6 +21,10 @@ class AdminService implements AdminServiceInterface
     public function password(array $data)
     {
         $this->adminDao->password($data);
+    }
+
+    public function  adminProfile(ProfileRequest $data,int $id){
+        $this->adminDao->adminProfile($data,$id);
     }
     public function getCategories()
     {

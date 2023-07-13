@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('layout.master')
 @section('title')
 User List
 @endsection

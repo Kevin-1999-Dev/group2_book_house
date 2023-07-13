@@ -5,35 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  {{-- Css --}}
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <title>@yield('title')</title>
+
   {{-- bootstrap css --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   {{-- bootstrap bundle --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- Css --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  {{-- jquery js --}}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  {{-- select2--}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
    {{-- font-awesome --}}
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   {{-- google fonts --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200;400;700&family=Ysabeau:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    a {
-      text-decoration: none;
-    }
-    textarea {
-        resize: none;
-    }
-  </style>
 </head>
 
 <body>
-    @include('layouts.nav')
+     @include('layouts.nav')
     <div class="body-content">
     @yield('content')
     </div>
-</body>
+
 
 <footer class="bg-body-secondary py-2 px-5">
     <div class="row">
@@ -45,4 +44,8 @@
       </div>
     </div>
 </footer>
+
+</body>
+
+
 </html>

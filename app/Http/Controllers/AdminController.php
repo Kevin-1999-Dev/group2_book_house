@@ -9,6 +9,7 @@ use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use App\Models\Book;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -27,6 +28,12 @@ class AdminController extends Controller
     {
         return view('admin.profile.change');
     }
+    public function profilePage(){
+        return view('admin.profile.details');
+    }
+    public function editPage(){
+        return view('admin.profile.edit');
+    }
     public function changePassword(PasswordRequest $r)
     {
         $this->adminService->password($r->only([
@@ -34,7 +41,12 @@ class AdminController extends Controller
             'newPassword',
             'confirmPassword',
         ]));
-        return redirect()->route('auth.loginPage')->with(['successPwChange' => 'Successfully Change Password...']);
+         return redirect()->route('auth.loginPage')->with(['successPwChange'=>'Successfully Change Password...']);
+    }
+    public function updateAdmin(ProfileRequest $request,int $id){
+        $this->adminService->adminProfile($request,$id);
+        return redirect()->route('admin.details');
+
     }
 
     public function categoryIndex()
