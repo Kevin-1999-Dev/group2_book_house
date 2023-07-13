@@ -64,13 +64,11 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('order')->group(function () {
             Route::get('/', [AdminController::class, 'orderIndex'])->name('admin.order.index');
             Route::get('/detail/{id}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');
-            Route::get('/accept/{id}', [AdminController::class, 'orderAccept'])->name('admin.order.accept');
-            Route::get('/decline/{id}', [AdminController::class, 'orderDecline'])->name('admin.order.decline');
+            Route::post('/update/{id}', [AdminController::class, 'orderUpdate'])->name('admin.order.update');
         });
 
         Route::prefix('book')->group(function () {
             Route::get('/', [AdminController::class, 'bookIndex'])->name('admin.book.index');
-            Route::get('/detail/{id}', [AdminController::class, 'bookDetail'])->name('admin.book.detail');
             Route::get('/create', [AdminController::class, 'bookCreate'])->name('admin.book.create');
             Route::post('/store', [AdminController::class, 'bookStore'])->name('admin.book.store');
             Route::get('/edit/{id}', [AdminController::class, 'bookEdit'])->name('admin.book.edit');
@@ -79,12 +77,24 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::prefix('ebook')->group(function () {
             Route::get('/', [AdminController::class, 'ebookIndex'])->name('admin.ebook.index');
-            Route::get('/detail/{id}', [AdminController::class, 'ebookDetail'])->name('admin.ebook.detail');
             Route::get('/create', [AdminController::class, 'ebookCreate'])->name('admin.ebook.create');
             Route::post('/store', [AdminController::class, 'ebookStore'])->name('admin.ebook.store');
             Route::get('/edit/{id}', [AdminController::class, 'ebookEdit'])->name('admin.ebook.edit');
             Route::post('/update/{id}', [AdminController::class, 'ebookUpdate'])->name('admin.ebook.update');
             Route::get('/delete/{id}', [AdminController::class, 'ebookDelete'])->name('admin.ebook.delete');
+        });
+
+        Route::prefix('user')->group(function () {
+            Route::get('/', [AdminController::class, 'userIndex'])->name('admin.user.index');
+            Route::get('/edit/{id}', [AdminController::class, 'userEdit'])->name('admin.user.edit');
+            Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('admin.user.update');
+            Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('admin.user.delete');
+        });
+
+        Route::prefix('feedback')->group(function () {
+            Route::get('/', [AdminController::class, 'feedbackIndex'])->name('admin.feedback.index');
+            Route::get('/detail/{id}', [AdminController::class, 'feedbackDetail'])->name('admin.feedback.detail');
+            Route::get('/delete/{id}', [AdminController::class, 'feedbackDelete'])->name('admin.feedback.delete');
         });
     });
 

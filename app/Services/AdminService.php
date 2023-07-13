@@ -17,7 +17,8 @@ class AdminService implements AdminServiceInterface
     {
         $this->adminDao = $adminDao;
     }
-    public function password(array $data){
+    public function password(array $data)
+    {
         $this->adminDao->password($data);
     }
     public function getCategories()
@@ -80,14 +81,9 @@ class AdminService implements AdminServiceInterface
         return $this->adminDao->getOrderById($id);
     }
 
-    public function acceptOrderById(int $id)
+    public function updateOrder(array $data, int $id)
     {
-        $this->adminDao->acceptOrderById($id);
-    }
-
-    public function declineOrderById(int $id)
-    {
-        $this->adminDao->declineOrderById($id);
+        $this->adminDao->updateOrder($data, $id);
     }
 
     public function getBooks(Request $r)
@@ -138,5 +134,40 @@ class AdminService implements AdminServiceInterface
     public function deleteEbookById(int $id)
     {
         $this->adminDao->deleteEbookById($id);
+    }
+
+    public function getUsers(Request $r)
+    {
+        return $this->adminDao->getUsers($r);
+    }
+
+    public function getUserById($id)
+    {
+        return $this->adminDao->getUserById($id);
+    }
+
+    public function updateUser(array $data, int $id)
+    {
+        $this->adminDao->updateUser($data, $id);
+    }
+
+    public function deleteUser(int $id)
+    {
+        $this->adminDao->deleteUser($id);
+    }
+
+    public function getFeedback(Request $r)
+    {
+        return $this->adminDao->getFeedback($r);
+    }
+
+    public function getFeedbackById($id)
+    {
+        return $this->adminDao->getFeedbackById($id);
+    }
+
+    public function deleteFeedback(int $id)
+    {
+        $this->adminDao->deleteFeedback($id);
     }
 }
