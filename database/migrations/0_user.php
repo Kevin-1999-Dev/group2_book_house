@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('address');
             $table->boolean('role')->default(false);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
