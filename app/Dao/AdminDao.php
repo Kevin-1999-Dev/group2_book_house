@@ -38,32 +38,28 @@ class AdminDao implements AdminDaoInterface
             ]);
             Auth::logout();
         }
-
-
-
     }
-    public function adminProfile(ProfileRequest $data,int $id)
+    public function adminProfile(ProfileRequest $data, int $id)
     {
         $input = [
-            'name'=>$data['name'],
-            'email'=>$data['email'],
-            'phone'=>$data['phone'],
-            'address'=>$data['address'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
         ];
-        if($data->hasFile('image')){
+        if ($data->hasFile('image')) {
             $dbImage = User::where('id', $id)->first();
             $dbImage = $dbImage['image'];
 
-            if($dbImage != null){
+            if ($dbImage != null) {
                 Storage::delete('public/' . $dbImage);
             }
 
             $getFile = uniqid() . $data->file('image')->getClientOriginalName();
             $data->file('image')->storeAs('public', $getFile);
-           $input['image'] = $getFile;
+            $input['image'] = $getFile;
         }
-         User::where('id', $id)->update($input);
-
+        User::where('id', $id)->update($input);
     }
     public function getCategories()
     {
@@ -135,7 +131,7 @@ class AdminDao implements AdminDaoInterface
         foreach ($orders as $order) {
             $total_amount = 0;
             foreach ($order->book as $book) {
-                $total_amount = $total_amount + ($book->price*$book->pivot->quantity);
+                $total_amount = $total_amount + ($book->price * $book->pivot->quantity);
             }
             foreach ($order->ebook as $ebook) {
                 $total_amount = $total_amount + $ebook->price;
@@ -150,7 +146,7 @@ class AdminDao implements AdminDaoInterface
         $order = Order::findOrFail($id);
         $total_amount = 0;
         foreach ($order->book as $book) {
-            $total_amount = $total_amount + ($book->price*$book->pivot->quantity);
+            $total_amount = $total_amount + ($book->price * $book->pivot->quantity);
         }
         foreach ($order->ebook as $ebook) {
             $total_amount = $total_amount + $ebook->price;
@@ -288,9 +284,12 @@ class AdminDao implements AdminDaoInterface
     public function getUsers(Request $r)
     {
         $s = strtolower($r->get('s'));
-        return User::Where('name', 'LIKE', "%$s%")
-            ->orWhere('email', 'LIKE', "%$s%")
-            ->get();
+        $id = Auth::user()->id;
+        return User::where(function($query) use ($s){
+            $query->where('name', 'LIKE', "%$s%")
+            ->orwhere('email', 'LIKE', "%$s%");
+        })->where('id', 'NOT LIKE', "%$id%")
+        ->get();
     }
 
     public function getUserById($id)
@@ -304,7 +303,6 @@ class AdminDao implements AdminDaoInterface
             'role' => $data['role'] == "admin" ? 1 : 0,
             'active' => $data['active'] == "enable" ? 1 : 0,
         ]);
-        //dd($data['active']);
     }
 
     public function deleteUser(int $id)
@@ -315,7 +313,7 @@ class AdminDao implements AdminDaoInterface
     public function getFeedback(Request $r)
     {
         $s = strtolower($r->get('s'));
-        return Feedback::Where('name', 'LIKE', "%$s%")
+        return Feedback::where('name', 'LIKE', "%$s%")
             ->orWhere('email', 'LIKE', "%$s%")
             ->orWhere('address', 'LIKE', "%$s%")
             ->orWhere('subject', 'LIKE', "%$s%")
