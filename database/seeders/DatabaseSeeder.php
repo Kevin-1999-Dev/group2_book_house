@@ -53,9 +53,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Drama',
         ]);
 
+        Payment::create([
+            'name' => 'Cash',
+        ]);
+
         Order::create([
             'user_id' => 1,
             'comment' => 'Will pickup at 4pm.',
+            'payment_id' => 1
         ]);
 
         Book::create([

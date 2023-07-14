@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Contracts\Services\AdminServiceInterface;
-use App\Dao\AdminDao;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\ProfileRequest;
@@ -75,6 +74,30 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->deleteAuthorById($id);
     }
 
+    public function getPayments()
+    {
+        return $this->adminDao->getPayments();
+    }
+
+    public function createPayment(array $data)
+    {
+        $this->adminDao->createPayment($data);
+    }
+
+    public function getPaymentById(int $id)
+    {
+        return $this->adminDao->getPaymentById($id);
+    }
+
+    public function updatePayment(array $data, int $id)
+    {
+        $this->adminDao->updatePayment($data, $id);
+    }
+
+    public function deletePaymentById(int $id)
+    {
+        $this->adminDao->deletePaymentById($id);
+    }
 
     public function getOrders(Request $r)
     {

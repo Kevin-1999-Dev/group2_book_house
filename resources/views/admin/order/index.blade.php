@@ -24,6 +24,7 @@ Order List
                             <th scope="col">ID</th>
                             <th scope="col">User</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Payment</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -34,6 +35,7 @@ Order List
                             <th scope="row">{{$order->id}}</th>
                             <td>{{$order->user->name}}</td>
                             <td>{{$order->status}}</td>
+                            <td>{{$order->payment->name}}</td>
                             <td>{{$order->total_amount}} MMK</td>
                             <td>
                                 <a href="{{route('admin.order.detail',$order->id)}}"><span class="btn btn-success">View</span></a>
