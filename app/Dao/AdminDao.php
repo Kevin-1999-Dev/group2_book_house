@@ -135,7 +135,7 @@ class AdminDao implements AdminDaoInterface
         foreach ($orders as $order) {
             $total_amount = 0;
             foreach ($order->book as $book) {
-                $total_amount = $total_amount + $book->price;
+                $total_amount = $total_amount + ($book->price*$book->pivot->quantity);
             }
             foreach ($order->ebook as $ebook) {
                 $total_amount = $total_amount + $ebook->price;
@@ -150,7 +150,7 @@ class AdminDao implements AdminDaoInterface
         $order = Order::findOrFail($id);
         $total_amount = 0;
         foreach ($order->book as $book) {
-            $total_amount = $total_amount + $book->price;
+            $total_amount = $total_amount + ($book->price*$book->pivot->quantity);
         }
         foreach ($order->ebook as $ebook) {
             $total_amount = $total_amount + $ebook->price;
