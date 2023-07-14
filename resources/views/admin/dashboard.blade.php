@@ -7,7 +7,6 @@ Admin Dashboard
 @section('content')
 <section class="pb-5">
     <div class="pt-5">
-        {{ Auth::user()->role }}
         <div class="container text-center pt-5">
             <h2>Hello <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
             <p>Welcome From Admin Dashboard</p>

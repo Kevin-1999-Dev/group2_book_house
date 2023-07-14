@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'categoryEdit'])->name('admin.category.edit');
             Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('admin.category.update');
             Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('admin.category.delete');
+            Route::get('/export', [AdminController::class, 'exportCategory'])->name('admin.category.export');
+            Route::post('/import', [AdminController::class, 'importCategory'])->name('admin.category.import');
         });
         //author
         Route::prefix('author')->group(function () {

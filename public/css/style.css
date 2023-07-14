@@ -15,9 +15,19 @@ body {
 .logo {
     width: 30%;
 }
+#choose {
+    display: none;
+}
+
+.import-btn {
+    display: none;
+}
 
 img {
     width: 100%;
+}
+#profile{
+   width: 70px;
 }
 
 a {
