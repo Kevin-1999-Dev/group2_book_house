@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-info-subtle fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-danger-subtle fixed-top shadow-sm">
   <div class="container-fluid container">
     <h1>
       <a href="{{ route('public.index') }}">
@@ -46,10 +46,10 @@
          @if (Auth::user()->role == 1)
          <div class="dropdown col-6  float-right text-center">
             @if (Auth::user()->image == null)
-            <img src="{{ asset('images/default.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('images/default.png') }}" alt="default" class="border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @else
-            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @endif
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">

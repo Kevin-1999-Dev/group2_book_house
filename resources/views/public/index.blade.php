@@ -46,12 +46,12 @@
     </div>
   </div>
 </div>
-<div class="container-fluid border-bottom border-top border-info py-3 bg-body-secondary">
+<div class="container-fluid border-bottom border-top border-danger-subtle py-3 bg-body-secondary">
   <div class="row">
     <!-- Books -->
     <div class="col-md-6 mb-2">
       <div class="card shadow-sm">
-        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable Books</h3>
+        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-danger-subtle">Avilable Books</h3>
         <div class="card-body">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($books as $book)
@@ -90,7 +90,7 @@
     <!-- Ebooks -->
     <div class="col-md-6">
       <div class="card shadow-sm">
-        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-info-subtle">Avilable E-books</h3>
+        <h3 class="py-md-1 shadow-sm p-2 border-bottom border-danger-subtle">Avilable E-books</h3>
         <div class="card-body">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($ebooks as $ebook)

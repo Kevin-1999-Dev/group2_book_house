@@ -4,9 +4,15 @@
 @endsection
 @section('content')
 <div class="container-fluid py-5">
+@if (session('success'))
+  <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
+    <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
   <div class="row">
     <div class="col-md-6 px-md-3 px-lg-5">
-      <div class="mb-2  mb-2 mb-md-4">
+      <div class="mb-2 mb-md-4">
         <span class="mark-txt fs-3">We value your feedback!</span>
       </div>
       <p class="fs-5">We would love to hear from you and appreciate any thoughts, suggestions, or comments you have regarding our website. Your feedback helps us improve and enhance the overall experience for all. Please take a moment to share your feedback with us.</p>
