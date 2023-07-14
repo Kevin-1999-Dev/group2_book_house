@@ -22,6 +22,7 @@ use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Models\Feedback;
+use App\Models\Payment;
 
 class AdminDao implements AdminDaoInterface
 {
@@ -116,6 +117,35 @@ class AdminDao implements AdminDaoInterface
     public function deleteAuthorById(int $id)
     {
         Author::findOrFail($id)->delete();
+    }
+
+    public function getPayments()
+    {
+        return Payment::all();
+    }
+
+    public function createPayment(array $data)
+    {
+        Payment::create([
+            'name' => $data['name'],
+        ]);
+    }
+
+    public function getPaymentById(int $id)
+    {
+        return Payment::findOrFail($id);
+    }
+
+    public function updatePayment(array $data, int $id)
+    {
+        Payment::findOrFail($id)->update([
+            'name' => $data['name'],
+        ]);
+    }
+
+    public function deletePaymentById(int $id)
+    {
+        Payment::findOrFail($id)->delete();
     }
 
     public function getOrders(Request $r)
