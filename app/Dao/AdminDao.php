@@ -154,8 +154,10 @@ class AdminDao implements AdminDaoInterface
         $s = strtolower($s);
         $orders = Order::whereHas('user', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
-        })->orWhere('id', 'LIKE', "%$s%")
-            ->orWhere('comment', 'LIKE', "%$s%")
+        })->orWhereHas('payment', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%")
+            ->orWhere('id', 'LIKE', "%$s%");
+        })->orWhere('comment', 'LIKE', "%$s%")
             ->orWhere('status', 'LIKE', "%$s%")
             ->get();
         foreach ($orders as $order) {
