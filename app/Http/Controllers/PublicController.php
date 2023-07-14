@@ -67,6 +67,6 @@ class PublicController extends Controller
             'subject',
             'message',
         ]));
-        return redirect()->route('public.contact_us');
+        return redirect()->route('public.contact_us')->with('success', 'Thank you for your feedback');
     }
 }

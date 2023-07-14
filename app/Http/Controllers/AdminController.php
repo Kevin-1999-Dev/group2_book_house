@@ -7,7 +7,10 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\AuthorRequest;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
+use Illuminate\Support\Carbon;
 use App\Models\Book;
+use App\Models\User;
+use App\Models\Order;
 use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
@@ -16,8 +19,63 @@ class AdminController extends Controller
 {
     public function adminDash()
     {
-        return view('admin.dashboard');
+        // Get dates
+        $startDateUser = Carbon::now()->startOfYear();
+        $endDateUser = Carbon::now()->endOfYear();
+        // Retrieve monthly user count
+        $monthlyUsers = User::selectRaw('MONTH(created_at) AS month, COUNT(*) AS countUser')
+            ->whereBetween('created_at', [$startDateUser, $endDateUser])
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+        // to store in array
+        $dataUser = [];
+        // Format months name and 0 value
+        for ($i = 1; $i <= 12; $i++) {
+            $dataUser[Carbon::create()->month($i)->format('F')] = 0;
+        }
+        // Store months and count in array
+        foreach ($monthlyUsers as $user) {
+            $monthUser = $user->month;
+            $countUser = $user->countUser;
+            $dataUser[Carbon::create()->month($monthUser)->format('F')] = $countUser;
+        }
+        // Separate the months and counts
+        $monthsUser = array_keys($dataUser);
+        $countsUser = array_values($dataUser);
+        ////////////////////////////////////
+    
+        // Get dates
+        $startDateOrder = Carbon::now()->startOfMonth();
+        $endDateOrder = Carbon::now()->endOfMonth();
+        // Retrieve monthly ordercount
+        $monthlyOrders = Order::selectRaw('DATE(created_at) AS dateOrder, COUNT(*) AS countOrder')
+            ->whereBetween('created_at', [$startDateOrder, $endDateOrder])
+            ->groupBy('dateOrder')
+            ->orderBy('dateOrder')
+            ->get();
+        // to store in array
+        $dataOrder = [];
+        // Generate an array with date and format, 0 value
+        $currentDateOrder = $startDateOrder;
+        while ($currentDateOrder <= $endDateOrder) {
+            $formattedDateOrder = $currentDateOrder->format('m-d-Y');
+            $dataOrder[$formattedDateOrder] = 0;
+            $currentDateOrder->addDay();
+        }
+        // Store date and count in array
+        foreach ($monthlyOrders as $order) {
+            $dateOrder = Carbon::parse($order->dateOrder)->format('m-d-Y');
+            $countOrder = $order->countOrder;
+            $dataOrder[$dateOrder] = $countOrder;
+        }
+        // Separate the dates and counts to display in the graph
+        $datesOrder = array_keys($dataOrder);
+        $countsOrder = array_values($dataOrder);
+    
+        return view('admin.dashboard', compact('monthsUser', 'datesOrder', 'countsUser', 'countsOrder'));
     }
+
     private $adminService;
 
     public function __construct(AdminServiceInterface $adminServiceInterface)
