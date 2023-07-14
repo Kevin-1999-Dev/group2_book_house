@@ -35,6 +35,16 @@ interface AdminServiceInterface
 
     public function deleteAuthorById(int $id);
 
+    public function getPayments();
+
+    public function createPayment(array $data);
+
+    public function getPaymentById(int $id);
+
+    public function updatePayment(array $data, int $id);
+
+    public function deletePaymentById(int $id);
+
     public function getOrders(Request $r);
 
     public function getOrderById(int $id);

@@ -55,8 +55,8 @@ Order Detail
                 </table>
             </div>
         </div>
-        <div class="mt-3 clearfix">
-            <h5 class="float-end">Total : {{ $order->total_amount }} MMK</h5>
+        <div class="mt-2 clearfix">
+            <h5 class="float-end border border-dark p-1">Payment : {{ $order->payment->name }} | Total : {{ $order->total_amount }} MMK</h5>
         </div>
         <form action="{{ route('admin.order.update',$order->id)}}" method="post" class="mb-3 float-end">
             @csrf

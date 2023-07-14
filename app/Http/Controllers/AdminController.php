@@ -17,6 +17,8 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\AdminServiceInterface;
+use App\Http\Requests\PaymentRequest;
+
 
 class AdminController extends Controller
 {
@@ -86,7 +88,7 @@ class AdminController extends Controller
     //import
     public function importCategory(Request $request)
     {
-      
+
         Excel::import(new CategoryImport, $request->file);
         return redirect()->route('admin.category.index')->with(['importSuccess' => 'Import Successfully...']);
     }
@@ -197,6 +199,45 @@ class AdminController extends Controller
     {
         $this->adminService->deleteAuthorById($id);
         return redirect()->route('admin.author.index');
+    }
+
+    public function paymentIndex()
+    {
+        $payments = $this->adminService->getPayments();
+        return view('admin.payment.index', compact('payments'));
+    }
+
+    public function paymentCreate()
+    {
+        return view('admin.payment.create');
+    }
+
+    public function paymentStore(PaymentRequest $r)
+    {
+        $this->adminService->createPayment($r->only([
+            'name',
+        ]));
+        return redirect()->route('admin.payment.index');
+    }
+
+    public function paymentEdit(int $id)
+    {
+        $payment = $this->adminService->getPaymentById($id);
+        return view('admin.payment.edit', compact('payment'));
+    }
+
+    public function paymentUpdate(PaymentRequest $r, int $id)
+    {
+        $this->adminService->updatePayment($r->only([
+            'name',
+        ]), $id);
+        return redirect()->route('admin.payment.index');
+    }
+
+    public function paymentDelete(int $id)
+    {
+        $this->adminService->deletePaymentById($id);
+        return redirect()->route('admin.payment.index');
     }
 
     public function orderIndex(Request $r)

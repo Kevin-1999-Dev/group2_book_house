@@ -67,6 +67,15 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [AdminController::class, 'authorUpdate'])->name('admin.author.update');
             Route::get('/delete/{id}', [AdminController::class, 'authorDelete'])->name('admin.author.delete');
         });
+        //payment
+        Route::prefix('payment')->group(function () {
+            Route::get('/', [AdminController::class, 'paymentIndex'])->name('admin.payment.index');
+            Route::get('/create', [AdminController::class, 'paymentCreate'])->name('admin.payment.create');
+            Route::post('/store', [AdminController::class, 'paymentStore'])->name('admin.payment.store');
+            Route::get('/edit/{id}', [AdminController::class, 'paymentEdit'])->name('admin.payment.edit');
+            Route::post('/update/{id}', [AdminController::class, 'paymentUpdate'])->name('admin.payment.update');
+            Route::get('/delete/{id}', [AdminController::class, 'paymentDelete'])->name('admin.payment.delete');
+        });
         //order
         Route::prefix('order')->group(function () {
             Route::get('/', [AdminController::class, 'orderIndex'])->name('admin.order.index');
