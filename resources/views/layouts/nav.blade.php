@@ -36,7 +36,7 @@
         @if (empty(Auth::user()))
         <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item me-lg-2">
-              <a href="{{ route('auth.loginPage') }}" class="btn btn-primary">Loign</a>
+              <a href="{{ route('auth.loginPage') }}" class="btn btn-primary">Login</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('auth.registerPage') }}" class="btn btn-primary">Register</a>
@@ -44,12 +44,12 @@
           </ul>
         @else
          @if (Auth::user()->role == 1)
-         <div class="dropdown col-6  float-right text-center">
+         <div class="dropdown col-6  float-right text-center" id="gp-profile">
             @if (Auth::user()->image == null)
-            <img src="{{ asset('images/default.png') }}" alt="default" class="border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('images/default.png') }}" id="profile" alt="default" class="border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @else
-            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('storage/'.Auth::user()->image) }}"  id="profile" alt="default" class="border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @endif
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
@@ -64,12 +64,12 @@
             </ul>
         </div>
           @else
-          <div class="dropdown col-6  float-right text-center">
+          <div class="dropdown col-6  float-right text-center" id="gp-profile">
             @if (Auth::user()->image == null)
-            <img src="{{ asset('images/default.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('images/default.png') }}"  id="profile" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @else
-            <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
+            <img src="{{ asset('storage/'.Auth::user()->image) }}"  id="profile" alt="default" class="profile border border-white rounded-circle dropdown-toggle"
             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
             @endif
             <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">

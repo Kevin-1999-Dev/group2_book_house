@@ -3,7 +3,11 @@
 Author List
 @endsection
 @section('content')
-<a href="{{ route('admin.author.create')}}"><span class="btn btn-primary mt-3">Create</span></a>
+<a href="{{ route('admin.author.create')}}"><span class="btn btn-primary mt-5">Create</span></a>
+<div class="float-end mt-5">
+    <a href="" class="btn btn-dark text-white">Import</a>
+    <a href="" class="btn btn-dark text-white">Export</a>
+</div>
 <div class="row mt-3">
     <div class="col-12 align-self-center">
         <div class="card">

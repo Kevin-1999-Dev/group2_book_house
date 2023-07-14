@@ -31,7 +31,7 @@
 
 <body>
   @include('layouts.nav')
-  <div class="body-content">
+  <div class="body-content container mt-5">
     @yield('content')
   </div>
   <footer class="bg-body-secondary py-2 px-5 border-top border-danger-subtle">
@@ -40,11 +40,11 @@
         <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida">
       </div>
       <div class="col-9 col-md-10 col-lg-11 text-end pt-2 pt-md-4">
-        &copy; 2023 All Rignt Reserved.
+        &copy; 2023 All Right Reserved.
       </div>
     </div>
   </footer>
-
+  @yield('script')
 </body>
 
 

@@ -3,12 +3,33 @@
 Category List
 @endsection
 @section('content')
+@if (session('importSuccess'))
+                <div class="alert alert-success alert-dismissible fade show col-4" role="alert">
+                    {{ session('importSuccess') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                @endif
+<div class="">
+    <a href="{{ route('admin.dashboard')}}">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+    </a>
+</div>
 <a href="{{ route('admin.category.create')}}"><span class="btn btn-primary mt-3">Create</span></a>
+<div class="float-end">
+    <form action="{{ route('admin.category.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" class="" id="choose">
+        <button type="button" class="btn btn-dark" id="show-btn"
+            onclick="document.getElementById('choose').click()">Import</button>
+        <button type="submit" class="btn btn-dark import-btn">Import</button>
+    </form>
+    <a href="{{ route('admin.category.export') }}" class="btn btn-dark">Export</a>
+</div>
 <div class="row mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
-                <h3>Category Lists</h3>
+                <h3 >Category Lists</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -34,7 +55,26 @@ Category List
                 </table>
             </div>
         </div>
-
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#show-btn').click(function() {
+            $(this).toggle();
+            $('.import-btn').toggleClass('import-btn');
+        });
+    });
+</script>
 @endsection
