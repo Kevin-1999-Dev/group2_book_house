@@ -36,10 +36,25 @@
         </p>
         <h5 class="m-0">Description:</h5>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;{{$ebook->description}}</p>
-        <button class="btn btn-dark btn-sm col-6" type="button">Add to Cart</button>
+        <button class="btn btn-dark btn-sm col-6" id="addToCartBtn">Add to Cart</button>
       </div>
 
     </div>
   </div>
 </div>
+<script>
+  function updateTotalItem() {
+    axios.get("{{route('public.cart.info')}}")
+      .then(function(response) {
+        document.getElementById('totalItem').innerHTML = response.data['totalItem'];
+      })
+  }
+  var addToCartBtn = document.getElementById('addToCartBtn');
+  addToCartBtn.addEventListener('click', function() {
+    axios.get("{{route('public.cart.addebook',$ebook->id)}}")
+      .then(function(){
+        updateTotalItem();
+      })
+  });
+</script>
 @endsection

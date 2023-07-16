@@ -71,6 +71,14 @@ class DatabaseSeeder extends Seeder
             'price' => 10000,
         ]);
 
+        Book::create([
+            'title' => 'Romeo and Juliet2',
+            'cover' => 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Romeo_and_Juliet_Q2_Title_Page-2.jpg',
+            'description' => 'Written by William Shakespeare early in his career about the romance between two Italian youths from feuding families.',
+            'pagecount' => 201,
+            'price' => 10000,
+        ]);
+
         Ebook::create([
             'title' => 'Hamlet',
             'cover' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Edwin_Booth_Hamlet_1870.jpg/220px-Edwin_Booth_Hamlet_1870.jpg',

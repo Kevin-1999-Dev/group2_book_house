@@ -10,6 +10,17 @@ class BookOrder extends Model
     use HasFactory;
 
     /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'quantity',
+        'book_id',
+        'order_id',
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

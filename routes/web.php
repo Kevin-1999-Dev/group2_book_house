@@ -26,6 +26,16 @@ Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public
 Route::get('/Contact', [PublicController::class, 'feedback'])->name('public.contact_us');
 Route::post('/Contact', [PublicController::class, 'storeFeedback'])->name('feedbacks.store');
 
+
+Route::prefix('cart')->group(function () {
+    Route::get('/', [PublicController::class, 'cartIndex'])->name('public.cart.index');
+    Route::get('/info', [PublicController::class, 'cartInfo'])->name('public.cart.info');
+    Route::post('/store', [PublicController::class, 'cartStore'])->name('public.cart.store');
+    Route::get('/add/book/{id}', [PublicController::class, 'cartAddBook'])->name('public.cart.addbook');
+    Route::get('/add/ebook/{id}', [PublicController::class, 'cartAddEbook'])->name('public.cart.addebook');
+    Route::get('/delete/{type}/{id}', [PublicController::class, 'cartDelete'])->name('public.cart.delete');
+});
+
 //login register
 Route::middleware(['admin_auth'])->group(function () {
     Route::get('/loginPage', [AuthController::class, 'login'])->name('auth.loginPage');

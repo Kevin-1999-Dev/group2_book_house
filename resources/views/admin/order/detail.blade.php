@@ -8,13 +8,14 @@ Order Detail
         <h3>Orders by {{$order->user->name}}</h3>
         <div class="card">
             <div class="card-header">
-                <h3>Book Orders</h3>
+                <h3>Orders</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Title</th>
+                            <td scope="col">Type</td>
+                            <td scope="col">Title</td>
                             <td scope="col">Price</td>
                             <td scope="col">Quantity</td>
                         </tr>
@@ -22,33 +23,18 @@ Order Detail
                     <tbody>
                         @foreach($order->book as $book)
                         <tr>
+                            <td>Book</td>
                             <td>{{$book->title}}</td>
                             <td>{{$book->price}} MMK</td>
                             <td>{{$book->pivot->quantity}}</td>
                         </tr>
                         @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <br />
-        <div class="card">
-            <div class="card-header">
-                <h3>Ebook Orders</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <td scope="col">Price</td>
-                        </tr>
-                    </thead>
-                    <tbody>
                         @foreach($order->ebook as $ebook)
                         <tr>
+                            <td>Ebook</td>
                             <td>{{$ebook->title}}</td>
                             <td>{{$ebook->price}} MMK</td>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
