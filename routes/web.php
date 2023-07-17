@@ -87,6 +87,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'paymentEdit'])->name('admin.payment.edit');
             Route::post('/update/{id}', [AdminController::class, 'paymentUpdate'])->name('admin.payment.update');
             Route::get('/delete/{id}', [AdminController::class, 'paymentDelete'])->name('admin.payment.delete');
+            Route::get('/export', [AdminController::class, 'exportPayment'])->name('admin.payment.export');
+            Route::post('/import', [AdminController::class, 'importPayment'])->name('admin.payment.import');
         });
         //order
         Route::prefix('order')->group(function () {

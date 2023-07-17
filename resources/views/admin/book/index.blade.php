@@ -3,12 +3,17 @@
 Book List
 @endsection
 @section('content')
+<div class="">
+    <a href="{{ route('admin.dashboard') }}">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+    </a>
+</div>
 <a href="{{ route('admin.book.create')}}"><span class="btn btn-primary mt-5">Create</span></a>
 <div class="float-end mt-5">
     <a href="" class="btn btn-dark text-white">Import</a>
     <a href="" class="btn btn-dark text-white">Export</a>
 </div>
-<div class="container mt-3">
+<div class="mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
