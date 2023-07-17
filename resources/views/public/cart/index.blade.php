@@ -85,9 +85,6 @@ Cart
                         tr.appendChild(td);
                         td = document.createElement('td');
                         td.innerHTML = obj['quantity'];
-                        // '<button class="btn btn-outlined-secondary btn-sm subtractQuantity" data-bs-modal-id="' + obj['id'] + '">-</button>' +
-                        //     ' <span id="quantity">' + obj['quantity'] + '</span> ' +
-                        //     '<button class="btn btn-outlined-secondary btn-sm addQuantity" data-bs-modal-id="' + obj['id'] + '">+</button>';
                         tr.appendChild(td);
                         td = document.createElement('td');
                         td.innerHTML =
@@ -165,12 +162,5 @@ Cart
                 selectedDeleteModal.hide();
             })
     });
-    // var payment = document.getElementById('paymentForm');
-    // var orderSubmit = document.getElementById('orderSubmitBtn');
-    // orderSubmit.addEventListener('click', function() {
-    //     axios.post("{{route('public.cart.store')}}", {
-    //         payment: payment.value,
-    //     })
-    // });
 </script>
 @endsection
