@@ -34,7 +34,7 @@
       @if (empty(Auth::user()))
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item me-lg-2">
-          <a href="{{ route('auth.loginPage') }}" class="btn btn-primary">Loign</a>
+          <a href="{{ route('auth.loginPage') }}" class="btn btn-primary">Login</a>
         </li>
         <li class="nav-item">
           <a href="{{ route('auth.registerPage') }}" class="btn btn-primary">Register</a>
