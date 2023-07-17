@@ -3,6 +3,11 @@
 Order List
 @endsection
 @section('content')
+<div class="">
+    <a href="{{ route('admin.dashboard') }}">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+    </a>
+</div>
 <div class="container mt-3">
     <div class="col-12 align-self-center">
         <div class="card">

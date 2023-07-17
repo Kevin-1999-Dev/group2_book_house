@@ -33,7 +33,7 @@
 
 <body>
   @include('layouts.nav')
-  <div class="body-content container mt-5">
+  <div class="body-content container-fluid">
     @yield('content')
   </div>
   <footer class="bg-body-secondary py-2 px-5 border-top border-danger-subtle">

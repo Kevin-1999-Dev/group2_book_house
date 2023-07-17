@@ -8,6 +8,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Exports\AuthorExport;
 use App\Imports\AuthorImport;
+use App\Exports\PaymentExport;
+use App\Imports\PaymentImport;
 use Illuminate\Support\Carbon;
 use App\Exports\CategoryExport;
 use App\Imports\CategoryImport;
@@ -20,7 +22,6 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\AdminServiceInterface;
-
 
 class AdminController extends Controller
 {
@@ -91,6 +92,10 @@ class AdminController extends Controller
     {
         return Excel::download(new AuthorExport(), 'author.xlsx');
     }
+    public function exportPayment()
+    {
+        return Excel::download(new PaymentExport(), 'payment.xlsx');
+    }
 
     //import
     public function importCategory(Request $request)
@@ -104,6 +109,12 @@ class AdminController extends Controller
 
         Excel::import(new AuthorImport, $request->file);
         return redirect()->route('admin.author.index')->with(['importSuccess' => 'Import Successfully...']);
+    }
+    public function importPayment(Request $request)
+    {
+
+        Excel::import(new PaymentImport, $request->file);
+        return redirect()->route('admin.payment.index')->with(['importSuccess' => 'Import Successfully...']);
     }
 
     private $adminService;
