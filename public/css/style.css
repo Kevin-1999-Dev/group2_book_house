@@ -49,6 +49,10 @@ a:hover {
     min-height: 60vh;
 }
 
+.cart {
+    min-height: 65vh;
+}
+
 .price,
 .up-date {
     font-size: 14px;

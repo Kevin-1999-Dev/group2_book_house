@@ -44,9 +44,9 @@
       @if (Auth::user()->role == 1)
       <div class="dropdown col-6  float-right text-center">
         @if (Auth::user()->image == null)
-        <img src="{{ asset('images/default.png') }}" alt="default" class="border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{{ asset('images/default.png') }}" alt="default" class="w-50 border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         @else
-        <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="w-50 border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         @endif
         <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
           <li><a href="{{ route('admin.details') }}" class="dropdown-item p-3">Profile</a></li>
@@ -62,9 +62,9 @@
       @else
       <div class="dropdown col-6  float-right text-center">
         @if (Auth::user()->image == null)
-        <img src="{{ asset('images/default.png') }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{{ asset('images/default.png') }}" alt="default" class="w-50 border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         @else
-        <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="profile border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{{ asset('storage/'.Auth::user()->image) }}" alt="default" class="w-50 border border-white rounded-circle dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         @endif
         <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
           <li><a href="{{ route('user.details') }}" class="dropdown-item p-3">Profile</a></li>

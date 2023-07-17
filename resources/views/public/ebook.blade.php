@@ -9,9 +9,9 @@
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
         @foreach ($ebooks as $ebook)
         <a href="{{ route('public.ebook_detail', $ebook->id) }}">
-            <div class="col book-card">
+            <div class="col">
               <div class="card shadow-sm bg-body-secondary">
-                <div class="card-body">
+                <div class="card-body book-card">
                   <img src="{{$ebook->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
                   <h2 class="fs-5">{{$ebook->title}}</h2>
                   <p class="m-0">
@@ -33,7 +33,6 @@
                 </svg>
                 <span class="price">: {{$ebook->price}}MMK</span>
               </p>
-              <button class="btn btn-dark btn-sm col-12 mx-auto" type="button">Add to Cart</button>
             </div>
           </div>
         </div>

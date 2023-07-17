@@ -9,9 +9,9 @@
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
         @foreach ($books as $book)
         <a href="{{ route('public.book_detail', $book->id) }}">
-            <div class="col book-card">
+            <div class="col">
               <div class="card shadow-sm bg-body-secondary">
-                <div class="card-body">
+                <div class="card-body book-card">
                   <img src="{{$book->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
                   <h2 class="fs-5">{{$book->title}}</h2>
                   <p class="m-0">
@@ -33,7 +33,6 @@
                 </svg>
                 <span class="price">: {{$book->price}}MMK</span>
               </p>
-              <button class="btn btn-dark btn-sm col-12 mx-auto" type="button">Add to Cart</button>
             </div>
           </div>
         </div>

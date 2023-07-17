@@ -3,7 +3,7 @@
 Cart
 @endsection
 @section('content')
-<div class="container mt-3">
+<div class="container mt-3 cart">
     <div class="col-12 align-self-center clearfix">
         <h3>Carts</h3>
         <div class="card">
