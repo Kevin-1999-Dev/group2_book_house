@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'authorEdit'])->name('admin.author.edit');
             Route::post('/update/{id}', [AdminController::class, 'authorUpdate'])->name('admin.author.update');
             Route::get('/delete/{id}', [AdminController::class, 'authorDelete'])->name('admin.author.delete');
+            Route::get('/export', [AdminController::class, 'exportAuthor'])->name('admin.author.export');
+            Route::post('/import', [AdminController::class, 'importAuthor'])->name('admin.author.import');
         });
         //payment
         Route::prefix('payment')->group(function () {

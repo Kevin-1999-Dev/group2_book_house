@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Exports\AuthorExport;
+use App\Imports\AuthorImport;
 use Illuminate\Support\Carbon;
 use App\Exports\CategoryExport;
 use App\Imports\CategoryImport;
@@ -13,11 +15,11 @@ use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\AuthorRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\AdminServiceInterface;
-use App\Http\Requests\PaymentRequest;
 
 
 class AdminController extends Controller
@@ -85,12 +87,23 @@ class AdminController extends Controller
     {
         return Excel::download(new CategoryExport(), 'categories.xlsx');
     }
+    public function exportAuthor()
+    {
+        return Excel::download(new AuthorExport(), 'author.xlsx');
+    }
+
     //import
     public function importCategory(Request $request)
     {
 
         Excel::import(new CategoryImport, $request->file);
         return redirect()->route('admin.category.index')->with(['importSuccess' => 'Import Successfully...']);
+    }
+    public function importAuthor(Request $request)
+    {
+
+        Excel::import(new AuthorImport, $request->file);
+        return redirect()->route('admin.author.index')->with(['importSuccess' => 'Import Successfully...']);
     }
 
     private $adminService;
