@@ -23,18 +23,29 @@ class PublicController extends Controller
     }
 
     public function home()
+{
+    $data = $this->publicService->getAll();
+    $books = $data->books;
+    $ebooks = $data->ebooks;
+
+    return view('public.index', compact('books', 'ebooks'));
+}
+
+
+    public function index(Request $r)
     {
         $books = $this->publicService->getbooks();
-        $ebooks = $this->publicService->getebooks();
-
-        return view('public.index', compact('books', 'ebooks'));
-    }
-
-
-    public function index()
-    {
-        $books = $this->publicService->getbooks();
-
+        $s = strtolower($r->get('s'));
+        $books = Book::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
+            }
         return view('public.book', compact('books'));
     }
 

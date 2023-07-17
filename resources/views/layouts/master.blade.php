@@ -17,6 +17,9 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   {{-- chart js --}}
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  {{-- heightline js --}}
+  <script src="{{ asset('libs/jquery.heightLine.js') }}"></script>
+  <script src="{{ asset('js/heightline.js') }}"></script>
   {{-- select2 --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />

@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="container">
-  <div class="row g-3 d-flex align-items-center">
+  <div class="intro row g-3 d-flex align-items-center">
     <div class="col-md-6 col-sm-12">
       <div class="">
         <div class="card-body p-5">
@@ -47,19 +47,19 @@
   </div>
 </div>
 <div class="container-fluid border-bottom border-top border-danger-subtle py-3 bg-body-secondary">
-  <div class="row">
+  <div class="row d-flex flex-wrap">
     <!-- Books -->
     <div class="col-md-6 mb-2">
       <div class="card shadow-sm">
         <h3 class="py-md-1 shadow-sm p-2 border-bottom border-danger-subtle">Avilable Books</h3>
-        <div class="card-body">
+        <div class="card-body book-box">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($books as $book)
             <a href="{{ route('public.book_detail', $book->id) }}">
-              <div class="col book-card">
+              <div class="col">
                 <div class="card shadow-sm bg-body-secondary">
-                  <div class="card-body">
-                    <img src="{{$book->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
+                  <div class="card-body book-card">
+                    <img src="{{$book->cover}}" alt="book-cover" class="book-cover rounded-top-2 d-block mx-auto">
                     <h2 class="fs-5">{{$book->title}}</h2>
                     <p class="m-0">
                       @foreach ($book->author as $author)
@@ -91,14 +91,14 @@
     <div class="col-md-6">
       <div class="card shadow-sm">
         <h3 class="py-md-1 shadow-sm p-2 border-bottom border-danger-subtle">Avilable E-books</h3>
-        <div class="card-body">
+        <div class="card-body book-box">
           <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
             @foreach ($ebooks as $ebook)
             <a href="{{ route('public.ebook_detail', $ebook->id) }}">
-              <div class="col book-card">
+              <div class="col">
                 <div class="card shadow-sm bg-body-secondary">
-                  <div class="card-body">
-                    <img src="{{$ebook->cover}}" alt="book-cover" class="book rounded-top-2 d-block mx-auto">
+                  <div class="card-body  book-card">
+                    <img src="{{$ebook->cover}}" alt="book-cover" class="book-cover rounded-top-2 d-block mx-auto">
                     <h2 class="fs-5">{{$ebook->title}}</h2>
                     <p class="m-0">
                       @foreach ($ebook->author as $author)
