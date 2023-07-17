@@ -140,5 +140,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('editPage', [UserController::class, 'editPage'])->name('user.editPage');
             Route::post('update/{id}', [UserController::class, 'updateUser'])->name('user.updateUser');
         });
+
+        Route::prefix('order')->group(function () {
+            Route::get('/', [UserController::class, 'orderIndex'])->name('user.order.index');
+            Route::get('/detail/{id}', [UserController::class, 'orderDetail'])->name('user.order.detail');
+        });
     });
 });

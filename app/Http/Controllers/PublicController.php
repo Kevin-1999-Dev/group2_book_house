@@ -167,7 +167,7 @@ class PublicController extends Controller
                 }
             }
             session()->forget('cart');
-            return redirect()->route('public.contact_us')->with('success', 'Order Success. Thank you for your order');
+            return redirect()->route('user.order.index')->with('success', 'Order Success. Thank you for your order');
         } else {
             return redirect()->route('auth.loginPage');
         }

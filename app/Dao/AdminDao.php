@@ -87,7 +87,14 @@ class AdminDao implements AdminDaoInterface
 
     public function deleteCategoryById(int $id)
     {
-        Category::findOrFail($id)->delete();
+        $category = Category::findOrFail($id);
+        $category->book->each(function($i){
+            $i->delete();
+        });
+        $category->ebook->each(function($i){
+            $i->delete();
+        });
+        $category->delete();
     }
 
     public function getAuthors()
@@ -116,7 +123,14 @@ class AdminDao implements AdminDaoInterface
 
     public function deleteAuthorById(int $id)
     {
-        Author::findOrFail($id)->delete();
+        $author = Author::findOrFail($id);
+        $author->book->each(function($i){
+            $i->delete();
+        });
+        $author->ebook->each(function($i){
+            $i->delete();
+        });
+        $author->delete();
     }
 
     public function getPayments()
