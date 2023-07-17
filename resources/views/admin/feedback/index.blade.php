@@ -3,7 +3,7 @@
 Feedback List
 @endsection
 @section('content')
-<div class="row mt-3">
+<div class="container mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">

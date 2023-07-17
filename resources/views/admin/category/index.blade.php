@@ -38,7 +38,7 @@
             <a href="{{ route('admin.category.export') }}" class="btn btn-dark">Export</a>
         </div>
     </div>
-    <div class="row mt-3">
+    <div class="container mt-4">
         <div class="col-12 align-self-center">
             <div class="card">
                 <div class="card-header">

@@ -25,8 +25,8 @@ Edit User
                 </select>
             </div>
             <div class="form-group m-3">
-                <a href="{{ route('admin.user.index')}}"><span class="btn btn-secondary float-left">Back</span></a>
-                <input type="submit" class="btn btn-primary float-right" value="Edit">
+                <a href="{{ route('admin.user.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-primary float-end" value="Edit">
             </div>
         </form>
     </div>

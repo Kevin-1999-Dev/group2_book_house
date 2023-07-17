@@ -18,8 +18,8 @@ Edit Category
                 @enderror
             </div>
             <div class="form-group m-3">
-                <a href="{{ route('admin.category.index')}}"><span class="btn btn-secondary float-left">Back</span></a>
-                <input type="submit" class="btn btn-primary float-right" value="Submit">
+                <a href="{{ route('admin.category.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-primary float-end" value="Submit">
             </div>
         </form>
     </div>
