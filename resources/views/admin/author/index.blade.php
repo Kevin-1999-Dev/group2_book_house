@@ -4,7 +4,7 @@ Author List
 @endsection
 @section('content')
 <a href="{{ route('admin.author.create')}}"><span class="btn btn-primary mt-3">Create</span></a>
-<div class="row mt-3">
+<div class="container mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">

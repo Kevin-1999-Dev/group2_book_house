@@ -3,7 +3,7 @@
 Order Detail
 @endsection
 @section('content')
-<div class="row mt-3">
+<div class="container mt-3">
     <div class="col-12 align-self-center clearfix">
         <h3>Orders by {{$order->user->name}}</h3>
         <div class="card">
@@ -55,8 +55,8 @@ Order Detail
                 </select>
             </div>
             <div class="form-group mt-4">
-                <a href="{{ route('admin.order.index')}}"><span class="btn btn-secondary float-left">Back</span></a>
-                <input type="submit" class="btn btn-primary float-right" value="Submit">
+                <a href="{{ route('admin.order.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-primary float-end" value="Submit">
             </div>
         </form>
     </div>

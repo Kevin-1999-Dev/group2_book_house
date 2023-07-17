@@ -3,8 +3,8 @@
 Category List
 @endsection
 @section('content')
-<a href="{{ route('admin.category.create')}}"><span class="btn btn-primary mt-3">Create</span></a>
-<div class="row mt-3">
+<div class="container mt-4">
+<a href="{{ route('admin.category.create')}}"><span class="btn btn-primary mb-2">Create</span></a>
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">

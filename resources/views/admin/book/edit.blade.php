@@ -65,8 +65,8 @@ Edit Book
                 @enderror
             </div>
             <div class="form-group m-3">
-                <a href="{{ route('admin.book.index')}}"><span class="btn btn-secondary float-left">Back</span></a>
-                <input type="submit" class="btn btn-primary float-right" value="Create">
+                <a href="{{ route('admin.book.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-primary float-end" value="Create">
             </div>
         </form>
     </div>
