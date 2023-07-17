@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Services\AdminServiceInterface;
-use App\Http\Requests\CategoryRequest;
-use App\Http\Requests\AuthorRequest;
-use App\Http\Requests\BookRequest;
-use App\Http\Requests\EbookRequest;
-use Illuminate\Support\Carbon;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Order;
-use App\Http\Requests\PasswordRequest;
+use Illuminate\Http\Request;
+use App\Exports\AuthorExport;
+use App\Imports\AuthorImport;
+use Illuminate\Support\Carbon;
+use App\Exports\CategoryExport;
+use App\Imports\CategoryImport;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\EbookRequest;
+use App\Http\Requests\AuthorRequest;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\ProfileRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\PasswordRequest;
+use App\Contracts\Services\AdminServiceInterface;
+
 
 class AdminController extends Controller
 {
@@ -45,7 +51,7 @@ class AdminController extends Controller
         $monthsUser = array_keys($dataUser);
         $countsUser = array_values($dataUser);
         ////////////////////////////////////
-    
+
         // Get dates
         $startDateOrder = Carbon::now()->startOfMonth();
         $endDateOrder = Carbon::now()->endOfMonth();
@@ -73,8 +79,31 @@ class AdminController extends Controller
         // Separate the dates and counts to display in the graph
         $datesOrder = array_keys($dataOrder);
         $countsOrder = array_values($dataOrder);
-    
+
         return view('admin.dashboard', compact('monthsUser', 'datesOrder', 'countsUser', 'countsOrder'));
+    }
+    //export
+    public function exportCategory()
+    {
+        return Excel::download(new CategoryExport(), 'categories.xlsx');
+    }
+    public function exportAuthor()
+    {
+        return Excel::download(new AuthorExport(), 'author.xlsx');
+    }
+
+    //import
+    public function importCategory(Request $request)
+    {
+
+        Excel::import(new CategoryImport, $request->file);
+        return redirect()->route('admin.category.index')->with(['importSuccess' => 'Import Successfully...']);
+    }
+    public function importAuthor(Request $request)
+    {
+
+        Excel::import(new AuthorImport, $request->file);
+        return redirect()->route('admin.author.index')->with(['importSuccess' => 'Import Successfully...']);
     }
 
     private $adminService;

@@ -65,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'categoryEdit'])->name('admin.category.edit');
             Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('admin.category.update');
             Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('admin.category.delete');
+            Route::get('/export', [AdminController::class, 'exportCategory'])->name('admin.category.export');
+            Route::post('/import', [AdminController::class, 'importCategory'])->name('admin.category.import');
         });
         //author
         Route::prefix('author')->group(function () {
@@ -74,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'authorEdit'])->name('admin.author.edit');
             Route::post('/update/{id}', [AdminController::class, 'authorUpdate'])->name('admin.author.update');
             Route::get('/delete/{id}', [AdminController::class, 'authorDelete'])->name('admin.author.delete');
+            Route::get('/export', [AdminController::class, 'exportAuthor'])->name('admin.author.export');
+            Route::post('/import', [AdminController::class, 'importAuthor'])->name('admin.author.import');
         });
         //payment
         Route::prefix('payment')->group(function () {
