@@ -4,6 +4,12 @@ Order History
 @endsection
 @section('content')
 <div class="container mt-3">
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
+        <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
