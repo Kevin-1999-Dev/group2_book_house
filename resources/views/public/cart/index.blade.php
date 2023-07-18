@@ -145,7 +145,7 @@ Cart
         const modalTitle = deleteModal.querySelector('.modal-title');
         const modalBody = deleteModal.querySelector('.modal-body');
         modalTitle.textContent = "Remove " + type + "?";
-        modalBody.textContent = button.getAttribute('data-bs-modal-title');;
+        modalBody.textContent = button.getAttribute('data-bs-modal-title');
     });
     const selectedDeleteModal = new bootstrap.Modal(deleteModal);
     var deleteModalDeleteBtn = document.getElementById('deleteModalDeleteBtn');
