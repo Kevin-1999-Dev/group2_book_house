@@ -407,14 +407,13 @@ class AdminController extends Controller
 
     public function feedbackIndex(Request $r)
     {
-        $feedback = $this->adminService->getFeedback($r);
-        return view('admin.feedback.index', compact('feedback'));
+        $feedbacks = $this->adminService->getFeedback($r);
+        return view('admin.feedback.index', compact('feedbacks'));
     }
 
     public function feedbackDetail(int $id)
     {
-        $feedback = $this->adminService->getFeedbackById($id);
-        return view('admin.feedback.detail', compact('feedback'));
+        return $this->adminService->getFeedbackById($id);
     }
 
     public function feedbackDelete(int $id)
