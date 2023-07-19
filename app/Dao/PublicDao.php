@@ -11,8 +11,8 @@ class PublicDao implements PublicDaoInterface
 {
     public function getAll(): object
     {
-        $books = Book::take(12)->get();
-        $ebooks = Ebook::take(12)->get();
+        $books = Book::take(4)->get();
+        $ebooks = Ebook::take(4)->get();
 
         return (object) [
             'books' => $books,
@@ -23,18 +23,12 @@ class PublicDao implements PublicDaoInterface
     public function getBooks(): object
     {
         $books = Book::all();
-        foreach ($books as $book) {
-            $book['date'] = date_format($book->created_at, "m/d/Y");
-        }
         return $books;
     }
 
     public function getEbooks(): object
     {
         $ebooks = Ebook::all();
-        foreach ($ebooks as $ebook) {
-            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
-        }
         return $ebooks;
     }
 

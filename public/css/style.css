@@ -27,14 +27,14 @@ body {
 img {
     width: 100%;
 }
-#profile{
-   width: 70px;
+li {
+    list-style: none;
+}
+.profile{
+   width: 50px;
+   height: 50px;
 }
 
-a {
-    text-decoration: none;
-    color: #000;
-  }
   textarea {
       resize: none;
   }
@@ -46,12 +46,15 @@ a:hover {
     padding-top: 6.944vw;
 }
 
-.detail {
-    min-height: 60vh;
+.cart,
+.book-pg,
+.ebook-pg,
+.detail,
+.contact-pg {
+    min-height: 77vh;
 }
-
-.cart {
-    min-height: 65vh;
+.mv {
+    min-height: 60vh;
 }
 
 .price,
@@ -59,8 +62,27 @@ a:hover {
     font-size: 14px;
 }
 
-.md-img {
-    margin-bottom: 100px;
+/* MV */
+.f-2 {
+    font-size: 36px;
+}
+.f-3 {
+    font-size: 28px;
+}
+
+.f-4 {
+    font-size: 22px;
+}
+
+.f-5 {
+    font-size: 20px;
+}
+.f-6 {
+    font-size: 18px;
+}
+
+.f-s {
+    font-size: 14px;
 }
 
 .bookhouse,
@@ -118,4 +140,10 @@ a:hover {
 }
 .sec-what .manage{
     padding-top: 100px;
+}
+
+
+/* Responsive */
+@media screen and (min-width: 768px) and (max-width: 991px){
+    
 }

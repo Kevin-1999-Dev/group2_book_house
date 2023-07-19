@@ -3,7 +3,7 @@
     Contact Us Page
 @endsection
 @section('content')
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 py-md-3 contact-pg">
 @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
     <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
@@ -11,17 +11,17 @@
   </div>
   @endif
   <div class="row">
-    <div class="col-md-6 px-md-3 px-lg-5">
+    <div class="col-md-6 px-md-3 px-lg-5 mb-3 mb-md-0">
       <div class="mb-2 mb-md-4">
-        <span class="mark-txt fs-3">We value your feedback!</span>
+        <span class="mark-txt f-3">We value your feedback!</span>
       </div>
-      <p class="fs-5">We would love to hear from you and appreciate any thoughts, suggestions, or comments you have regarding our website. Your feedback helps us improve and enhance the overall experience for all. Please take a moment to share your feedback with us.</p>
-      <p class="green-txt fs-5">Thank you for your support!</p>
+      <p class="f-4">We would love to hear from you and appreciate any thoughts, suggestions, or comments you have regarding our website. Your feedback helps us improve and enhance the overall experience for all. Please take a moment to share your feedback with us.</p>
+      <p class="mt-2 green-txt f-4">Thank you for your support!</p>
     </div>
     <!-- Message -->
     <div class="col-md-6 px-md-3 px-lg-5">
       <div class="mb-3">
-        <span class="fs-3 border-bottom border-primary-subtle">Feedback here</span>
+        <span class="f-3 border-bottom border-primary-subtle">Feedback here</span>
       </div>
       <form class="row g-3" action="{{ route('feedbacks.store') }}" method="post">
         @csrf
