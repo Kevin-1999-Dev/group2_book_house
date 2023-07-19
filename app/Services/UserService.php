@@ -23,4 +23,8 @@ class UserService implements UserServiceInterface
     {
         $this->userDao->userProfile($data, $id);
     }
+    public function deleteAcc(int $id)
+    {
+        $this->userDao->deleteAcc($id);
+    }
 }

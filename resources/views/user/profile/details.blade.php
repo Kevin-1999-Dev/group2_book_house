@@ -25,6 +25,7 @@
         </div>
         <div class="my-3">
             <a href="{{ route('user.editPage') }}" class="btn btn-dark w-25 col-4 offset-7">Edit</a>
+            <a href="{{ route('user.delete',Auth::user()->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger w-25 col-4 offset-7 mt-1">Delete Account</a>
         </div>
     </div>
 @endsection

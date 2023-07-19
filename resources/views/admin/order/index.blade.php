@@ -8,7 +8,12 @@ Order List
         <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
     </a>
 </div>
-<div class="container mt-3">
+<div class="row">
+    <div class="col-2 offset-10 mt-5">
+        <a href="{{ route('admin.order.export') }}" class="btn btn-dark">Export</a>
+    </div>
+</div>
+<div class="mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">

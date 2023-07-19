@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
-use App\Models\Order;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -80,5 +80,10 @@ class UserController extends Controller
             $order['total_amount'] = $total_amount;
             return view('user.order.detail', compact('order'));
         }
+    }
+    public function delete(int $id)
+    {
+        $this->userService->deleteAcc($id);
+        return redirect()->route('public.index');
     }
 }
