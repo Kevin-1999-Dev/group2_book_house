@@ -25,9 +25,9 @@ class AdminService implements AdminServiceInterface
     public function  adminProfile(ProfileRequest $data,int $id){
         $this->adminDao->adminProfile($data,$id);
     }
-    public function getCategories()
+    public function getCategories(Request $r)
     {
-        return $this->adminDao->getCategories();
+        return $this->adminDao->getCategories($r);
     }
 
     public function createCategory(array $data)
@@ -49,9 +49,9 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->deleteCategoryById($id);
     }
 
-    public function getAuthors()
+    public function getAuthors(Request $r)
     {
-        return $this->adminDao->getAuthors();
+        return $this->adminDao->getAuthors($r);
     }
 
     public function createAuthor(array $data)
@@ -74,9 +74,9 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->deleteAuthorById($id);
     }
 
-    public function getPayments()
+    public function getPayments(Request $r)
     {
-        return $this->adminDao->getPayments();
+        return $this->adminDao->getPayments($r);
     }
 
     public function createPayment(array $data)

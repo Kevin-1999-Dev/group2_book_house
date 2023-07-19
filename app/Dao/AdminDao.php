@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Contracts\Dao\AdminDaoInterface;
 use App\Models\Feedback;
 use App\Models\Payment;
+use App\Models\UserEbook;
 
 class AdminDao implements AdminDaoInterface
 {
@@ -62,9 +63,10 @@ class AdminDao implements AdminDaoInterface
         }
         User::where('id', $id)->update($input);
     }
-    public function getCategories()
+    public function getCategories(Request $r)
     {
-        return Category::all();
+        $s = strtolower($r->get('s'));
+        return Category::Where('name', 'LIKE', "%$s%")->get();
     }
 
     public function createCategory(array $data)
@@ -88,18 +90,19 @@ class AdminDao implements AdminDaoInterface
     public function deleteCategoryById(int $id)
     {
         $category = Category::findOrFail($id);
-        $category->book->each(function($i){
+        $category->book->each(function ($i) {
             $i->delete();
         });
-        $category->ebook->each(function($i){
+        $category->ebook->each(function ($i) {
             $i->delete();
         });
         $category->delete();
     }
 
-    public function getAuthors()
+    public function getAuthors(Request $r)
     {
-        return Author::all();
+        $s = strtolower($r->get('s'));
+        return Author::Where('name', 'LIKE', "%$s%")->get();
     }
 
     public function createAuthor(array $data)
@@ -124,18 +127,19 @@ class AdminDao implements AdminDaoInterface
     public function deleteAuthorById(int $id)
     {
         $author = Author::findOrFail($id);
-        $author->book->each(function($i){
+        $author->book->each(function ($i) {
             $i->delete();
         });
-        $author->ebook->each(function($i){
+        $author->ebook->each(function ($i) {
             $i->delete();
         });
         $author->delete();
     }
 
-    public function getPayments()
+    public function getPayments(Request $r)
     {
-        return Payment::all();
+        $s = strtolower($r->get('s'));
+        return Payment::Where('name', 'LIKE', "%$s%")->get();
     }
 
     public function createPayment(array $data)
@@ -170,7 +174,7 @@ class AdminDao implements AdminDaoInterface
             $query->where('name', 'LIKE', "%$s%");
         })->orWhereHas('payment', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%")
-            ->orWhere('id', 'LIKE', "%$s%");
+                ->orWhere('id', 'LIKE', "%$s%");
         })->orWhere('comment', 'LIKE', "%$s%")
             ->orWhere('status', 'LIKE', "%$s%")
             ->get();
@@ -207,6 +211,15 @@ class AdminDao implements AdminDaoInterface
         Order::findOrFail($id)->update([
             'status' => $data['status'],
         ]);
+        $order = Order::findOrFail($id);
+        if ($data['status'] == 'accepted') {
+            foreach ($order->ebook as $ebook) {
+                UserEbook::create([
+                    'user_id' => $order->user->id,
+                    'ebook_id' => $ebook->id,
+                ]);
+            }
+        }
     }
 
     public function getBooks(Request $r)
@@ -247,7 +260,7 @@ class AdminDao implements AdminDaoInterface
             ]);
         }
         $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
-        $path = $data->file('cover')->storeAs('uploads', $filename, 'public');
+        $path = $data->file('cover')->storeAs('uploads/covers', $filename, 'public');
         $book->cover = '/storage/' . $path;
         $book->save();
     }
@@ -291,7 +304,6 @@ class AdminDao implements AdminDaoInterface
             'description' => $data['description'],
             'pagecount' => $data['pagecount'],
             'price' => $data['price'],
-            'link' => $data['link'],
         ]);
         foreach ($data['authors'] as $author) {
             EbookAuthor::create([
@@ -306,8 +318,11 @@ class AdminDao implements AdminDaoInterface
             ]);
         }
         $filename = $ebook->id . "-ebook-" . $data->file('cover')->getClientOriginalName();
-        $path = $data->file('cover')->storeAs('uploads', $filename, 'public');
+        $path = $data->file('cover')->storeAs('covers', $filename, 'public');
         $ebook->cover = '/storage/' . $path;
+        $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
+        $path = $data->file('ebookfile')->storeAs('ebooks', $filename, 'private');
+        $ebook->link = '/user/' . $path;
         $ebook->save();
     }
 
@@ -331,11 +346,11 @@ class AdminDao implements AdminDaoInterface
     {
         $s = strtolower($r->get('s'));
         $id = Auth::user()->id;
-        return User::where(function($query) use ($s){
+        return User::where(function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%")
-            ->orwhere('email', 'LIKE', "%$s%");
+                ->orwhere('email', 'LIKE', "%$s%");
         })->where('id', 'NOT LIKE', "%$id%")
-        ->get();
+            ->get();
     }
 
     public function getUserById($id)

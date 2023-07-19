@@ -15,7 +15,8 @@ interface AdminServiceInterface
     public function password(array $data);
 
     public function adminProfile(ProfileRequest $data,int $id);
-    public function getCategories();
+
+    public function getCategories(Request $r);
 
     public function createCategory(array $data);
 
@@ -25,7 +26,7 @@ interface AdminServiceInterface
 
     public function deleteCategoryById(int $id);
 
-    public function getAuthors();
+    public function getAuthors(Request $r);
 
     public function createAuthor(array $data);
 
@@ -35,7 +36,7 @@ interface AdminServiceInterface
 
     public function deleteAuthorById(int $id);
 
-    public function getPayments();
+    public function getPayments(Request $r);
 
     public function createPayment(array $data);
 

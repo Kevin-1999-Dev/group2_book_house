@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
+use App\Models\Ebook;
 use App\Models\Order;
 use App\Models\User;
 
@@ -34,7 +35,7 @@ class UserController extends Controller
         $this->userService = $userServiceInterface;
     }
     public function changePassword(PasswordRequest $r)
-    {
+    {                
         $this->userService->password($r->only([
             'oldPassword',
             'newPassword',
@@ -79,6 +80,29 @@ class UserController extends Controller
             }
             $order['total_amount'] = $total_amount;
             return view('user.order.detail', compact('order'));
+        }
+    }
+
+    public function orderCancel(Request $r, int $id)
+    {
+        $order = Order::findOrfail($id);
+        if ($order->user->id == $r->user()->id) {
+            $order->update([
+                'status'=> 'cancelled',
+            ]);
+            return redirect()->route('user.order.index');
+        }
+    }
+
+    public function ebookServe(Request $r, String $filename)
+    {
+        $ebook = Ebook::where('link','LIKE',"%$filename%")->first();
+        $exists = $ebook->user()->where('users.id', $r->user()->id)->exists();
+        if($exists) {
+           dd(storage_path($ebook->link));
+            response()->download(storage_path($ebook->link));
+        }else{
+            return abort('401');
         }
     }
 }

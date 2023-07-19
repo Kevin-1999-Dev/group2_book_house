@@ -7,7 +7,7 @@ Payment List
 <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+        <li>{{ $error }}</li>
         @endforeach
     </ul>
 </div>
@@ -31,8 +31,7 @@ Payment List
         <form action="{{ route('admin.payment.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file" class="" id="choose">
-            <button type="button" class="btn btn-dark" id="show-btn"
-                onclick="document.getElementById('choose').click()">Import</button>
+            <button type="button" class="btn btn-dark" id="show-btn" onclick="document.getElementById('choose').click()">Import</button>
             <button type="submit" class="btn btn-dark import-btn">Import</button>
         </form>
         <a href="{{ route('admin.payment.export') }}" class="btn btn-dark">Export</a>
@@ -42,7 +41,15 @@ Payment List
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
-                <h3>Payment Lists</h3>
+                <h3 class="float-start">Payment List</h3>
+                <div class="float-end">
+                    <form action="{{ route('admin.payment.index') }}" method="GET">
+                        <div class="form-group d-inline-block">
+                            <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary d-inline">Search</button>
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -73,12 +80,12 @@ Payment List
 </div>
 @endsection
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#show-btn').click(function() {
-                $(this).toggle();
-                $('.import-btn').toggleClass('import-btn');
-            });
+<script>
+    $(document).ready(function() {
+        $('#show-btn').click(function() {
+            $(this).toggle();
+            $('.import-btn').toggleClass('import-btn');
         });
-    </script>
+    });
+</script>
 @endsection
