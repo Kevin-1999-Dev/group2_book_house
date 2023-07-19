@@ -46,9 +46,9 @@ Create Ebook
                 @enderror
             </div>
             <div class="form-group m-3">
-                <label for="link">Link</label>
-                <input type="text" class="form-control" name="link" value="{{(old('link'))}}">
-                @error('link')
+                <label for="ebookfile">Ebook File</label>
+                <input type="file" class="form-control" name="ebookfile" value="{{(old('ebookfile'))}}">
+                @error('ebookfile')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>

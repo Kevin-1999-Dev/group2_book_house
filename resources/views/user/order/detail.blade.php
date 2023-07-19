@@ -46,7 +46,10 @@ Order Detail
             <h5 class="float-end border border-dark p-1">Payment : {{ $order->payment->name }}</h5>
             <h5 class="float-end border border-dark p-1">Status : {{ $order->status }}</h5>
         </div>
-        <a href="{{ route('user.order.index')}}"><span class="btn btn-secondary float-end">Back</span></a>
+        @if ($order->status == 'pending')
+        <a href="{{ route('user.order.cancel',$order->id)}}"><span class="btn btn-danger float-end">Cancel</span></a>
+        @endif
+        <a href="{{ route('user.order.index')}}"><span class="btn btn-secondary">Back</span></a>
     </div>
 </div>
 @endsection

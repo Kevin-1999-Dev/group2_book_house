@@ -3,7 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
+
 
 class EbookRequest extends FormRequest
 {
@@ -24,11 +25,19 @@ class EbookRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255'],
-            'cover' => ['required'],
+            'cover' => [
+                'required',
+                File::types(['jpg', 'jpeg', 'png'])
+                    ->max(12 * 1024),
+            ],
             'description' => ['required'],
             'pagecount' => ['integer'],
             'price' => ['integer'],
-            'link' => ['required'],
+            'ebookfile' => [
+                'required',
+                File::types(['pdf', 'epub','doc','docx'])
+                    ->max(100 * 1024),
+            ],
         ];
     }
 }

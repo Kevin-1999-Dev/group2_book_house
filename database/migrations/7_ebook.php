@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('cover')->nullable();
             $table->string('description')->nullable();
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->integer('pagecount');
             $table->integer('price');
             $table->timestamps();

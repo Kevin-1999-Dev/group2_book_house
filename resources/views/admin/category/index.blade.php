@@ -1,87 +1,91 @@
 @extends('layouts.master')
 @section('title')
-    Category List
+Category List
 @endsection
 @section('content')
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    @if (session('importSuccess'))
-        <div class="alert alert-success alert-dismissible fade show col-4" role="alert">
-            {{ session('importSuccess') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    <div class="">
-        <a href="{{ route('admin.dashboard') }}">
-            <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
-        </a>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+@if (session('importSuccess'))
+<div class="alert alert-success alert-dismissible fade show col-4" role="alert">
+    {{ session('importSuccess') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+<div class="">
+    <a href="{{ route('admin.dashboard') }}">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+    </a>
+</div>
+<div class="row">
+    <div class="col-3">
+        <a href="{{ route('admin.category.create') }}"><span class="btn btn-primary mt-5">Create</span></a>
     </div>
-    <div class="row">
-        <div class="col-3">
-            <a href="{{ route('admin.category.create') }}"><span class="btn btn-primary mt-5">Create</span></a>
-        </div>
-        <div class="col-3 offset-6 mt-5">
-            <form action="{{ route('admin.category.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="" id="choose">
-                <button type="button" class="btn btn-dark" id="show-btn"
-                    onclick="document.getElementById('choose').click()">Import</button>
-                <button type="submit" class="btn btn-dark import-btn">Import</button>
-            </form>
-            <a href="{{ route('admin.category.export') }}" class="btn btn-dark">Export</a>
-        </div>
+    <div class="col-3 offset-6 mt-5">
+        <form action="{{ route('admin.category.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" class="" id="choose">
+            <button type="button" class="btn btn-dark" id="show-btn" onclick="document.getElementById('choose').click()">Import</button>
+            <button type="submit" class="btn btn-dark import-btn">Import</button>
+        </form>
+        <a href="{{ route('admin.category.export') }}" class="btn btn-dark">Export</a>
     </div>
-    <div class="mt-4">
-        <div class="col-12 align-self-center">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Category Lists</h3>
+</div>
+<div class="mt-4">
+    <div class="col-12 align-self-center">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="float-start">Category List</h3>
+                <div class="float-end">
+                    <form action="{{ route('admin.category.index') }}" method="GET">
+                        <div class="form-group d-inline-block">
+                            <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary d-inline">Search</button>
+                    </form>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <th scope="row">{{ $category->id }}</th>
-                                    <td>{{ $category->name }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.category.edit', $category->id) }}"><span
-                                                class="btn btn-success">Edit</span></a>
-                                        <a href="{{ route('admin.category.delete', $category->id) }}"
-                                            onclick="return confirm('Are you sure?')"><span
-                                                class="btn btn-danger">Delete</span></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $category)
+                        <tr>
+                            <th scope="row">{{ $category->id }}</th>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <a href="{{ route('admin.category.edit', $category->id) }}"><span class="btn btn-success">Edit</span></a>
+                                <a href="{{ route('admin.category.delete', $category->id) }}" onclick="return confirm('Are you sure?')"><span class="btn btn-danger">Delete</span></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#show-btn').click(function() {
-                $(this).toggle();
-                $('.import-btn').toggleClass('import-btn');
-            });
+<script>
+    $(document).ready(function() {
+        $('#show-btn').click(function() {
+            $(this).toggle();
+            $('.import-btn').toggleClass('import-btn');
         });
-    </script>
+    });
+</script>
 @endsection
