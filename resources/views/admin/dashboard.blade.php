@@ -61,15 +61,15 @@ Admin Dashboard
             </div>
             <div class="mt-5 row d-flex align-items-center">
                 <h4>The Latest Reports</h4>
-                    <div class="col-5 shadow bg-body rounded p-2">
-                        <canvas id="yearlyUsers"></canvas>
-                    </div>
-                    <div class="col-2 pt-2">
+                <div class="col-12 col-md-5 shadow bg-body rounded">
+                    <canvas id="yearlyUsers"></canvas>
+                </div>
+                <div class="col-6 col-md-2 pt-2 mx-auto my-3">
                     <img src="{{ asset('images/sign4.jpg') }}" alt="" class="w-100">
                 </div>
-                    <div class="col-5 shadow bg-body rounded p-2">
-                        <canvas id="monthlyOrders"></canvas>
-                    </div>
+                <div class="col-12 col-md-5 shadow bg-body rounded">
+                    <canvas id="monthlyOrders"></canvas>
+                </div>
             </div>
         </div>
     </div>

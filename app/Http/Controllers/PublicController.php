@@ -49,9 +49,20 @@ class PublicController extends Controller
         return view('public.book', compact('books'));
     }
 
-    public function ebook()
+    public function ebook(Request $r)
     {
         $ebooks = $this->publicService->getebooks();
+        $s = strtolower($r->get('s'));
+        $ebooks = Ebook::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
 
         return view('public.ebook', compact('ebooks'));
     }
