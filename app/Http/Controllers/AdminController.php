@@ -147,9 +147,9 @@ class AdminController extends Controller
         return redirect()->route('admin.details');
     }
 
-    public function categoryIndex()
+    public function categoryIndex(Request $r)
     {
-        $categories = $this->adminService->getCategories();
+        $categories = $this->adminService->getCategories($r);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -186,9 +186,9 @@ class AdminController extends Controller
         return redirect()->route('admin.category.index');
     }
 
-    public function authorIndex()
+    public function authorIndex(Request $r)
     {
-        $authors = $this->adminService->getAuthors();
+        $authors = $this->adminService->getAuthors($r);
         return view('admin.author.index', compact('authors'));
     }
 
@@ -225,9 +225,9 @@ class AdminController extends Controller
         return redirect()->route('admin.author.index');
     }
 
-    public function paymentIndex()
+    public function paymentIndex(Request $r)
     {
-        $payments = $this->adminService->getPayments();
+        $payments = $this->adminService->getPayments($r);
         return view('admin.payment.index', compact('payments'));
     }
 
@@ -290,10 +290,10 @@ class AdminController extends Controller
         return view('admin.book.index', compact('books'));
     }
 
-    public function bookCreate()
+    public function bookCreate(Request $r)
     {
-        $categories = $this->adminService->getCategories();
-        $authors = $this->adminService->getAuthors();
+        $categories = $this->adminService->getCategories($r);
+        $authors = $this->adminService->getAuthors($r);
         return view('admin.book.create', compact(['categories', 'authors']));
     }
 
@@ -303,11 +303,11 @@ class AdminController extends Controller
         return redirect()->route('admin.book.index');
     }
 
-    public function bookEdit(int $id)
+    public function bookEdit(Request $r, int $id)
     {
         $book = $this->adminService->getBookById($id);
-        $categories = $this->adminService->getCategories();
-        $authors = $this->adminService->getAuthors();
+        $categories = $this->adminService->getCategories($r);
+        $authors = $this->adminService->getAuthors($r);
         return view('admin.book.edit', compact(['categories', 'authors', 'book']));
     }
 
@@ -339,10 +339,10 @@ class AdminController extends Controller
         return view('admin.ebook.index', compact('ebooks'));
     }
 
-    public function ebookCreate()
+    public function ebookCreate(Request $r)
     {
-        $categories = $this->adminService->getCategories();
-        $authors = $this->adminService->getAuthors();
+        $categories = $this->adminService->getCategories($r);
+        $authors = $this->adminService->getAuthors($r);
         return view('admin.ebook.create', compact(['categories', 'authors']));
     }
 
@@ -352,11 +352,11 @@ class AdminController extends Controller
         return redirect()->route('admin.ebook.index');
     }
 
-    public function ebookEdit(int $id)
+    public function ebookEdit(Request $r,int $id)
     {
         $ebook = $this->adminService->getEbookById($id);
-        $categories = $this->adminService->getCategories();
-        $authors = $this->adminService->getAuthors();
+        $categories = $this->adminService->getCategories($r);
+        $authors = $this->adminService->getAuthors($r);
         return view('admin.ebook.edit', compact(['categories', 'authors', 'ebook']));
     }
 
@@ -407,14 +407,13 @@ class AdminController extends Controller
 
     public function feedbackIndex(Request $r)
     {
-        $feedback = $this->adminService->getFeedback($r);
-        return view('admin.feedback.index', compact('feedback'));
+        $feedbacks = $this->adminService->getFeedback($r);
+        return view('admin.feedback.index', compact('feedbacks'));
     }
 
     public function feedbackDetail(int $id)
     {
-        $feedback = $this->adminService->getFeedbackById($id);
-        return view('admin.feedback.detail', compact('feedback'));
+        return $this->adminService->getFeedbackById($id);
     }
 
     public function feedbackDelete(int $id)
