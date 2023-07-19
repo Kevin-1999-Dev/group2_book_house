@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Order;
+use App\Exports\FeedExport;
+use App\Exports\UserExport;
+use App\Imports\FeedImport;
+use App\Imports\UserImport;
+use App\Exports\OrderExport;
 use Illuminate\Http\Request;
 use App\Exports\AuthorExport;
 use App\Imports\AuthorImport;
@@ -96,6 +101,18 @@ class AdminController extends Controller
     {
         return Excel::download(new PaymentExport(), 'payment.xlsx');
     }
+    public function exportFeed()
+    {
+        return Excel::download(new FeedExport(), 'feedback.xlsx');
+    }
+    public function exportOrder()
+    {
+        return Excel::download(new OrderExport(), 'order.xlsx');
+    }
+    public function exportUser()
+    {
+        return Excel::download(new UserExport(), 'user.xlsx');
+    }
 
     //import
     public function importCategory(Request $request)
@@ -115,6 +132,18 @@ class AdminController extends Controller
 
         Excel::import(new PaymentImport, $request->file);
         return redirect()->route('admin.payment.index')->with(['importSuccess' => 'Import Successfully...']);
+    }
+    public function importFeed(Request $request)
+    {
+
+        Excel::import(new FeedImport, $request->file);
+        return redirect()->route('admin.feedback.index')->with(['importSuccess' => 'Import Successfully...']);
+    }
+    public function importUser(Request $request)
+    {
+
+        Excel::import(new UserImport, $request->file);
+        return redirect()->route('admin.user.index')->with(['importSuccess' => 'Import Successfully...']);
     }
 
     private $adminService;
@@ -152,6 +181,7 @@ class AdminController extends Controller
         $categories = $this->adminService->getCategories($r);
         return view('admin.category.index', compact('categories'));
     }
+    
 
     public function categoryCreate()
     {

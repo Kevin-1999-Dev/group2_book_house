@@ -13,7 +13,7 @@ Ebook List
     <a href="" class="btn btn-dark text-white">Import</a>
     <a href="" class="btn btn-dark text-white">Export</a>
 </div>
-<div class="container mt-4">
+<div class="mt-4">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">

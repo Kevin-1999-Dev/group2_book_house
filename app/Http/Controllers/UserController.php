@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
 use App\Models\Ebook;
-use App\Models\Order;
-use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
         $this->userService = $userServiceInterface;
     }
     public function changePassword(PasswordRequest $r)
-    {                
+    {
         $this->userService->password($r->only([
             'oldPassword',
             'newPassword',
@@ -104,5 +105,10 @@ class UserController extends Controller
         }else{
             return abort('401');
         }
+    }
+    public function delete(int $id)
+    {
+        $this->userService->deleteAcc($id);
+        return redirect()->route('public.index');
     }
 }

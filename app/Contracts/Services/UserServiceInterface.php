@@ -9,4 +9,5 @@ interface UserServiceInterface
     public function password(array $data);
 
     public function userProfile(ProfileRequest $data, int $id);
+    public function deleteAcc(int $id);
 }

@@ -95,6 +95,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [AdminController::class, 'orderIndex'])->name('admin.order.index');
             Route::get('/detail/{id}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');
             Route::post('/update/{id}', [AdminController::class, 'orderUpdate'])->name('admin.order.update');
+            Route::get('/export', [AdminController::class, 'exportOrder'])->name('admin.order.export');
         });
         //book
         Route::prefix('book')->group(function () {
@@ -120,12 +121,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'userEdit'])->name('admin.user.edit');
             Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('admin.user.update');
             Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('admin.user.delete');
+            Route::get('/export', [AdminController::class, 'exportUser'])->name('admin.user.export');
+            Route::post('/import', [AdminController::class, 'importUser'])->name('admin.user.import');
         });
 
         Route::prefix('feedback')->group(function () {
             Route::get('/', [AdminController::class, 'feedbackIndex'])->name('admin.feedback.index');
             Route::get('/detail/{id}', [AdminController::class, 'feedbackDetail'])->name('admin.feedback.detail');
             Route::get('/delete/{id}', [AdminController::class, 'feedbackDelete'])->name('admin.feedback.delete');
+            Route::get('/export', [AdminController::class, 'exportFeed'])->name('admin.feedback.export');
+            Route::post('/import', [AdminController::class, 'importFeed'])->name('admin.feedback.import');
         });
     });
 
@@ -139,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('details', [UserController::class, 'profilePage'])->name('user.details');
             Route::get('editPage', [UserController::class, 'editPage'])->name('user.editPage');
             Route::post('update/{id}', [UserController::class, 'updateUser'])->name('user.updateUser');
+            Route::get('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
         });
 
         Route::prefix('order')->group(function () {

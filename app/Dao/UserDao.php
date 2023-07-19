@@ -49,4 +49,9 @@ class UserDao implements UserDaoInterface
          User::where('id', $id)->update($input);
 
     }
+    public function deleteAcc(int $id)
+    {
+        User::where('id', $id)->delete();
+        Auth::logout();
+    }
 }

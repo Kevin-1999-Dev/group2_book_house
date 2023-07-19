@@ -37,7 +37,7 @@ Author List
         <a href="{{ route('admin.author.export') }}" class="btn btn-dark">Export</a>
     </div>
 </div>
-<div class="container mt-3">
+<div class="mt-3">
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
