@@ -343,12 +343,7 @@ class AdminController extends Controller
 
     public function bookUpdate(BookRequest $r, int $id)
     {
-        $this->adminService->updateBook($r->only([
-            'title',
-            'description',
-            'pagecount',
-            'price',
-        ]), $id);
+        $this->adminService->updateBook($r, $id);
         return redirect()->route('admin.book.index');
     }
 
@@ -392,13 +387,7 @@ class AdminController extends Controller
 
     public function ebookUpdate(EbookRequest $r, int $id)
     {
-        $this->adminService->updateEbook($r->only([
-            'title',
-            'description',
-            'pagecount',
-            'price',
-            'link',
-        ]), $id);
+        $this->adminService->updateEbook($r, $id);
         return redirect()->route('admin.ebook.index');
     }
 
