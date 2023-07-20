@@ -10,7 +10,6 @@ use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
 use App\Models\Ebook;
 
-
 class UserController extends Controller
 {
     public function userDash()
@@ -89,20 +88,20 @@ class UserController extends Controller
         $order = Order::findOrfail($id);
         if ($order->user->id == $r->user()->id) {
             $order->update([
-                'status'=> 'cancelled',
+                'status' => 'cancelled',
             ]);
             return redirect()->route('user.order.index');
         }
     }
 
-    public function ebookServe(Request $r, String $filename)
+    public function userPrivateServe(Request $r, String $filename)
     {
-        $ebook = Ebook::where('link','LIKE',"%$filename%")->first();
+        $ebook = Ebook::where('link', 'LIKE', "%$filename%")->first();
         $exists = $ebook->user()->where('users.id', $r->user()->id)->exists();
-        if($exists) {
-           dd(storage_path($ebook->link));
-            response()->download(storage_path($ebook->link));
-        }else{
+        if ($exists) {
+
+            return response()->download(storage_path("/app/private/" . $ebook->link));
+        } else {
             return abort('401');
         }
     }

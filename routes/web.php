@@ -153,6 +153,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/detail/{id}', [UserController::class, 'orderDetail'])->name('user.order.detail');
         });
 
-        Route::get('/ebooks/{filename}', [UserController::class, 'ebookServe'])->name('user.ebook.serve');
+        Route::get('private/{filename}', [UserController::class, 'userPrivateServe'])->name('user.ebook.serve');
     });
 });

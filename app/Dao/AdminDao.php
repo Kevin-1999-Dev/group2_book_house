@@ -318,11 +318,9 @@ class AdminDao implements AdminDaoInterface
             ]);
         }
         $filename = $ebook->id . "-ebook-" . $data->file('cover')->getClientOriginalName();
-        $path = $data->file('cover')->storeAs('covers', $filename, 'public');
-        $ebook->cover = '/storage/' . $path;
+        $ebook->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
         $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
-        $path = $data->file('ebookfile')->storeAs('ebooks', $filename, 'private');
-        $ebook->link = '/user/' . $path;
+        $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
         $ebook->save();
     }
 
