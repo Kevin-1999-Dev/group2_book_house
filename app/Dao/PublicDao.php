@@ -11,8 +11,8 @@ class PublicDao implements PublicDaoInterface
 {
     public function getAll(): object
     {
-        $books = Book::take(4)->get();
-        $ebooks = Ebook::take(4)->get();
+        $books = Book::take(6)->get();
+        $ebooks = Ebook::take(6)->get();
 
         return (object) [
             'books' => $books,

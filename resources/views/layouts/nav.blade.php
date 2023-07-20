@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom border-danger-subtle fixed-top shadow-sm">
     <div class="container-fluid">
-        <h1>
+        <h1 class="mx-lg-5">
             <a href="{{ route('public.index') }}" class="me-2 me-md-4 me-lg-0">
-                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="logo">
+                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="Logo" class="logo">
             </a>
         </h1>
         <a class="btn btn-outline-dark btn-sm d-lg-none" href="{{ route('public.cart.index') }}">
@@ -24,14 +24,14 @@
                                 class="profile border border-white rounded-circle dropdown-toggle" type="button"
                                 id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         @endif
-                        <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
-                            <li><a href="{{ route('admin.details') }}" class="dropdown-item p-3">Profile</a></li>
-                            <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-3">Change
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="dropdownMenu2">
+                            <li><a href="{{ route('admin.details') }}" class="dropdown-item p-1">Profile</a></li>
+                            <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-1">Change
                                     Password</a></li>
-                            <li class="p-2">
+                            <li class="p-1">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item bg-primary text-white p-2 text-center rounded-pill"
+                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3"
                                         type="submit">Logout</button>
                                 </form>
                             </li>
@@ -48,14 +48,14 @@
                                 class="profile border border-white rounded-circle dropdown-toggle" type="button"
                                 id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         @endif
-                        <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenu2">
-                            <li><a href="{{ route('user.details') }}" class="dropdown-item p-3">Profile</a></li>
-                            <li><a href="{{ route('user.changePasswordPage') }}" class="dropdown-item p-3">Change
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="dropdownMenu2">
+                            <li><a href="{{ route('user.details') }}" class="dropdown-item p-1">Profile</a></li>
+                            <li><a href="{{ route('user.changePasswordPage') }}" class="dropdown-item p-1">Change
                                     Password</a></li>
-                            <li class="p-2">
+                            <li class="p-1">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item bg-primary text-white p-2 text-center rounded-pill"
+                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3"
                                         type="submit">Logout</button>
                                 </form>
                             </li>
@@ -101,13 +101,16 @@
                 </li>
                 @if (!empty(Auth::user()))
                     @if (Auth::user()->role == 0)
-                        <li class="nav-item mx-3 fw-bold"><a href="{{ route('user.order.index') }}"
+                        <li class="nav-item mx-3 fw-bold d-none d-lg-block"><a href="{{ route('user.order.index') }}"
                                 class="btn btn-dark"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order
                                 History</a></li>
+                        <li class="nav-item fw-bold d-lg-none">
+                            <a class="nav-link" href="{{ route('user.order.index') }}"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
+                        </li>
                     @endif
                 @endif
             </ul>
-            <div class="d-flex">
+            <div class="d-flex  me-lg-5">
                 @if (empty(Auth::user()))
                     <a href="{{ route('auth.loginPage') }}" class="btn btn-primary nav-item me-2">Login</a>
                     <a href="{{ route('auth.registerPage') }}" class="btn btn-primary nav-item">Register</a>
@@ -123,7 +126,7 @@
                                     class="profile border border-white rounded-circle dropdown-toggle" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                             @endif
-                            <ul class="dropdown-menu dropdown-menu-lg-start dropdown-menu-dark w-100"
+                            <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-dark w-100"
                                 aria-labelledby="dropdownMenu2">
                                 <li><a href="{{ route('admin.details') }}" class="dropdown-item p-3">Profile</a></li>
                                 <li><a href="{{ route('admin.changePasswordPage') }}"
@@ -139,7 +142,7 @@
                             </ul>
                         </div>
                     @else
-                        <div class="dropdown d-none d-lg-block me-5">
+                        <div class="dropdown d-none d-lg-block">
                             @if (Auth::user()->image == null)
                                 <img src="{{ asset('images/default.png') }}" alt="default"
                                     class="profile border border-white rounded-circle dropdown-toggle" type="button"

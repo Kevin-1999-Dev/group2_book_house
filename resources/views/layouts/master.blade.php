@@ -37,15 +37,15 @@
 
 <body>
   @include('layouts.nav')
-  <div class="body-content container-fluid">
+  <div class="body-content">
     @yield('content')
   </div>
-  <footer class="bg-body-secondary py-2 px-5 border-top border-danger-subtle">
+  <footer class="bg-body-secondary py-2 px-2 px-md-5 border-top border-danger-subtle">
     <div class="row">
-      <div class="col-3 col-md-2 col-lg-1">
+      <div class="col-2 col-lg-1">
         <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida">
       </div>
-      <div class="col-9 col-md-10 col-lg-11 text-end pt-2 pt-md-4">
+      <div class="col-10 col-lg-11 text-end pt-2 pt-md-4 f-s text-secondary">
         &copy; 2023 All Right Reserved.
       </div>
     </div>

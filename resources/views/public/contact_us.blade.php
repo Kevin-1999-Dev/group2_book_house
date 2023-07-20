@@ -3,7 +3,7 @@
     Contact Us Page
 @endsection
 @section('content')
-<div class="container-fluid py-5 py-md-3 contact-pg">
+<div class="container-fluid py-5 py-lg-3 contact-pg">
 @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
     <i class="fa-solid fa-circle-check"></i> {{ session('success') }}

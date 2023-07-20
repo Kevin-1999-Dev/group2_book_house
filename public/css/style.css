@@ -102,6 +102,10 @@ a:hover {
     color: #ff1100;
 }
 
+.book-cover {
+    height: 230px;
+}
+
 .book-card:hover {
     box-shadow: 0 0 15px #e3e7e0;
     opacity: 0.9;

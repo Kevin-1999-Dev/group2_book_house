@@ -3,15 +3,15 @@
 Cart
 @endsection
 @section('content')
-<div class="container cart">
-    <div class="col-12 align-self-center clearfix">
-        <h3>Carts</h3>
+<div class="container-fluid cart mt-5 mt-lg-0">
+    <div class="col-11 col-lg-8 align-self-center clearfix mx-auto">
+        <h3 class="f-3">Carts</h3>
         <div class="card">
             <div class="card-header">
-                <h3>Cart</h3>
+                <h3 class="f-4">Cart</h3>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Type</th>
@@ -32,7 +32,7 @@ Cart
         <form action="{{route('public.cart.store')}}" method="post" class="mb-3 float-end">
             @csrf
             <div class="form-group mt-3">
-                <label for="payment">Payment</label>
+                <label for="payment" class="f-5 mb-1">Payment</label>
                 <select class="form-control" name="payment">
                     @foreach ($payments as $payment)
                     @if (old('payment') == $payment->id)
