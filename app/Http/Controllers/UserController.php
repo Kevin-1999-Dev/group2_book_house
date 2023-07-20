@@ -51,8 +51,15 @@ class UserController extends Controller
 
     public function orderIndex(Request $r)
     {
+        $s = $r->get('s');
+        $s = strtolower($s);
+        $orders = Order::WhereHas('payment', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%")
+                ->orWhere('id', 'LIKE', "%$s%");
+        })->orWhere('comment', 'LIKE', "%$s%")
+            ->orWhere('status', 'LIKE', "%$s%")
+            ->get();
         $user = User::findOrfail($r->user()->id);
-        $orders = $user->order()->get();
         foreach ($orders as $order) {
             $total_amount = 0;
             foreach ($order->book as $book) {
