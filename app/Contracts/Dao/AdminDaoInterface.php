@@ -58,7 +58,7 @@ interface AdminDaoInterface
 
     public function createBook(BookRequest $data);
 
-    public function updateBook(array $data, int $id);
+    public function updateBook(BookRequest $data, int $id);
 
     public function deleteBookById(int $id);
 
@@ -68,7 +68,7 @@ interface AdminDaoInterface
 
     public function createEbook(EbookRequest $data);
 
-    public function updateEbook(array $data, int $id);
+    public function updateEbook(EbookRequest $data, int $id);
 
     public function deleteEbookById(int $id);
 

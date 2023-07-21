@@ -25,7 +25,6 @@ class BookRequest extends FormRequest
         return [
             'title' => ['required', 'max:255'],
             'cover' => [
-                'required',
                 File::types(['jpg', 'jpeg', 'png'])
                     ->max(12 * 1024),
             ],

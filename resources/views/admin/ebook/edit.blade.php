@@ -18,6 +18,13 @@ Edit Ebook
                 @enderror
             </div>
             <div class="form-group m-3">
+                <label for="cover">Cover</label>
+                <input type="file" class="form-control" name="cover" value="{{(old('cover'))}}">
+                @error('cover')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group m-3">
                 <label for="description">Description</label>
                 <textarea class="form-control" name="description" rows="3">{{(old('_token') !== null) ? old('description') : $ebook->description}}</textarea>
                 @error('description')
@@ -39,9 +46,9 @@ Edit Ebook
                 @enderror
             </div>
             <div class="form-group m-3">
-                <label for="link">Link</label>
-                <input type="text" class="form-control" name="link" value="{{(old('_token') !== null) ? old('price') : $ebook->link}}">
-                @error('link')
+                <label for="ebookfile">Ebook File</label>
+                <input type="file" class="form-control" name="ebookfile" value="{{(old('ebookfile'))}}">
+                @error('ebookfile')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -73,7 +80,7 @@ Edit Ebook
             </div>
             <div class="form-group m-3">
                 <a href="{{ route('admin.ebook.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
-                <input type="submit" class="btn btn-primary float-end" value="Create">
+                <input type="submit" class="btn btn-primary float-end" value="Edit">
             </div>
         </form>
     </div>

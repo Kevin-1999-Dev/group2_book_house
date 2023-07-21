@@ -24,6 +24,7 @@ use App\Contracts\Dao\AdminDaoInterface;
 use App\Models\Feedback;
 use App\Models\Payment;
 use App\Models\UserEbook;
+use Illuminate\Validation\Rules\File;
 
 class AdminDao implements AdminDaoInterface
 {
@@ -259,20 +260,27 @@ class AdminDao implements AdminDaoInterface
                 'category_id' => $category,
             ]);
         }
-        $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
-        $path = $data->file('cover')->storeAs('uploads/covers', $filename, 'public');
-        $book->cover = '/storage/' . $path;
+        if ($data->file('cover')) {
+            $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
+            $book->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
+        }
         $book->save();
     }
 
-    public function updateBook(array $data, int $id)
+    public function updateBook(BookRequest $data, int $id)
     {
-        Book::findOrFail($id)->update([
+        $book = Book::findOrFail($id);
+        $book->update([
             'title' => $data['title'],
             'description' => $data['description'],
             'pagecount' => $data['pagecount'],
             'price' => $data['price'],
         ]);
+        if ($data->file('cover')) {
+            $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
+            $book->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
+        }
+        $book->save();
     }
 
     public function deleteBookById(int $id)
@@ -317,24 +325,35 @@ class AdminDao implements AdminDaoInterface
                 'category_id' => $category,
             ]);
         }
-        $filename = $ebook->id . "-ebook-" . $data->file('cover')->getClientOriginalName();
-        $path = $data->file('cover')->storeAs('covers', $filename, 'public');
-        $ebook->cover = '/storage/' . $path;
-        $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
-        $path = $data->file('ebookfile')->storeAs('ebooks', $filename, 'private');
-        $ebook->link = '/user/' . $path;
+        if ($data->file('cover')) {
+            $filename = $ebook->id . "-book-" . $data->file('cover')->getClientOriginalName();
+            $ebook->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
+        }
+        if ($data->file('ebookfile')) {
+            $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
+            $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
+        }
         $ebook->save();
     }
 
-    public function updateEbook(array $data, int $id)
+    public function updateEbook(EbookRequest $data, int $id)
     {
-        Ebook::findOrFail($id)->update([
+        $ebook =  Ebook::findOrFail($id);
+        $ebook->update([
             'title' => $data['title'],
             'description' => $data['description'],
             'pagecount' => $data['pagecount'],
             'price' => $data['price'],
             'link' => $data['link'],
         ]);
+        if ($data->file('cover')) {
+            $filename = $ebook->id . "-book-" . $data->file('cover')->getClientOriginalName();
+            $ebook->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
+        }
+        if ($data->file('ebookfile')) {
+            $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
+            $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
+        }
     }
 
     public function deleteEbookById(int $id)

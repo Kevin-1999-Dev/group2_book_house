@@ -129,7 +129,7 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->createBook($data);
     }
 
-    public function updateBook(array $data, int $id)
+    public function updateBook(BookRequest $data, int $id)
     {
         $this->adminDao->updateBook($data, $id);
     }
@@ -154,7 +154,7 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->createEbook($data);
     }
 
-    public function updateEbook(array $data, int $id)
+    public function updateEbook(EbookRequest $data, int $id)
     {
         $this->adminDao->updateEbook($data, $id);
     }
