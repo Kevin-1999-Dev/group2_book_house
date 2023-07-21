@@ -25,6 +25,10 @@ Route::get('/book/{id}', [PublicController::class, 'show_book'])->name('public.b
 Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public.ebook_detail');
 Route::get('/Contact', [PublicController::class, 'feedback'])->name('public.contact_us');
 Route::post('/Contact', [PublicController::class, 'storeFeedback'])->name('feedbacks.store');
+Route::get('/bookAsc', [PublicController::class, 'indexAsc'])->name('public.book.asc');
+Route::get('/bookDesc', [PublicController::class, 'indexDesc'])->name('public.book.desc');
+Route::get('/ebookAsc', [PublicController::class, 'ebookAsc'])->name('public.ebook.asc');
+Route::get('/ebookDesc', [PublicController::class, 'ebookDesc'])->name('public.ebook.desc');
 
 
 Route::prefix('cart')->group(function () {
