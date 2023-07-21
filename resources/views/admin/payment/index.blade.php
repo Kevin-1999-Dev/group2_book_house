@@ -3,6 +3,7 @@
 Payment List
 @endsection
 @section('content')
+<div class="payment-pg col-12 col-md-10 col-lg-8 mx-auto pb-5">
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
@@ -20,14 +21,14 @@ Payment List
 @endif
 <div class="">
     <a href="{{ route('admin.dashboard') }}">
-        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
     </a>
 </div>
-<div class="row">
+<div class="row mt-4">
     <div class="col-3">
-        <a href="{{ route('admin.payment.create') }}"><span class="btn btn-primary mt-5">Create</span></a>
+        <a href="{{ route('admin.payment.create') }}"><span class="btn btn-primary">Create</span></a>
     </div>
-    <div class="col-3 offset-6 mt-5">
+    <div class="col-3 offset-6">
         <form action="{{ route('admin.payment.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file" class="" id="choose">
@@ -41,18 +42,18 @@ Payment List
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
-                <h3 class="float-start">Payment List</h3>
+                <h3 class="float-start f-3">Payment List</h3>
                 <div class="float-end">
                     <form action="{{ route('admin.payment.index') }}" method="GET">
                         <div class="form-group d-inline-block">
                             <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
                         </div>
-                        <button type="submit" class="btn btn-outline-primary d-inline">Search</button>
+                        <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
                     </form>
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped f-7">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -66,8 +67,8 @@ Payment List
                             <th scope="row">{{$payment->id}}</th>
                             <td>{{$payment->name}}</td>
                             <td>
-                                <a href="{{route('admin.payment.edit',$payment->id)}}"><span class="btn btn-success">Edit</span></a>
-                                <a href="{{route('admin.payment.delete',$payment->id)}}" onclick="return confirm('Are you sure?')"><span class="btn btn-danger">Delete</span></a>
+                                <a href="{{route('admin.payment.edit',$payment->id)}}"><span class="btn btn-sm btn-success">Edit</span></a>
+                                <a href="{{route('admin.payment.delete',$payment->id)}}" onclick="return confirm('Are you sure?')"><span class="btn btn-sm btn-danger">Delete</span></a>
                             </td>
                         </tr>
                         @endforeach
@@ -75,7 +76,7 @@ Payment List
                 </table>
             </div>
         </div>
-
+    </div>
     </div>
 </div>
 @endsection

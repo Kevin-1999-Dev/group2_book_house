@@ -40,18 +40,16 @@
   <div class="body-content">
     @yield('content')
   </div>
-  <footer class="bg-body-secondary py-2 px-2 px-md-5 border-top border-danger-subtle">
-    <div class="row">
+  <footer class="bg-body-secondary py-3 px-2 px-md-5 border-top border-danger-subtle">
+    <div class="row d-flex align-items-center">
       <div class="col-2 col-lg-1">
-        <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida">
+        <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="f-logo">
       </div>
-      <div class="col-10 col-lg-11 text-end pt-2 pt-md-4 f-s text-secondary">
+      <div class="col-10 col-lg-11 text-end f-s text-secondary">
         &copy; 2023 All Right Reserved.
       </div>
     </div>
   </footer>
   @yield('script')
 </body>
-
-
 </html>

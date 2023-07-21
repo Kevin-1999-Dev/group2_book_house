@@ -3,15 +3,15 @@
 Order Detail
 @endsection
 @section('content')
-<div class="container mt-3">
-    <div class="col-12 align-self-center clearfix">
-        <h3>Orders ID : {{$order->id}}</h3>
-        <div class="card">
+<div class="order-detail-pg">
+    <div class="col-11 col-lg-10 mx-auto mt-4 mt-lg-0">
+        <h3 class="f-3">Orders ID : {{$order->id}}</h3>
+        <div class="card d-none d-md-block">
             <div class="card-header">
-                <h3>Items</h3>
+                <h3 class="f-4">Items</h3>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped f-6">
                     <thead>
                         <tr>
                             <td scope="col">Type</td>
@@ -41,15 +41,39 @@ Order Detail
                 </table>
             </div>
         </div>
-        <div class="mt-2 clearfix">
-            <h5 class="float-end border border-dark p-1">Total : {{ $order->total_amount }} MMK</h5>
-            <h5 class="float-end border border-dark p-1">Payment : {{ $order->payment->name }}</h5>
-            <h5 class="float-end border border-dark p-1">Status : {{ $order->status }}</h5>
+        <div class="row row-cols-2 d-md-none">
+        @foreach($order->book as $book)
+            <div class="col px-2 mb-3">
+                <div class="bg-secondary-subtle rounded-1 p-2 small-card">
+                    <p class="f-5">Type : Book</p>
+                    <p class="f-5">Title : {{$book->title}}</p>
+                    <p class="f-5">Price : {{$book->price}}</p>
+                    <p class="f-5">Quantity : {{$book->pivot->quantity}}</p>
+                </div>
+            </div>
+        @endforeach
+        @foreach($order->ebook as $ebook)
+            <div class="col px-2 mb-3">
+                <div class="bg-secondary-subtle rounded-1 p-2 small-card">
+                    <p class="f-5">Type : Ebook</p>
+                    <p class="f-5">Title : {{$ebook->title}}</p>
+                    <p class="f-5">Price : {{$ebook->title}}</p>
+                    <a href="{{($order->status == 'accepted')? $ebook->link : ''}}">{{($order->status == 'accepted')? 'Link' : ''}}</a>
+                </div>
+            </div>
+        @endforeach
+        </div>
+        <div class="mt-2 clearfix mb-2 f-5">
+            <p class="float-end border border-dark p-1 me-1">Total : {{ $order->total_amount }} MMK</p>
+            <p class="float-end border border-dark p-1 me-1">Payment : {{ $order->payment->name }}</p>
+            <p class="float-end border border-dark p-1 me-1">Status : {{ $order->status }}</p>
         </div>
         @if ($order->status == 'pending')
         <a href="{{ route('user.order.cancel',$order->id)}}"><span class="btn btn-danger float-end">Cancel</span></a>
         @endif
         <a href="{{ route('user.order.index')}}"><span class="btn btn-secondary">Back</span></a>
     </div>
+
+        
 </div>
 @endsection

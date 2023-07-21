@@ -6,7 +6,7 @@
             </a>
         </h1>
         <a class="btn btn-outline-dark btn-sm d-lg-none" href="{{ route('public.cart.index') }}">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge text-bg-danger"
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge text-bg-danger px-1 py-0"
                 id="totalItem">{{ isset(session('cart')['totalItem']) ? session('cart')['totalItem'] : '0' }}</span>
         </a>
         <span class="d-lg-none">
@@ -25,13 +25,13 @@
                                 id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         @endif
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="dropdownMenu2">
-                            <li><a href="{{ route('admin.details') }}" class="dropdown-item p-1">Profile</a></li>
-                            <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-1">Change
+                            <li><a href="{{ route('admin.details') }}" class="dropdown-item p-1 f-6">Profile</a></li>
+                            <li><a href="{{ route('admin.changePasswordPage') }}" class="dropdown-item p-1 f-6">Change
                                     Password</a></li>
                             <li class="p-1">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3"
+                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3 f-6"
                                         type="submit">Logout</button>
                                 </form>
                             </li>
@@ -49,13 +49,13 @@
                                 id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         @endif
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="dropdownMenu2">
-                            <li><a href="{{ route('user.details') }}" class="dropdown-item p-1">Profile</a></li>
-                            <li><a href="{{ route('user.changePasswordPage') }}" class="dropdown-item p-1">Change
+                            <li><a href="{{ route('user.details') }}" class="dropdown-item p-1 f-6">Profile</a></li>
+                            <li><a href="{{ route('user.changePasswordPage') }}" class="dropdown-item p-1 f-6">Change
                                     Password</a></li>
                             <li class="p-1">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3"
+                                    <button class="dropdown-item bg-primary text-white p-1 text-center rounded-3 f-6"
                                         type="submit">Logout</button>
                                 </form>
                             </li>
@@ -69,7 +69,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 f-6">
                 @if (!empty(Auth::user()))
                     @if (Auth::user()->role == 1)
                         <li class="nav-item me-lg-4 fw-bold">

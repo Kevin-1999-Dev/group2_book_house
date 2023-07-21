@@ -3,22 +3,22 @@
 Cart
 @endsection
 @section('content')
-<div class="container-fluid cart mt-5 mt-lg-0">
-    <div class="col-11 col-lg-8 align-self-center clearfix mx-auto">
+<div class="cart">
+    <div class="col-11 col-lg-10 clearfix mx-auto mt-5 mt-md-0">
         <h3 class="f-3">Carts</h3>
         <div class="card">
             <div class="card-header">
                 <h3 class="f-4">Cart</h3>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover f-6">
                     <thead>
                         <tr>
                             <th scope="col">Type</th>
                             <th scope="col">Title</th>
                             <td scope="col">Price</td>
-                            <td scope="col">Quantity</td>
-                            <td scope="col">Action</td>
+                            <td scope="col"><span class="d-none d-lg-block">Quantity</span><span class="d-lg-none">Qty</span></td>
+                            <td scope="col"><span class="d-none d-lg-block">Action</span><span class="d-lg-none">Act</span></td>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -27,13 +27,13 @@ Cart
         </div>
         <br />
         <div class="mt-2 clearfix">
-            <h5 class="float-end border border-dark p-1">Total : <span id="totalPrice"></span>MMK</h5>
+            <h5 class="float-end border border-dark p-1 f-6">Total : <span id="totalPrice"></span>MMK</h5>
         </div>
         <form action="{{route('public.cart.store')}}" method="post" class="mb-3 float-end">
             @csrf
             <div class="form-group mt-3">
-                <label for="payment" class="f-5 mb-1">Payment</label>
-                <select class="form-control" name="payment">
+                <label for="payment" class="f-6 mb-1">Payment</label>
+                <select class="form-control f-6" name="payment">
                     @foreach ($payments as $payment)
                     @if (old('payment') == $payment->id)
                     <option value="{{ $payment->id }}" selected>{{ $payment->name }}</option>
@@ -88,9 +88,9 @@ Cart
                         tr.appendChild(td);
                         td = document.createElement('td');
                         td.innerHTML =
-                            '<button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteModal" ' +
+                            '<button type="button" class="btn btn-sm btn-danger ml-2" data-bs-toggle="modal" data-bs-target="#deleteModal" ' +
                             'data-bs-modal-id="' + obj['id'] + '"' + 'data-bs-modal-type="book"' + 'data-bs-modal-title="' + obj['title'] + '"' +
-                            '>Remove All</button>'
+                            '><span class="d-none d-lg-block">Remove All</span><i class="fa-solid fa-trash d-lg-none"></i></button>'
                         tr.appendChild(td);
                         tableBody.appendChild(tr);
                         totalPrice = totalPrice + (obj['price'] * obj['quantity']);
@@ -113,9 +113,9 @@ Cart
                         tr.appendChild(td);
                         td = document.createElement('td');
                         td.innerHTML =
-                            '<button type="button" class="btn btn-danger ml-2" data-bs-toggle="modal" data-bs-target="#deleteModal" ' +
+                            '<button type="button" class="btn btn-sm btn-danger ml-2" data-bs-toggle="modal" data-bs-target="#deleteModal" ' +
                             'data-bs-modal-id="' + obj['id'] + '"' + 'data-bs-modal-type="ebook" ' + 'data-bs-modal-title="' + obj['title'] + '"' +
-                            '>Remove All</button>'
+                            '><span class="d-none d-lg-block">Remove All</span><i class="fa-solid fa-trash d-lg-none"></i></button>'
                         tr.appendChild(td);
                         tableBody.appendChild(tr);
                         totalPrice = totalPrice + (obj['price']);
