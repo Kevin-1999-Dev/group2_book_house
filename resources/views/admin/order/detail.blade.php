@@ -3,15 +3,15 @@
 Order Detail
 @endsection
 @section('content')
-<div class="container mt-3">
+<div class="auth-order-detail col-12 col-md-10 mx-auto py-2">
     <div class="col-12 align-self-center clearfix">
-        <h3>Orders by {{$order->user->name}}</h3>
-        <div class="card">
+        <h3 class="f-3">Orders by {{$order->user->name}}</h3>
+        <div class="card my-2">
             <div class="card-header">
-                <h3>Orders</h3>
+                <h4 class="f-4">Orders</h4>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped f-7">
                     <thead>
                         <tr>
                             <td scope="col">Type</td>
@@ -41,12 +41,12 @@ Order Detail
                 </table>
             </div>
         </div>
-        <div class="mt-2 clearfix">
-            <h5 class="float-end border border-dark p-1">Payment : {{ $order->payment->name }} | Total : {{ $order->total_amount }} MMK</h5>
+        <div class="my-2 clearfix">
+            <h5 class="float-end border border-dark p-1 f-6">Payment : {{ $order->payment->name }} | Total : {{ $order->total_amount }} MMK</h5>
         </div>
         <form action="{{ route('admin.order.update',$order->id)}}" method="post" class="mb-3 float-end">
             @csrf
-            <div class="form-group">
+            <div class="form-group f-6">
                 <label for="status">Status : </label>
                 <select name="status">
                     <option value="accepted" {{$order->status=='accepted' ? 'selected' : ''}}>accepted</option>

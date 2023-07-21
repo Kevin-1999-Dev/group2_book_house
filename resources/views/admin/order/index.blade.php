@@ -3,13 +3,14 @@
 Order List
 @endsection
 @section('content')
+<div class="auth-order col-12 col-md-10 mx-auto pb-5">
 <div class="">
     <a href="{{ route('admin.dashboard') }}">
-        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
     </a>
 </div>
-<div class="row">
-    <div class="col-2 offset-10 mt-5">
+<div class="row mt-2">
+    <div class="col-2 offset-10">
         <a href="{{ route('admin.order.export') }}" class="btn btn-dark">Export</a>
     </div>
 </div>
@@ -17,18 +18,18 @@ Order List
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
-                <h3 class="float-start">Orders List</h3>
+                <h3 class="float-start f-3">Orders List</h3>
                 <div class="float-end">
                     <form action="{{ route('admin.order.index') }}" method="GET">
                         <div class="form-group d-inline-block">
                             <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
                         </div>
-                        <button type="submit" class="btn btn-outline-primary d-inline">Search</button>
+                        <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
                     </form>
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped f-7">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -48,7 +49,7 @@ Order List
                             <td>{{$order->payment->name}}</td>
                             <td>{{$order->total_amount}} MMK</td>
                             <td>
-                                <a href="{{route('admin.order.detail',$order->id)}}"><span class="btn btn-success">View</span></a>
+                                <a href="{{route('admin.order.detail',$order->id)}}"><span class="btn btn-sm btn-success">View</span></a>
                             </td>
                         </tr>
                         @endforeach
@@ -57,5 +58,6 @@ Order List
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

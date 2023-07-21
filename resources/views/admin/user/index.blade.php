@@ -3,6 +3,7 @@
 User List
 @endsection
 @section('content')
+<div class="user-pg col-12 col-md-10 col-lg-8 mx-auto pb-5">
 @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -20,11 +21,11 @@ User List
     @endif
 <div class="">
     <a href="{{ route('admin.dashboard') }}">
-        <i class="fa-solid fa-arrow-left-long"></i> <span class="fs-3">Back</span>
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
     </a>
 </div>
-<div class="row">
-    <div class="col-2 offset-10 mt-5">
+<div class="row mt-2">
+    <div class="col-2 offset-10">
         <form action="{{ route('admin.user.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file" class="" id="choose">
@@ -39,18 +40,18 @@ User List
     <div class="col-12 align-self-center">
         <div class="card">
             <div class="card-header">
-                <h3 class="float-start">User List</h3>
+                <h3 class="float-start f-3">User List</h3>
                 <div class="float-end">
                     <form action="{{ route('admin.user.index') }}" method="GET">
                         <div class="form-group d-inline-block">
                             <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
                         </div>
-                        <button type="submit" class="btn btn-outline-primary d-inline">Search</button>
+                        <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
                     </form>
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped f-7">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -70,8 +71,8 @@ User List
                             <td>{{$user->role ? 'admin' : 'user'}}</td>
                             <td>{{$user->active ? 'enable' : 'disable'}}</td>
                             <td>
-                                <a href="{{route('admin.user.edit',$user->id)}}"><span class="btn btn-success">Edit</span></a>
-                                <a href="{{route('admin.user.delete',$user->id)}}"><span class="btn btn-danger">Delete</span></a>
+                                <a href="{{route('admin.user.edit',$user->id)}}"><span class="btn btn-sm btn-success">Edit</span></a>
+                                <a href="{{route('admin.user.delete',$user->id)}}"><span class="btn btn-sm btn-danger">Delete</span></a>
                             </td>
                         </tr>
                         @endforeach
@@ -80,6 +81,7 @@ User List
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('script')

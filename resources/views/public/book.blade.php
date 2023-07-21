@@ -3,8 +3,8 @@
 Book Page
 @endsection
 @section('content')
-<div class="container-fluid px-lg-5 book-pg">
-  <div class="d-md-none pt-5">
+<div class="px-2 px-md-3 px-lg-5 book-pg">
+  <div class="d-md-none pt-2">
     <h2 class="f-3 fw-bold">Discover a World of Available Books</h2>
     <p class="f-6">Explore our collection and choose a book that satisfies your reading cravings.</p>
     <form action="{{ route('public.book') }}" method="GET" class="mt-2 text-center">
@@ -14,7 +14,7 @@ Book Page
       <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
     </form>
   </div>
-  <div class="clearfix d-none d-md-block pt-4 pt-lg-0">
+  <div class="clearfix d-none d-md-block pt-4 pt-md-0">
     <div class="float-start col-7">
       <h2 class="f-3 fw-bold">Discover a World of Available Books</h2>
       <p class="f-6">Explore our collection and choose a book that satisfies your reading cravings.</p>
@@ -39,7 +39,7 @@ Book Page
               @endforeach
             </p>
             @foreach ($book->category as $category)
-            <span class="bg-info px-1 rounded-1 f-s">{{$category->name}}</span>
+            <span class="bg-danger-subtle px-1 rounded-1 f-s">{{$category->name}}</span>
             @endforeach
             <p class="f-s mt-1">
               <i class="fa-solid fa-calendar-days"></i> : {{$book->date}}

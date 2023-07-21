@@ -4,15 +4,15 @@
 Home Page
 @endsection
 @section('content')
-<div class="col-lg-10 mx-auto mv d-flex align-items-center my-5 mt-md-0">
+<div class="col-lg-10 mx-auto mv d-flex align-items-center my-3 mt-md-0">
   <div class="intro row d-flex align-items-center">
     <div class="col-md-6 col-sm-12 px-5 mb-4 mb-md-0">
-      <div class="card-body p-lg-5">
+      <div class="card-body p-3 p-md-0 p-lg-5">
         <img src="{{ asset('images/img_index_book.jpg') }}" alt="book image">
       </div>
     </div>
-    <div class="col-md-6 col-sm-12">
-      <div class="card-body mv-txt mx-4 mx-md-0 me-md-3 mx-lg-5">
+    <div class="col-12 col-md-6">
+      <div class="card-body mv-txt mx-4 mx-md-0 me-md-3 mx-lg-5 p-2 p-md-0">
         <h2 class="f-2 mb-3">Welcome to <span class="bookhouse">BOOK HOUSE</span>!!! <i class="fa-regular fa-face-grin-hearts"></i></h2>
         <p class="f-4 mb-2">
           your <span class="mark-txt">premier destination</span> for both printed books and
@@ -40,11 +40,11 @@ Home Page
     <!-- Books -->
     <div class="col-md-6 mb-3">
       <div class="card shadow-sm">
-        <h3 class="card-header shadow-sm border-bottom border-danger-subtle f-5">Avilable Books</h3>
+        <h3 class="card-header shadow-sm border-bottom border-danger-subtle f-4">Avilable Books</h3>
         <div class="card-body book-box">
-          <div class="row">
+          <div class="row pb-3 pb-md-0 pb-lg-3">
             @foreach ($books as $book)
-            <a href="{{ route('public.book_detail', $book->id) }}" class="col-6 col-lg-4  mb-3">
+            <a href="{{ route('public.book_detail', $book->id) }}" class="col-6 col-sm-4 col-md-6 col-lg-4 mb-3">
               <div class="card shadow-sm bg-body-secondary">
                 <div class="card-body book-card">
                   <img src="{{$book->cover}}" alt="book-cover" class="book-cover rounded-top-2 d-block mx-auto mb-1">
@@ -55,7 +55,7 @@ Home Page
                     @endforeach
                   </p>
                   @foreach ($book->category as $category)
-                  <span class="bg-info px-1 rounded-1 f-s">{{$category->name}}</span>
+                  <span class="bg-danger-subtle px-1 rounded-1 f-s">{{$category->name}}</span>
                   @endforeach
                   <p class="f-s mt-1">
                     <i class="fa-solid fa-hand-holding-dollar"></i> : {{$book->price}}MMK
@@ -65,7 +65,7 @@ Home Page
             </a>
             @endforeach
             <div class="d-grid gap-2 col-12 mb-4 mb-lg-0">
-              <a class="btn btn-dark col-6 mx-auto" type="button" href="{{ route('public.book') }}">See More</a>
+              <a class="btn btn-sm btn-dark col-6 mx-auto" type="button" href="{{ route('public.book') }}">See More</a>
             </div>
           </div>
         </div>
@@ -74,11 +74,11 @@ Home Page
     <!-- Ebooks -->
     <div class="col-md-6">
       <div class="card shadow-sm">
-        <h3 class="card-header shadow-sm border-bottom border-danger-subtle f-5">Avilable E-books</h3>
+        <h3 class="card-header shadow-sm border-bottom border-danger-subtle f-4">Avilable E-books</h3>
         <div class="card-body book-box">
           <div class="row">
             @foreach ($ebooks as $ebook)
-            <a href="{{ route('public.ebook_detail', $ebook->id) }}" class="col-6 col-lg-4  mb-3">
+            <a href="{{ route('public.ebook_detail', $ebook->id) }}" class="col-6 col-sm-4 col-md-6 col-lg-4 mb-3">
               <div class="card shadow-sm bg-body-secondary">
                 <div class="card-body book-card">
                   <img src="{{$ebook->cover}}" alt="book-cover" class="book-cover rounded-top-2 d-block mx-auto mb-1">
@@ -89,7 +89,7 @@ Home Page
                     @endforeach
                   </p>
                   @foreach ($ebook->category as $category)
-                  <span class="bg-info px-1 rounded-1 f-s">{{$category->name}}</span>
+                  <span class="bg-danger-subtle px-1 rounded-1 f-s">{{$category->name}}</span>
                   @endforeach
                   <p class="f-s mt-1">
                     <i class="fa-solid fa-hand-holding-dollar"></i> : {{$ebook->price}}MMK
@@ -99,7 +99,7 @@ Home Page
             </a>
             @endforeach
             <div class="d-grid gap-2 col-12 mb-4 mb-lg-0">
-              <a class="btn btn-dark col-6 mx-auto" type="button" href="{{ route('public.ebook') }}">See More</a>
+              <a class="btn btn-sm btn-dark col-6 mx-auto" type="button" href="{{ route('public.ebook') }}">See More</a>
             </div>
           </div>
         </div>
