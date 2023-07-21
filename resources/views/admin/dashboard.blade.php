@@ -7,10 +7,10 @@ Admin Dashboard
 @section('content')
 <section>
     <div class="container text-center py-5 f-3">
-        <h2>Hello <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
+        <h2 class="f-2">Hello <span class="text-danger text-uppercase">{{ Auth::user()->name }} </span> </h2>
         <p>Welcome From Admin Dashboard</p>
-        <div class="mt-5 row d-flex align-items-center">
-            <div class="col-5 shadow bg-body rounded p-2">
+        <div class="mt-5 row d-flex align-items-center box">
+            <div class="col-5 shadow bg-body rounded p-2 list-one">
                 <div class="my-3 w-100">
                     <a href="{{ route('admin.category.index') }}" class="text-decoration-none">
                         <button class="btn  btn-dark w-50"><i class="fa-solid fa-list-check"></i> Category</button>
@@ -32,10 +32,10 @@ Admin Dashboard
                     </a>
                 </div>
             </div>
-            <div class="col-2 pt-2">
+            <div class="col-2 pt-2 arrow">
                 <img src="{{ asset('images/sign2.avif') }}" alt="" class="w-100">
             </div>
-            <div class="col-5 shadow bg-body rounded p-2">
+            <div class="col-5 shadow bg-body rounded p-2 list-two">
                 <div class="my-3 w-100">
                     <a href="{{ route('admin.user.index') }}" class="text-decoration-none">
                         <button class="btn btn-dark w-50"><i class="fa-solid fa-users"></i> User List</button>
@@ -58,15 +58,15 @@ Admin Dashboard
                 </div>
             </div>
         </div>
-        <div class="mt-5 row d-flex align-items-center">
+        <div class="mt-5 row d-flex align-items-center graph">
             <h4 class="f-3">The Latest Reports</h4>
-            <div class="col-12 col-md-5 shadow bg-body rounded">
+            <div class="col-12 col-md-5 shadow bg-body rounded g-one">
                 <canvas id="yearlyUsers"></canvas>
             </div>
-            <div class="col-6 col-md-2 pt-2 mx-auto my-3">
+            <div class="col-6 col-md-2 pt-2 mx-auto my-3 arrow">
                 <img src="{{ asset('images/sign4.jpg') }}" alt="" class="w-100">
             </div>
-            <div class="col-12 col-md-5 shadow bg-body rounded">
+            <div class="col-12 col-md-5 shadow bg-body rounded g-one">
                 <canvas id="monthlyOrders"></canvas>
             </div>
         </div>
