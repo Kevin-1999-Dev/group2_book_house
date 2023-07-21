@@ -48,6 +48,40 @@ class PublicController extends Controller
             }
         return view('public.book', compact('books'));
     }
+    public function indexAsc(Request $r)
+    {
+        $books = $this->publicService->getbooks();
+        $s = strtolower($r->get('s'));
+        $books = Book::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->orderby('created_at','asc')
+            ->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
+            }
+        return view('public.book', compact('books'));
+    }
+    public function indexDesc(Request $r)
+    {
+        $books = $this->publicService->getbooks();
+        $s = strtolower($r->get('s'));
+        $books = Book::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->orderby('created_at','desc')
+            ->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
+            }
+        return view('public.book', compact('books'));
+    }
 
     public function ebook(Request $r)
     {
@@ -59,6 +93,42 @@ class PublicController extends Controller
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
+            ->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
+
+        return view('public.ebook', compact('ebooks'));
+    }
+    public function ebookAsc(Request $r)
+    {
+        $ebooks = $this->publicService->getebooks();
+        $s = strtolower($r->get('s'));
+        $ebooks = Ebook::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->orderBy('created_at','asc')
+            ->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
+
+        return view('public.ebook', compact('ebooks'));
+    }
+    public function ebookDesc(Request $r)
+    {
+        $ebooks = $this->publicService->getebooks();
+        $s = strtolower($r->get('s'));
+        $ebooks = Ebook::whereHas('author', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhereHas('category', function ($query) use ($s) {
+            $query->where('name', 'LIKE', "%$s%");
+        })->orWhere('title', 'LIKE', "%$s%")
+            ->orWhere('price', 'LIKE', "%$s%")
+            ->orderBy('created_at','desc')
             ->get();
             foreach ($ebooks as $ebook) {
                 $ebook['date'] = date_format($ebook->created_at, "m/d/Y");

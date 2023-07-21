@@ -19,6 +19,15 @@ Ebook Page
       <h2 class="f-3 fw-bold">Discover a World of Available EBooks</h2>
       <p class="f-6">Explore our collection and choose a book that satisfies your reading cravings. You will get the ebook download link.</p>
     </div>
+    <span class="dropdown">
+        <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="{{ route('public.ebook.asc') }}" class="dropdown-item" type="button">Ascending</a></li>
+          <li><a href="{{ route('public.ebook.desc') }}" class="dropdown-item" type="button">Descending</a></li>
+        </ul>
+      </span>
     <form action="{{ route('public.ebook') }}" method="GET" class="float-end">
       <div class="form-group d-inline-block">
         <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />

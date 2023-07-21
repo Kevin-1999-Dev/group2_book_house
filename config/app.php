@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
     ])->toArray(),
 
     /*
