@@ -44,6 +44,7 @@ Route::prefix('cart')->group(function () {
 Route::middleware(['admin_auth'])->group(function () {
     Route::get('/loginPage', [AuthController::class, 'login'])->name('auth.loginPage');
     Route::get('/registerPage', [AuthController::class, 'register'])->name('auth.registerPage');
+    Route::get('/forgetPassword', [AuthController::class, 'forgetPassword'])->name('auth.forgetPasswordPage');
 });
 
 Route::middleware(['auth'])->group(function () {
