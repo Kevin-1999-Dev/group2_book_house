@@ -53,13 +53,15 @@ class UserController extends Controller
     {
         $s = $r->get('s');
         $s = strtolower($s);
-        $orders = Order::WhereHas('payment', function ($query) use ($s) {
-            $query->where('name', 'LIKE', "%$s%")
-                ->orWhere('id', 'LIKE', "%$s%");
-        })->orWhere('comment', 'LIKE', "%$s%")
-            ->orWhere('status', 'LIKE', "%$s%")
-            ->get();
-        $user = User::findOrfail($r->user()->id);
+        $user = $r->user()->id;
+        $orders = Order::where('user_id','=',$user)
+        ->where(function($orderquery) use ($s) {
+           $orderquery->WhereHas('payment', function ($query) use ($s) {
+                $query->where('name', 'LIKE', "%$s%")
+                    ->orWhere('id', 'LIKE', "%$s%");
+            })->orWhere('comment', 'LIKE', "%$s%")
+                ->orWhere('status', 'LIKE', "%$s%");
+        })->get();
         foreach ($orders as $order) {
             $total_amount = 0;
             foreach ($order->book as $book) {
