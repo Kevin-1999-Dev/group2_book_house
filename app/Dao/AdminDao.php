@@ -24,7 +24,6 @@ use App\Contracts\Dao\AdminDaoInterface;
 use App\Models\Feedback;
 use App\Models\Payment;
 use App\Models\UserEbook;
-use Illuminate\Validation\Rules\File;
 
 class AdminDao implements AdminDaoInterface
 {
@@ -67,6 +66,9 @@ class AdminDao implements AdminDaoInterface
     public function getCategories(Request $r)
     {
         $s = strtolower($r->get('s'));
+        if ($r->route()->named('admin.category.index')) {
+            return Category::Where('name', 'LIKE', "%$s%")->paginate(config('app.pagination'))->withQueryString();
+        }
         return Category::Where('name', 'LIKE', "%$s%")->get();
     }
 
@@ -103,6 +105,9 @@ class AdminDao implements AdminDaoInterface
     public function getAuthors(Request $r)
     {
         $s = strtolower($r->get('s'));
+        if ($r->route()->named('admin.author.index')) {
+            return Author::Where('name', 'LIKE', "%$s%")->paginate(config('app.pagination'))->withQueryString();
+        }
         return Author::Where('name', 'LIKE', "%$s%")->get();
     }
 
@@ -140,6 +145,9 @@ class AdminDao implements AdminDaoInterface
     public function getPayments(Request $r)
     {
         $s = strtolower($r->get('s'));
+        if ($r->route()->named('admin.payment.index')) {
+            return Payment::Where('name', 'LIKE', "%$s%")->paginate(config('app.pagination'))->withQueryString();
+        }
         return Payment::Where('name', 'LIKE', "%$s%")->get();
     }
 
@@ -177,8 +185,13 @@ class AdminDao implements AdminDaoInterface
             $query->where('name', 'LIKE', "%$s%")
                 ->orWhere('id', 'LIKE', "%$s%");
         })->orWhere('comment', 'LIKE', "%$s%")
-            ->orWhere('status', 'LIKE', "%$s%")
-            ->get();
+            ->orWhere('status', 'LIKE', "%$s%");
+        
+        if ($r->route()->named('admin.order.index')) {
+            $orders = $orders->paginate(config('app.pagination'))->withQueryString();
+        } else {
+            $orders = $orders->get();
+        }
         foreach ($orders as $order) {
             $total_amount = 0;
             foreach ($order->book as $book) {
@@ -226,13 +239,16 @@ class AdminDao implements AdminDaoInterface
     public function getBooks(Request $r)
     {
         $s = strtolower($r->get('s'));
-        return Book::whereHas('author', function ($query) use ($s) {
+        $books = Book::whereHas('author', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhereHas('category', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->get();
+            ->orWhere('price', 'LIKE', "%$s%");
+        if ($r->route()->named('admin.book.index')) {
+            return $books->paginate(config('app.pagination'))->withQueryString();
+        }
+        return $books->get();
     }
 
     public function getBookById($id)
@@ -291,13 +307,16 @@ class AdminDao implements AdminDaoInterface
     public function getEbooks(Request $r)
     {
         $s = strtolower($r->get('s'));
-        return Ebook::whereHas('author', function ($query) use ($s) {
+        $ebooks = Ebook::whereHas('author', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhereHas('category', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->get();
+            ->orWhere('price', 'LIKE', "%$s%");
+        if ($r->route()->named('admin.ebook.index')) {
+            return $ebooks->paginate(config('app.pagination'))->withQueryString();
+        }
+        return $ebooks->get();
     }
 
     public function getEbookById($id)
@@ -365,11 +384,14 @@ class AdminDao implements AdminDaoInterface
     {
         $s = strtolower($r->get('s'));
         $id = Auth::user()->id;
-        return User::where(function ($query) use ($s) {
+        $users = User::where(function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%")
                 ->orwhere('email', 'LIKE', "%$s%");
-        })->where('id', 'NOT LIKE', "%$id%")
-            ->get();
+        })->where('id', 'NOT LIKE', "%$id%");
+        if ($r->route()->named('admin.user.index')) {
+            return $users->paginate(config('app.pagination'))->withQueryString();
+        }
+        return $users->get();
     }
 
     public function getUserById($id)
@@ -393,12 +415,15 @@ class AdminDao implements AdminDaoInterface
     public function getFeedback(Request $r)
     {
         $s = strtolower($r->get('s'));
-        return Feedback::where('name', 'LIKE', "%$s%")
+        $feedbacks = Feedback::where('name', 'LIKE', "%$s%")
             ->orWhere('email', 'LIKE', "%$s%")
             ->orWhere('address', 'LIKE', "%$s%")
             ->orWhere('subject', 'LIKE', "%$s%")
-            ->orWhere('message', 'LIKE', "%$s%")
-            ->get();
+            ->orWhere('message', 'LIKE', "%$s%");
+        if ($r->route()->named('admin.feedback.index')) {
+            return $feedbacks->paginate(config('app.pagination'))->withQueryString();
+        }
+        return $feedbacks->get();
     }
 
     public function getFeedbackById($id)
