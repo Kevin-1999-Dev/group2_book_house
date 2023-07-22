@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Services\PublicServiceInterface;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FeedbackRequest;
 use App\Models\Book;
-use App\Models\BookOrder;
 use App\Models\Ebook;
-use App\Models\EbookOrder;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Category;
+use App\Models\BookOrder;
+use App\Models\EbookOrder;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\FeedbackRequest;
+use App\Contracts\Services\PublicServiceInterface;
 
 class PublicController extends Controller
 {
@@ -35,6 +36,7 @@ class PublicController extends Controller
     public function index(Request $r)
     {
         $books = $this->publicService->getbooks();
+        $categories = Category::get();
         $s = strtolower($r->get('s'));
         $books = Book::whereHas('author', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
@@ -46,7 +48,7 @@ class PublicController extends Controller
             foreach ($books as $book) {
                 $book['date'] = date_format($book->created_at, "m/d/Y");
             }
-        return view('public.book', compact('books'));
+        return view('public.book', compact('books','categories'));
     }
     public function indexAsc(Request $r)
     {
