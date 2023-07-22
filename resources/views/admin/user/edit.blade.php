@@ -3,13 +3,13 @@
 Edit User
 @endsection
 @section('content')
-<div class="user-edit-pg col-12 col-md-10 col-lg-8 mx-auto pb-5">
+<div class="user-edit-pg col-11 col-md-10 col-lg-8 mx-auto pb-5">
 <div class="card">
     <div class="card-header">
         <h3 class="f-3">Edit User</h3>
     </div>
     <div class="card-body">
-        <form action="{{ route('admin.user.update',$user->id)}}" method="post" class="px-4 f-7">
+        <form action="{{ route('admin.user.update',$user->id)}}" method="post" class="px-lg-4 f-7">
             @csrf
             <div class="form-group m-3">
                 <label for="role" class="form-label f-6">Role</label>

@@ -3,12 +3,13 @@
 Edit Book
 @endsection
 @section('content')
-<div class="card mt-4">
+<div class="edit-pg col-11 col-md-10 col-lg-8 mx-auto pb-5">
+<div class="card">
     <div class="card-header">
-        <h3>Edit Book</h3>
+        <h3 class="f-3">Edit Book</h3>
     </div>
-    <div class="card-body">
-        <form action="{{ route('admin.book.update',$book->id)}}" method="post" class="mt-4 p-4" enctype='multipart/form-data'>
+    <div class="card-body f-7">
+        <form action="{{ route('admin.book.update',$book->id)}}" method="post" class="px-md-4" enctype='multipart/form-data'>
             @csrf
             <div class="form-group m-3">
                 <label for="title">Title</label>
@@ -77,6 +78,7 @@ Edit Book
             </div>
         </form>
     </div>
+</div>
 </div>
 <script>
     $('.multiple-select-field').select2({

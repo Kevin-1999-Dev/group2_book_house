@@ -64,7 +64,7 @@
                 @endif
             @endif
         </span>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler btn p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -110,10 +110,12 @@
                     @endif
                 @endif
             </ul>
-            <div class="d-flex  me-lg-5">
+            <div class="d-flex me-lg-5">
                 @if (empty(Auth::user()))
-                    <a href="{{ route('auth.loginPage') }}" class="btn btn-primary nav-item me-2">Login</a>
-                    <a href="{{ route('auth.registerPage') }}" class="btn btn-primary nav-item">Register</a>
+                    <a href="{{ route('auth.loginPage') }}" class="btn btn-primary nav-item me-2 d-none d-lg-inline-block">Login</a>
+                    <a href="{{ route('auth.registerPage') }}" class="btn btn-primary nav-item d-none d-lg-inline-block">Register</a>
+                    <a href="{{ route('auth.loginPage') }}" class="nav-item me-3 d-lg-none login fw-bold">Login</a>
+                    <a href="{{ route('auth.registerPage') }}" class="nav-item d-lg-none float-end register fw-bold">Register</a>
                 @else
                     @if (Auth::user()->role == 1)
                         <div class="dropdown d-none d-lg-block">

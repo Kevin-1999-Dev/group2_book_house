@@ -3,7 +3,7 @@
 Contact Us Page
 @endsection
 @section('content')
-<div class="container-fluid contact-pg px-4 px-md-0">
+<div class="contact-pg px-4 px-md-0">
   @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
     <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
@@ -19,7 +19,7 @@ Contact Us Page
     <!-- Message -->
     <div class="col-md-6 px-md-3 px-lg-5">
       <h2 class="f-3 mb-3"><span class="border-bottom border-primary-subtle">Feedback here</span></h2>
-      <form class="row g-3" action="{{ route('feedbacks.store') }}" method="post">
+      <form class="row g-3 f-6" action="{{ route('feedbacks.store') }}" method="post">
         @csrf
         <div class="col-md-6 form-floating">
           <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{(old('email'))}}">
