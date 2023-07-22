@@ -30,7 +30,6 @@ Route::get('/bookDesc', [PublicController::class, 'indexDesc'])->name('public.bo
 Route::get('/ebookAsc', [PublicController::class, 'ebookAsc'])->name('public.ebook.asc');
 Route::get('/ebookDesc', [PublicController::class, 'ebookDesc'])->name('public.ebook.desc');
 
-
 Route::prefix('cart')->group(function () {
     Route::get('/', [PublicController::class, 'cartIndex'])->name('public.cart.index');
     Route::get('/info', [PublicController::class, 'cartInfo'])->name('public.cart.info');
