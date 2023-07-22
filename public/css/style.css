@@ -55,7 +55,11 @@ a:hover {
 .payment-pg,
 .user-pg,
 .user-edit-pg,
-.profile-pg {
+.profile-pg,
+.profile-edit,
+.change-password,
+.create-pg,
+.edit-pg {
     min-height: 77vh;
 }
 .mv {
@@ -80,7 +84,9 @@ a:hover {
     font-size: 18px;
 }
 
-.f-7 {
+.f-7,
+input,
+textarea {
     font-size: 16px;
 }
 
@@ -174,7 +180,7 @@ a:hover {
 /* Responsive Tablet*/
 @media screen and (min-width: 768px) and (max-width: 991px){
     .body-content {
-        padding-top: 80px;
+        padding-top: 10.178vw;
     }
 
     .cart,
@@ -183,50 +189,73 @@ a:hover {
     .detail,
     .contact-pg,
     .order-pg,
-    .order-detail-pg {
+    .order-detail-pg,
+    .author-pg,
+    .auth-book,
+    .auth-ebook,
+    .category-pg,
+    .auth-feedback,
+    .auth-order,
+    .auth-order-detail,
+    .payment-pg,
+    .user-pg,
+    .user-edit-pg,
+    .profile-pg,
+    .profile-edit,
+    .change-password,
+    .create-pg,
+    .edit-pg {
         min-height: 70vh;
     }
 
     .f-2 {
-        font-size: 28px;
+        font-size: 3.562vw;
     }
     .f-3 {
-        font-size: 22px;
+        font-size: 2.799vw;
     }
 
     .f-4 {
-        font-size: 18px;
+        font-size: 2.29vw;
     }
 
-    .f-5 {
-        font-size: 16px;
+    .f-5,
+    .login,
+    .register {
+        font-size: 2.036vw;
     }
     .f-6,
     .btn {
-        font-size: 14px;
+        font-size: 1.781vw;
     }
 
+    .f-7,
+input,
+textarea {
+    font-size: 2.083vw;
+}
+
     .f-s {
-        font-size: 12px;
+        font-size: 1.527vw;
     }
 
     /* Public */
     .logo,
     .f-logo {
-        width: 60px;
+        width: 7.634vw;
     }
 
     .profile{
-        width: 35px;
-        height: 35px;
+        width: 4.557vw;
+        height: 4.557vw;
      }
 
     .book-cover {
-        height: 160px;
+        height: 20.356vw;
     }
 
     .book-card:hover {
-        box-shadow: 0 0 15px #e3e7e0;
+        box-shadow: 0 0 1.908vw #e3e7e0;
         opacity: 0.9;
     }
 
@@ -239,64 +268,88 @@ a:hover {
     }
 
     .sec-what .box-one .text{
-        padding-top: 80px;
+        padding-top: 10.178vw;
     }
     .sec-what .box-two .text{
-        padding-top: 50px;
+        padding-top: 6.361vw;
     }
 }
 
 /* Smart phone */
 @media screen and (max-width: 767.9px){
     .body-content {
-        padding-top: 70px;
+        padding-top: 15.625vw;
     }
 
     .cart,
-    .book-pg,
-    .ebook-pg,
-    .detail,
-    .contact-pg,
-    .order-pg,
-    .order-detail-pg {
+.book-pg,
+.ebook-pg,
+.detail,
+.contact-pg,
+.order-pg,
+.order-detail-pg,
+.author-pg,
+.auth-book,
+.auth-ebook,
+.category-pg,
+.auth-feedback,
+.auth-order,
+.auth-order-detail,
+.payment-pg,
+.user-pg,
+.user-edit-pg,
+.profile-pg,
+.profile-edit,
+.change-password,
+.create-pg,
+.edit-pg {
         min-height: 87vh;
     }
 
     .f-2 {
-        font-size: 36px;
+        font-size: 5.625vw;
     }
     .f-3 {
-        font-size: 28px;
+        font-size: 4.375vw;
     }
 
     .f-4 {
-        font-size: 22px;
+        font-size: 3.438vw;
     }
 
-    .f-5 {
-        font-size: 20px;
+    .f-5,
+    .login,
+    .register {
+        font-size: 3.125vw;
     }
-    .f-6 {
-        font-size: 18px;
+    .f-6,
+    .btn {
+        font-size: 2.813vw;
     }
+
+    .f-7,
+input,
+textarea {
+    font-size: 2.5vw;
+}
 
     .f-s {
-        font-size: 14px;
+        font-size: 2.188vw;
     }
 
     /* Public */
     .logo,
     .f-logo {
-        width: 70px;
+        width: 10.938vw;
     }
 
     .profile{
-        width: 36px;
-        height: 36px;
+        width: 6.25vw;
+        height: 6.25vw;
      }
 
     .book-cover {
-        height: 190px;
+        height: 31.25vw;
     }
 
     .contact-txt {
@@ -316,23 +369,23 @@ a:hover {
         justify-content: space-evenly;
     }
     .box button{
-        font-size: 10px;
+        font-size: 10.003px;
     }
     .box i{
         display: none;
     }
     .list-one{
-        height: 250px;
+        height: 250.003px;
     }
 
     .list-two{
-        height: 250px;
+        height: 250.003px;
     }
     .graph .g-one {
-        margin-bottom: 15px;
+        margin-bottom: 15.002px;
     }
     .graph .f-3 {
-        margin-bottom: 10px;
+        margin-bottom: 10.003px;
     }
     /* User Dashboard */
     .tb {

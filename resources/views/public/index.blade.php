@@ -26,10 +26,14 @@ Home Page
         </p>
         @if (empty(Auth::user()))
         <span class="alert-txt f-6">Create or login to your own account and unlock a world of amazing books.
-        <i class="fa-regular fa-face-smile-wink"></i>
+          <i class="fa-regular fa-face-smile-wink"></i>
         </span>
         @else
+        @if (Auth::user()->role == 1)
+        <a href="" class="btn btn-dark btn-sm">See your books</a>
+        @else
         <a href="{{ route('user.order.index') }}" class="btn btn-dark btn-sm">See your books</a>
+        @endif
         @endif
       </div>
     </div>
@@ -42,7 +46,7 @@ Home Page
       <div class="card shadow-sm">
         <h3 class="card-header shadow-sm border-bottom border-danger-subtle f-4">Avilable Books</h3>
         <div class="card-body book-box">
-          <div class="row pb-3 pb-md-0 pb-lg-3">
+          <div class="row">
             @foreach ($books as $book)
             <a href="{{ route('public.book_detail', $book->id) }}" class="col-6 col-sm-4 col-md-6 col-lg-4 mb-3">
               <div class="card shadow-sm bg-body-secondary">
@@ -51,7 +55,10 @@ Home Page
                   <h2 class="f-6 fw-bold">{{$book->title}}</h2>
                   <p class="f-s mb-1">
                     @foreach ($book->author as $author)
-                    {{$author->name}}/
+                    {{$author->name}}
+                    @if (!($loop->last))
+                    /
+                    @endif
                     @endforeach
                   </p>
                   @foreach ($book->category as $category)
@@ -85,7 +92,10 @@ Home Page
                   <h2 class="f-6 fw-bold">{{$ebook->title}}</h2>
                   <p class="f-s mb-1">
                     @foreach ($ebook->author as $author)
-                    {{$author->name}}/
+                    {{$author->name}}
+                    @if (!($loop->last))
+                    /
+                    @endif
                     @endforeach
                   </p>
                   @foreach ($ebook->category as $category)

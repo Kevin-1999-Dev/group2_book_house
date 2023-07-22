@@ -3,7 +3,7 @@
 Order Detail
 @endsection
 @section('content')
-<div class="auth-order-detail col-12 col-md-10 mx-auto py-2">
+<div class="auth-order-detail col-11 col-md-10 mx-auto py-2">
     <div class="col-12 align-self-center clearfix">
         <h3 class="f-3">Orders by {{$order->user->name}}</h3>
         <div class="card my-2">
@@ -17,7 +17,7 @@ Order Detail
                             <td scope="col">Type</td>
                             <td scope="col">Title</td>
                             <td scope="col">Price</td>
-                            <td scope="col">Quantity</td>
+                            <td scope="col"><span class="d-none d-md-block">Quantity</span><span class="d-md-none">Qty</span></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,9 +54,11 @@ Order Detail
                     <option value="pending" {{$order->status=='pending' ? 'selected' : ''}}>pending</option>
                 </select>
             </div>
-            <div class="form-group mt-4">
-                <a href="{{ route('admin.order.index')}}"><span class="btn btn-secondary float-start">Back</span></a>
-                <input type="submit" class="btn btn-primary float-end" value="Submit">
+            <div class="form-group mt-2 mt-lg-4">
+                <a href="{{ route('admin.order.index')}}" class="d-none d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-primary float-end d-none d-lg-inline-block" value="Submit">
+                <a href="{{ route('admin.order.index')}}" class="d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
+                <input type="submit" class="btn btn-sm btn-primary float-end d-lg-none" value="Submit">
             </div>
         </form>
     </div>

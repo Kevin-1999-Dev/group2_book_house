@@ -3,12 +3,13 @@
 Edit Author
 @endsection
 @section('content')
-        <div class="card mt-4">
+<div class="edit-pg col-11 col-md-10 col-lg-8 mx-auto pb-5">
+        <div class="card">
             <div class="card-header">
-                <h3>Edit Author</h3>
+                <h3 class="f-3">Edit Author</h3>
             </div>
-            <div class="card-body">
-                <form action="{{ route('admin.author.update',$author->id)}}" method="post" class="p-4">
+            <div class="card-body f-7">
+                <form action="{{ route('admin.author.update',$author->id)}}" method="post" class="px-lg-4">
                     @csrf
                     <div class="form-group m-3">
                         <label for="name">Name</label>
@@ -24,4 +25,5 @@ Edit Author
                 </form>
             </div>
         </div>
+</div>
 @endsection
