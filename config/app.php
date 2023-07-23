@@ -190,4 +190,16 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
+
+    /*
+    /--------------------------------------------------------------------------
+    / Pagination for Admin Dashboard Tables
+    /--------------------------------------------------------------------------
+    / This is pagination value for "Admin Dashboard tables".
+    / For example: if the value is "3", the first page of admin dashboard table for category
+    / will show for 3 row maximum.
+    / Blank(not configured in .env) or 0 for no pagination. 
+    */
+    'pagination' => env('PAGINATION'),
+
 ];

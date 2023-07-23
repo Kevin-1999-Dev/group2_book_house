@@ -76,6 +76,7 @@ Ebook List
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $ebooks->links() }}
                 </div>
             </div>
 

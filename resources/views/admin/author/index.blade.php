@@ -85,6 +85,7 @@ Author List
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $authors->links() }}
                 </div>
             </div>
         </div>

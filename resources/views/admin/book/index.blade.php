@@ -76,6 +76,7 @@ Book List
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $books->links() }}
                 </div>
             </div>
         </div>
