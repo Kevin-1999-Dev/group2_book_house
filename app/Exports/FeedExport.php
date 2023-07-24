@@ -9,13 +9,17 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class FeedExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        return Feedback::select('id','name','email','address','subject','message')->get();
+        return Feedback::select('id', 'name', 'email', 'address', 'subject', 'message')->get();
     }
-
+    /**
+     * headings
+     *
+     * @return array
+     */
     public function headings(): array
     {
         return [

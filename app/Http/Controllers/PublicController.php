@@ -17,22 +17,35 @@ use App\Contracts\Services\PublicServiceInterface;
 class PublicController extends Controller
 {
     private $publicService;
-
+    /**
+     * __construct
+     *
+     * @param  mixed $publicServiceInterface
+     * @return void
+     */
     public function __construct(PublicServiceInterface $publicServiceInterface)
     {
         $this->publicService = $publicServiceInterface;
     }
-
+    /**
+     * home
+     *
+     * @return void
+     */
     public function home()
-{
-    $data = $this->publicService->getAll();
-    $books = $data->books;
-    $ebooks = $data->ebooks;
+    {
+        $data = $this->publicService->getAll();
+        $books = $data->books;
+        $ebooks = $data->ebooks;
 
-    return view('public.index', compact('books', 'ebooks'));
-}
-
-
+        return view('public.index', compact('books', 'ebooks'));
+    }
+    /**
+     * index
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function index(Request $r)
     {
         $books = $this->publicService->getbooks();
@@ -45,11 +58,17 @@ class PublicController extends Controller
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
             ->get();
-            foreach ($books as $book) {
-                $book['date'] = date_format($book->created_at, "m/d/Y");
-            }
-        return view('public.book', compact('books','categories'));
+        foreach ($books as $book) {
+            $book['date'] = date_format($book->created_at, "m/d/Y");
+        }
+        return view('public.book', compact('books', 'categories'));
     }
+    /**
+     * indexAsc
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function indexAsc(Request $r)
     {
         $books = $this->publicService->getbooks();
@@ -60,13 +79,19 @@ class PublicController extends Controller
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
-            ->orderby('created_at','asc')
+            ->orderby('created_at', 'asc')
             ->get();
-            foreach ($books as $book) {
-                $book['date'] = date_format($book->created_at, "m/d/Y");
-            }
+        foreach ($books as $book) {
+            $book['date'] = date_format($book->created_at, "m/d/Y");
+        }
         return view('public.book', compact('books'));
     }
+    /**
+     * indexDesc
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function indexDesc(Request $r)
     {
         $books = $this->publicService->getbooks();
@@ -77,14 +102,19 @@ class PublicController extends Controller
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
-            ->orderby('created_at','desc')
+            ->orderby('created_at', 'desc')
             ->get();
-            foreach ($books as $book) {
-                $book['date'] = date_format($book->created_at, "m/d/Y");
-            }
+        foreach ($books as $book) {
+            $book['date'] = date_format($book->created_at, "m/d/Y");
+        }
         return view('public.book', compact('books'));
     }
-
+    /**
+     * ebook
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function ebook(Request $r)
     {
         $ebooks = $this->publicService->getebooks();
@@ -96,12 +126,18 @@ class PublicController extends Controller
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
             ->get();
-            foreach ($ebooks as $ebook) {
-                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
-            }
+        foreach ($ebooks as $ebook) {
+            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+        }
 
         return view('public.ebook', compact('ebooks'));
     }
+    /**
+     * ebookAsc
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function ebookAsc(Request $r)
     {
         $ebooks = $this->publicService->getebooks();
@@ -112,14 +148,20 @@ class PublicController extends Controller
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
-            ->orderBy('created_at','asc')
+            ->orderBy('created_at', 'asc')
             ->get();
-            foreach ($ebooks as $ebook) {
-                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
-            }
+        foreach ($ebooks as $ebook) {
+            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+        }
 
         return view('public.ebook', compact('ebooks'));
     }
+    /**
+     * ebookDesc
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function ebookDesc(Request $r)
     {
         $ebooks = $this->publicService->getebooks();
@@ -130,34 +172,47 @@ class PublicController extends Controller
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%")
-            ->orderBy('created_at','desc')
+            ->orderBy('created_at', 'desc')
             ->get();
-            foreach ($ebooks as $ebook) {
-                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
-            }
+        foreach ($ebooks as $ebook) {
+            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+        }
 
         return view('public.ebook', compact('ebooks'));
     }
-
+    /**
+     * show_book
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function show_book($id)
     {
         $book = $this->publicService->getBookById($id);
 
         return view('public.book_detail', compact('book'));
     }
-
+    /**
+     * show_ebook
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function show_ebook($id)
     {
         $ebook = $this->publicService->getEbookById($id);
 
         return view('public.ebook_detail', compact('ebook'));
     }
-
+    /**
+     * feedback
+     *
+     * @return void
+     */
     public function feedback()
     {
         return view('public.contact_us');
     }
-
     public function storeFeedback(FeedbackRequest $request)
     {
         $this->publicService->createFeedback($request->only([
@@ -169,13 +224,21 @@ class PublicController extends Controller
         ]));
         return redirect()->route('public.contact_us')->with('success', 'Thank you for your feedback');
     }
-
+    /**
+     * cartIndex
+     *
+     * @return void
+     */
     public function cartIndex()
     {
         $payments = Payment::all();
         return view('public.cart.index', compact('payments'));
     }
-
+    /**
+     * cartInfo
+     *
+     * @return void
+     */
     public function cartInfo()
     {
         $cart = session()->get('cart');
@@ -192,7 +255,13 @@ class PublicController extends Controller
         session()->put('cart', $cart);
         return session()->get('cart');
     }
-
+    /**
+     * cartAddBook
+     *
+     * @param  mixed $r
+     * @param  mixed $id
+     * @return void
+     */
     public function cartAddBook(Request $r, int $id)
     {
         $book = Book::findOrFail($id);
@@ -213,7 +282,12 @@ class PublicController extends Controller
         }
         session()->put('cart', $cart);
     }
-
+    /**
+     * cartAddEbook
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function cartAddEbook(int $id)
     {
         $ebook = Ebook::findOrFail($id);
@@ -225,7 +299,13 @@ class PublicController extends Controller
         ];
         session()->put('cart', $cart);
     }
-
+    /**
+     * cartDelete
+     *
+     * @param  mixed $type
+     * @param  mixed $id
+     * @return void
+     */
     public function cartDelete(string $type, int $id)
     {
         $cart = session()->get('cart');
@@ -234,7 +314,12 @@ class PublicController extends Controller
             session()->put('cart', $cart);
         }
     }
-
+    /**
+     * cartStore
+     *
+     * @param  mixed $r
+     * @return void
+     */
     public function cartStore(Request $r)
     {
         if ($r->user()) {

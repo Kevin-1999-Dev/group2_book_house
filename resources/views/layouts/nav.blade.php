@@ -64,8 +64,9 @@
                 @endif
             @endif
         </span>
-        <button class="navbar-toggler btn p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler btn p-1" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -105,17 +106,21 @@
                                 class="btn btn-dark"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order
                                 History</a></li>
                         <li class="nav-item fw-bold d-lg-none">
-                            <a class="nav-link" href="{{ route('user.order.index') }}"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
+                            <a class="nav-link" href="{{ route('user.order.index') }}"><i
+                                    class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
                         </li>
                     @endif
                 @endif
             </ul>
             <div class="d-flex me-lg-5">
                 @if (empty(Auth::user()))
-                    <a href="{{ route('auth.loginPage') }}" class="btn btn-primary nav-item me-2 d-none d-lg-inline-block">Login</a>
-                    <a href="{{ route('auth.registerPage') }}" class="btn btn-primary nav-item d-none d-lg-inline-block">Register</a>
+                    <a href="{{ route('auth.loginPage') }}"
+                        class="btn btn-primary nav-item me-2 d-none d-lg-inline-block">Login</a>
+                    <a href="{{ route('auth.registerPage') }}"
+                        class="btn btn-primary nav-item d-none d-lg-inline-block">Register</a>
                     <a href="{{ route('auth.loginPage') }}" class="nav-item me-3 d-lg-none login fw-bold">Login</a>
-                    <a href="{{ route('auth.registerPage') }}" class="nav-item d-lg-none float-end register fw-bold">Register</a>
+                    <a href="{{ route('auth.registerPage') }}"
+                        class="nav-item d-lg-none float-end register fw-bold">Register</a>
                 @else
                     @if (Auth::user()->role == 1)
                         <div class="dropdown d-none d-lg-block">

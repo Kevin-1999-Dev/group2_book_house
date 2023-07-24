@@ -1,14 +1,16 @@
 <?php
-
 namespace App\Dao;
-
 use App\Contracts\Dao\PublicDaoInterface;
 use App\Models\Book;
 use App\Models\Ebook;
 use App\Models\Feedback;
-
 class PublicDao implements PublicDaoInterface
 {
+    /**
+     * getAll
+     *
+     * @return object
+     */
     public function getAll(): object
     {
         $books = Book::take(6)->get();
@@ -19,19 +21,32 @@ class PublicDao implements PublicDaoInterface
             'ebooks' => $ebooks,
         ];
     }
-
+    /**
+     * getBooks
+     *
+     * @return object
+     */
     public function getBooks(): object
     {
         $books = Book::all();
         return $books;
     }
-
+    /**
+     * getEbooks
+     *
+     * @return object
+     */
     public function getEbooks(): object
     {
         $ebooks = Ebook::all();
         return $ebooks;
     }
-
+    /**
+     * getBookById
+     *
+     * @param  mixed $id
+     * @return object
+     */
     public function getBookById($id): object
     {
         $book = Book::findOrFail($id);
@@ -39,7 +54,12 @@ class PublicDao implements PublicDaoInterface
 
         return $book;
     }
-
+    /**
+     * getEbookById
+     *
+     * @param  mixed $id
+     * @return object
+     */
     public function getEbookById($id): object
     {
         $ebook = Ebook::findOrFail($id);
@@ -47,7 +67,12 @@ class PublicDao implements PublicDaoInterface
 
         return $ebook;
     }
-
+    /**
+     * createFeedback
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function createFeedback(array $data): void
     {
         Feedback::create([
