@@ -15,10 +15,6 @@ class UserService implements UserServiceInterface
         $this->userDao = $userDao;
     }
 
-    public function password(array $data)
-    {
-        $this->userDao->password($data);
-    }
     public function userProfile(ProfileRequest $data, int $id )
     {
         $this->userDao->userProfile($data, $id);

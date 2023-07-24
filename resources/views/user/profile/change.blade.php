@@ -7,24 +7,24 @@
 @section('content')
     <div class="change-password row">
         <div class="col-11 col-md-6 mx-auto">
-            <form action="{{ route('user.changePassword') }}" method="POST" class="shadow-lg px-5 py-3 border rounded border-danger-subtle">
+            <form action="{{ route('user.changePassword',Auth::user()->id) }}" method="POST" class="shadow-lg px-5 py-3 border rounded border-dark-subtle">
                 @csrf
                 <h2 class="text-center f-3"><span class="border-bottom border-danger-subtle">Change Password</span></h2>
                 <div class="form-group mt-3 f-7">
                     <label for="" class="form-label">Old Password</label>
                     <input type="password" name="oldPassword"
-                        class="form-control  @error('oldPassword') is-invalid  @enderror"
+                        class="form-control @if (session('notMatch')) is-invalid @endif  @error('oldPassword') is-invalid  @enderror"
                         id="" placeholder="Enter Old Password...">
                     @error('oldPassword')
                         <i class="invalid-feedback">
                             {{ $message }}
                         </i>
                     @enderror
-                    {{-- @if (session('notMatch'))
+                    @if (session('notMatch'))
                         <i class="invalid-feedback">
                             {{ session('notMatch') }}
                         </i>
-                    @endif --}}
+                    @endif
                 </div>
                 <div class="form-group mt-3 f-7">
                     <label for="" class="form-label">New Password</label>

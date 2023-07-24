@@ -17,7 +17,6 @@ use App\Models\EbookCategory;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Contracts\Dao\AdminDaoInterface;
@@ -27,20 +26,6 @@ use App\Models\UserEbook;
 
 class AdminDao implements AdminDaoInterface
 {
-    public function password(array $data)
-    {
-        $id = Auth::user()->id;
-        $user = User::select('password')->where('id', $id)->first();
-        $dbPassword = $user->password;
-        $userOldPassword = $data['oldPassword'];
-
-        if (Hash::check($userOldPassword, $dbPassword)) {
-            User::where('id', $id)->update([
-                'password' => Hash::make($data['newPassword']),
-            ]);
-            Auth::logout();
-        }
-    }
     public function adminProfile(ProfileRequest $data, int $id)
     {
         $input = [
@@ -186,7 +171,7 @@ class AdminDao implements AdminDaoInterface
                 ->orWhere('id', 'LIKE', "%$s%");
         })->orWhere('comment', 'LIKE', "%$s%")
             ->orWhere('status', 'LIKE', "%$s%");
-        
+
         if ($r->route()->named('admin.order.index')) {
             $orders = $orders->paginate(config('app.pagination'))->withQueryString();
         } else {
