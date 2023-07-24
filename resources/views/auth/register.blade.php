@@ -34,50 +34,50 @@
                     <h2 class="text-center f-3">Register Now</h2>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Name</label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="" placeholder="Name">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="" placeholder="Name">
                         @error('name')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Email</label>
-                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="" placeholder="example@gmail.com">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="" placeholder="example@gmail.com">
                         @error('email')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Phone</label>
-                        <input type="number" name="phone" value="{{ old('phone') }}" class="form-control" id="" placeholder="09*********">
+                        <input type="number" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') is-invalid @enderror" id="" placeholder="09*********">
                         @error('phone')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Address</label>
-                        <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="" placeholder="Address">
+                        <input type="text" name="address" value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" id="" placeholder="Address">
                         @error('address')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="" placeholder="Password">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="" placeholder="Password">
                         @error('password')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Confirm Password</label>
-                        <input type="password" name="password_confirmation" class="form-control" id="" placeholder="Confirm Password">
+                        <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" id="" placeholder="Confirm Password">
                         @error('password_confirmation')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="mt-4">
                         <input type="submit" value="Register" class="btn btn-primary w-100">
                     </div>
-                    <p class="mt-2 mt-lg-3 text-center f-7">Already Have a Account? <a href="{{ route('auth.loginPage') }}" class="text-decoration-none">Sign In</a></p>
+                    <p class="mt-2 mt-lg-3 text-center f-7">Already Have a Account? <a href="{{ route('auth.loginPage') }}" class="text-decoration-none text-primary">Sign In</a></p>
                 </form>
             </div>
         </div>

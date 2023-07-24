@@ -38,23 +38,23 @@
                     <h2 class="text-center f-3">Login</h2>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="" value="{{ old('email') }}" placeholder="Enter Your Email...">
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="" value="{{ old('email') }}" placeholder="Enter Your Email...">
                         @error('email')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="" placeholder="Enter Your Password...">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="" placeholder="Enter Your Password...">
                         @error('password')
-                        <i class="text-danger">{{ $message }}</i>
+                        <i class="invalid-feedback">{{ $message }}</i>
                         @enderror
                     </div>
                     <p class="mt-2 my-lg-3"><a href="" class="text-primary f-7">Forget Password?</a></p>
                     <div class="mt-2">
                         <input type="submit" value="Login" class="btn btn-sm btn-primary w-100">
                     </div>
-                    <p class="mt-3 text-center f-7"> Don't you have account? <a href="{{ route('auth.registerPage') }}" class="text-decoration-none">Sign Up</a></p>
+                    <p class="mt-3 text-center f-7"> Don't you have account? <a href="{{ route('auth.registerPage') }}" class="text-decoration-none text-primary">Sign Up</a></p>
                 </form>
             </div>
         </div>

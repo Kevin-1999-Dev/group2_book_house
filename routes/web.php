@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         //profile
         Route::prefix('profile')->group(function () {
             Route::get('password', [AdminController::class, 'changePasswordPage'])->name('admin.changePasswordPage');
-            Route::post('password/change', [AdminController::class, 'changePassword'])->name('admin.changePassword');
+            Route::post('password/change/{id}', [AdminController::class, 'changePassword'])->name('admin.changePassword');
             Route::get('details', [AdminController::class, 'profilePage'])->name('admin.details');
             Route::get('editPage', [AdminController::class, 'editPage'])->name('admin.editPage');
             Route::post('update/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
@@ -144,7 +144,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('profile')->group(function () {
             Route::get('password', [UserController::class, 'changePasswordPage'])->name('user.changePasswordPage');
-            Route::post('password/change', [UserController::class, 'changePassword'])->name('user.changePassword');
+            Route::post('password/change/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
             Route::get('details', [UserController::class, 'profilePage'])->name('user.details');
             Route::get('editPage', [UserController::class, 'editPage'])->name('user.editPage');
             Route::post('update/{id}', [UserController::class, 'updateUser'])->name('user.updateUser');

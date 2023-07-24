@@ -21,6 +21,8 @@ use App\Imports\CategoryImport;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\AuthorRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\ProfileRequest;
@@ -162,14 +164,22 @@ class AdminController extends Controller
     public function editPage(){
         return view('admin.profile.edit');
     }
-    public function changePassword(PasswordRequest $r)
+    public function changePassword(PasswordRequest $request,$id)
     {
-        $this->adminService->password($r->only([
-            'oldPassword',
-            'newPassword',
-            'confirmPassword',
-        ]));
-         return redirect()->route('auth.loginPage')->with(['successPwChange'=>'Successfully Change Password...']);
+        $user = User::select('password')->where('id', $id)->first();
+        $dbPassword = $user->password;
+        $userOldPassword = $request->oldPassword;
+
+        if (Hash::check($userOldPassword, $dbPassword)) {
+            User::where('id', $id)->update([
+                'password' => Hash::make($request->newPassword),
+            ]);
+            Auth::logout();
+            return redirect()->route('auth.loginPage')->with(['successPwChange'=>'Successfully Change Password...']);
+        }else{
+            return back()->with(['notMatch' => 'The Old Password not Match. Try Again!']);
+        }
+
     }
     public function updateAdmin(ProfileRequest $request,int $id){
         $this->adminService->adminProfile($request,$id);
@@ -181,7 +191,7 @@ class AdminController extends Controller
         $categories = $this->adminService->getCategories($r);
         return view('admin.category.index', compact('categories'));
     }
-    
+
 
     public function categoryCreate()
     {

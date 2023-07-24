@@ -17,10 +17,6 @@ class AdminService implements AdminServiceInterface
     {
         $this->adminDao = $adminDao;
     }
-    public function password(array $data)
-    {
-        $this->adminDao->password($data);
-    }
 
     public function  adminProfile(ProfileRequest $data,int $id){
         $this->adminDao->adminProfile($data,$id);

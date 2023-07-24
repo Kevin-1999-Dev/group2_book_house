@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Ebook;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
-use App\Models\Ebook;
 
 class UserController extends Controller
 {
@@ -34,14 +36,23 @@ class UserController extends Controller
     {
         $this->userService = $userServiceInterface;
     }
-    public function changePassword(PasswordRequest $r)
+    public function changePassword(PasswordRequest $request,$id)
     {
-        $this->userService->password($r->only([
-            'oldPassword',
-            'newPassword',
-            'confirmPassword',
-        ]));
-        return redirect()->route('auth.loginPage')->with(['successPwChange' => 'Successfully Change Password...']);
+        $user = User::select('password')->where('id', $id)->first();
+        $dbPassword = $user->password;
+        $userOldPassword = $request->oldPassword;
+
+        if (Hash::check($userOldPassword, $dbPassword)) {
+            User::where('id', $id)->update([
+                'password' => Hash::make($request->newPassword),
+            ]);
+            Auth::logout();
+            return redirect()->route('auth.loginPage')->with(['successPwChange' => 'Successfully Change Password...']);
+        }else{
+            return back()->with(['notMatch' => 'The Old Password not Match. Try Again!']);
+        }
+
+
     }
     public function updateUser(ProfileRequest $request, int $id)
     {

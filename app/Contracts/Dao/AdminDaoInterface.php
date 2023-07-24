@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  */
 interface AdminDaoInterface
 {
-    public function password(array $data);
+
 
     public function adminProfile(ProfileRequest $data,int $id);
 
