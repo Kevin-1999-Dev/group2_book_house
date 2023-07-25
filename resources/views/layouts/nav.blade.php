@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <h1 class="mx-lg-5 nav-brand">
             <a href="{{ route('public.index') }}" class="me-2 me-md-4 me-lg-0">
-                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="Logo" class="logo"><span class="d-none d-md-inline-block f-3"> BOOK HOUSE</span>
+                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="Logo" class="logo">
             </a>
         </h1>
-        <span class="ps-5 me-lg-5">
+        <span class="ps-5 ms-md-5 ms-lg-0 me-lg-5">
             <a class="btn btn-outline-dark btn-sm" href="{{ route('public.cart.index') }}">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge text-bg-danger p-1" id="totalItem">{{ isset(session('cart')['totalItem']) ? session('cart')['totalItem'] : '0' }}</span>
             </a>

@@ -40,7 +40,7 @@
     <footer class="bg-body-secondary py-3 px-2 px-md-5 border-top border-danger-subtle">
         <div class="row d-flex align-items-center">
             <div class="col-4">
-                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="f-logo"><span class="d-none d-md-inline-block f-3"> BOOK HOUSE</span>
+                <img src="{{ asset('images/img_bookhouse_logo.png') }}" alt="comida" class="f-logo">
             </div>
             <div class="col-8 text-end f-s text-secondary">
                 &copy; 2023 All Right Reserved.
