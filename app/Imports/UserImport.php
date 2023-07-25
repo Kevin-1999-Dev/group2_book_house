@@ -36,10 +36,10 @@ class UserImport implements ToModel, WithHeadingRow, WithValidation
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'phone' => 'required|min:10',
+            'email' => 'required|unique:users,email|email',
+            'phone' => 'required|min:11',
             'address' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ];
     }
 }

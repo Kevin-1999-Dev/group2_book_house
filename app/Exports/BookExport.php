@@ -1,17 +1,16 @@
 <?php
 namespace App\Exports;
-use App\Models\Category;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Book;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-
-class CategoryExport implements FromCollection, WithHeadings
+use Maatwebsite\Excel\Concerns\FromCollection;
+class BookExport implements FromCollection, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return Category::all();
+        return Book::all();
     }
     /**
      * headings
@@ -22,7 +21,13 @@ class CategoryExport implements FromCollection, WithHeadings
     {
         return [
             'Id',
-            'Name',
+            'Title',
+            'Cover',
+            'Description',
+            'Page Count',
+            'Price',
+            'Created_at',
+            'Updated_at',
         ];
     }
 }

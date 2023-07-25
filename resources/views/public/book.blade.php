@@ -13,8 +13,8 @@
                         <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('public.book.asc') }}" class="dropdown-item" type="button">Ascending</a></li>
-                        <li><a href="{{ route('public.book.desc') }}" class="dropdown-item" type="button">Descending</a>
+                        <li><a href="{{ route('public.book',"Asc") }}" class="dropdown-item" type="button">Ascending</a></li>
+                        <li><a href="{{ route('public.book',"Desc") }}" class="dropdown-item" type="button">Descending</a>
                         </li>
                     </ul>
                 </span>
@@ -44,8 +44,8 @@
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('public.book.asc') }}" class="dropdown-item" type="button">Ascending</a></li>
-                    <li><a href="{{ route('public.book.desc') }}" class="dropdown-item" type="button">Descending</a></li>
+                    <li><a href="{{ route('public.book',"Asc") }}" class="dropdown-item" type="button">Ascending</a></li>
+                    <li><a href="{{ route('public.book',"Desc") }}" class="dropdown-item" type="button">Descending</a></li>
                 </ul>
             </span>
         </div>

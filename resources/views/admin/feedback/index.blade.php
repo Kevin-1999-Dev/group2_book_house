@@ -26,12 +26,6 @@ Feedback List
     </div>
     <div class="row mt-md-2">
         <div class="col-12 text-end">
-            <form action="{{ route('admin.feedback.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="" id="choose">
-                <button type="button" class="btn btn-dark" id="show-btn" onclick="document.getElementById('choose').click()">Import</button>
-                <button type="submit" class="btn btn-dark import-btn">Import</button>
-            </form>
             <a href="{{ route('admin.feedback.export') }}" class="btn btn-dark">Export</a>
         </div>
     </div>
@@ -177,15 +171,5 @@ Feedback List
 
     });
 </script>
+@endsection
 
-@endsection
-@section('script')
-<script>
-    $(document).ready(function() {
-        $('#show-btn').click(function() {
-            $(this).toggle();
-            $('.import-btn').toggleClass('import-btn');
-        });
-    });
-</script>
-@endsection
