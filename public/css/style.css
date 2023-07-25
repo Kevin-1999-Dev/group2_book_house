@@ -85,12 +85,12 @@ a:hover {
   font-size: 1.389vw;
 }
 
-.f-6,
-.btn {
+.f-6 {
   font-size: 1.25vw;
 }
 
 .f-7,
+.btn,
 input,
 textarea {
   font-size: 1.111vw;
@@ -100,20 +100,8 @@ textarea {
   font-size: 0.972vw;
 }
 
-.bookhouse {
-  color: yellow;
-}
-
-.mark-txt {
-  color: #0760ae;
-}
-
 .alert-txt {
   color: #ff1100;
-}
-
-.green-txt {
-  color: #4be617;
 }
 
 /* Public */
@@ -123,12 +111,13 @@ textarea {
 }
 
 .profile {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
-.mv-txt {
-  background: url("../images/img_index_bg1.png") no-repeat center/contain;
+.mv-txt,
+.contact-txt {
+  line-height: 1.4;
 }
 
 .book-cover {
@@ -140,11 +129,8 @@ textarea {
   opacity: 0.9;
 }
 
-.contact-txt {
-  line-height: 1.4;
-}
-
-.mv .row {
+.mv .row,
+.contact-pg .row {
   --bs-gutter-x: 0;
 }
 
@@ -181,6 +167,10 @@ textarea {
 
 .sec-what .box-two .text {
   padding-top: 140px;
+}
+
+.ebook-link {
+  color: blue;
 }
 
 
@@ -373,38 +363,8 @@ textarea {
     --bs-gutter-x: 0;
   }
 
-  /* Admin Dashboard */
-  .arrow {
-    display: none;
-  }
-
-  .box {
-
-    justify-content: space-evenly;
-  }
-
-  .box button {
-    font-size: 10.003px;
-  }
-
-  .box i {
-    display: none;
-  }
-
-  .list-one {
-    height: 250.003px;
-  }
-
-  .list-two {
-    height: 250.003px;
-  }
-
-  .graph .g-one {
-    margin-bottom: 15.002px;
-  }
-
-  .graph .f-3 {
-    margin-bottom: 10.003px;
+  .sm-detail {
+    text-align: center;
   }
 
   /* User Dashboard */
