@@ -52,7 +52,7 @@ class AdminDao implements AdminDaoInterface
         }
         User::where('id', $id)->update($input);
     }
-    
+
     /**
      * getCategories
      *
@@ -67,7 +67,7 @@ class AdminDao implements AdminDaoInterface
         }
         return Category::Where('name', 'LIKE', "%$s%")->get();
     }
-    
+
     /**
      * createCategory
      *
@@ -80,7 +80,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * getCategoryById
      *
@@ -91,7 +91,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Category::findOrFail($id);
     }
-    
+
     /**
      * updateCategory
      *
@@ -105,7 +105,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * deleteCategoryById
      *
@@ -123,7 +123,7 @@ class AdminDao implements AdminDaoInterface
         });
         $category->delete();
     }
-    
+
     /**
      * getAuthors
      *
@@ -138,7 +138,7 @@ class AdminDao implements AdminDaoInterface
         }
         return Author::Where('name', 'LIKE', "%$s%")->get();
     }
-    
+
     /**
      * createAuthor
      *
@@ -151,7 +151,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * getAuthorById
      *
@@ -162,7 +162,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Author::findOrFail($id);
     }
-    
+
     /**
      * updateAuthor
      *
@@ -176,7 +176,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * deleteAuthorById
      *
@@ -194,7 +194,7 @@ class AdminDao implements AdminDaoInterface
         });
         $author->delete();
     }
-    
+
     /**
      * getPayments
      *
@@ -209,7 +209,7 @@ class AdminDao implements AdminDaoInterface
         }
         return Payment::Where('name', 'LIKE', "%$s%")->get();
     }
-    
+
     /**
      * createPayment
      *
@@ -222,7 +222,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * getPaymentById
      *
@@ -233,7 +233,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Payment::findOrFail($id);
     }
-    
+
     /**
      * updatePayment
      *
@@ -247,7 +247,7 @@ class AdminDao implements AdminDaoInterface
             'name' => $data['name'],
         ]);
     }
-    
+
     /**
      * deletePaymentById
      *
@@ -258,7 +258,7 @@ class AdminDao implements AdminDaoInterface
     {
         Payment::findOrFail($id)->delete();
     }
-    
+
     /**
      * getOrders
      *
@@ -293,7 +293,7 @@ class AdminDao implements AdminDaoInterface
         }
         return $orders;
     }
-    
+
     /**
      * getOrderById
      *
@@ -313,7 +313,7 @@ class AdminDao implements AdminDaoInterface
         $order['total_amount'] = $total_amount;
         return $order;
     }
-    
+
     /**
      * updateOrder
      *
@@ -336,7 +336,7 @@ class AdminDao implements AdminDaoInterface
             }
         }
     }
-    
+
     /**
      * getBooks
      *
@@ -357,7 +357,7 @@ class AdminDao implements AdminDaoInterface
         }
         return $books->get();
     }
-    
+
     /**
      * getBookById
      *
@@ -368,7 +368,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Book::findOrFail($id);
     }
-    
+
     /**
      * createBook
      *
@@ -401,7 +401,7 @@ class AdminDao implements AdminDaoInterface
         }
         $book->save();
     }
-    
+
     /**
      * updateBook
      *
@@ -424,7 +424,7 @@ class AdminDao implements AdminDaoInterface
         }
         $book->save();
     }
-    
+
     /**
      * deleteBookById
      *
@@ -435,7 +435,7 @@ class AdminDao implements AdminDaoInterface
     {
         Book::findOrFail($id)->delete();
     }
-    
+
     /**
      * getEbooks
      *
@@ -456,7 +456,7 @@ class AdminDao implements AdminDaoInterface
         }
         return $ebooks->get();
     }
-    
+
     /**
      * getEbookById
      *
@@ -467,7 +467,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Ebook::findOrFail($id);
     }
-    
+
     /**
      * createEbook
      *
@@ -504,7 +504,7 @@ class AdminDao implements AdminDaoInterface
         }
         $ebook->save();
     }
-    
+
     /**
      * updateEbook
      *
@@ -531,7 +531,7 @@ class AdminDao implements AdminDaoInterface
             $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
         }
     }
-    
+
     /**
      * deleteEbookById
      *
@@ -542,7 +542,7 @@ class AdminDao implements AdminDaoInterface
     {
         Ebook::findOrFail($id)->delete();
     }
-    
+
     /**
      * getUsers
      *
@@ -562,7 +562,7 @@ class AdminDao implements AdminDaoInterface
         }
         return $users->get();
     }
-    
+
     /**
      * getUserById
      *
@@ -573,7 +573,7 @@ class AdminDao implements AdminDaoInterface
     {
         return User::findOrFail($id);
     }
-    
+
     /**
      * updateUser
      *
@@ -588,7 +588,7 @@ class AdminDao implements AdminDaoInterface
             'active' => $data['active'] == "enable" ? 1 : 0,
         ]);
     }
-    
+
     /**
      * deleteUser
      *
@@ -599,7 +599,7 @@ class AdminDao implements AdminDaoInterface
     {
         User::findOrFail($id)->delete();
     }
-    
+
     /**
      * getFeedback
      *
@@ -619,7 +619,7 @@ class AdminDao implements AdminDaoInterface
         }
         return $feedbacks->get();
     }
-    
+
     /**
      * getFeedbackById
      *
@@ -630,7 +630,7 @@ class AdminDao implements AdminDaoInterface
     {
         return Feedback::findOrFail($id);
     }
-    
+
     /**
      * deleteFeedback
      *
