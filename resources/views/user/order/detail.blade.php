@@ -34,7 +34,7 @@ Order Detail
                             <td>Ebook</td>
                             <td>{{$ebook->title}}</td>
                             <td>{{$ebook->price}} MMK</td>
-                            <td><a href="{{($order->status == 'accepted')? '/user/private/'.$ebook->link : ''}}">{{($order->status == 'accepted')? 'Link' : ''}}</a></td>
+                            <td><a href="{{($order->status == 'accepted')? '/user/private/'.$ebook->link : ''}}" class="ebook-link">{{($order->status == 'accepted')? 'Link' : ''}}</a></td>
                         </tr>
                         @endforeach
                     </tbody>

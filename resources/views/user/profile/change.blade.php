@@ -4,7 +4,7 @@
 Change Password Page
 @endsection
 @section('content')
-<div class="change-password row">
+<div class="change-password">
     <div class="col-11 col-md-6 mx-auto">
         <form action="{{ route('user.changePassword',Auth::user()->id) }}" method="POST" class="shadow-lg px-5 py-3 border rounded border-dark-subtle">
             @csrf
