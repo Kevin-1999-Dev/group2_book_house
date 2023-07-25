@@ -19,9 +19,9 @@ Category List
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-        <a href="{{ route('admin.dashboard') }}" class=" d-none d-md-block">
-            <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
-        </a>
+    <a href="{{ route('admin.dashboard') }}" class=" d-none d-md-block">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
+    </a>
     <div class="row mt-md-4">
         <div class="col-3">
             <a href="{{ route('admin.category.create') }}"><span class="btn btn-primary">Create</span></a>
@@ -53,11 +53,11 @@ Category List
                 <div class="card-header text-center d-md-none">
                     <h3 class="f-3 mb-1">Category List</h3>
                     <form action="{{ route('admin.category.index') }}" method="GET">
-                            <div class="form-group d-inline-block">
-                                <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
-                            </div>
-                            <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
-                        </form>
+                        <div class="form-group d-inline-block">
+                            <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
+                    </form>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped f-7">
@@ -90,7 +90,6 @@ Category List
     </div>
 </div>
 @endsection
-
 @section('script')
 <script>
     $(document).ready(function() {

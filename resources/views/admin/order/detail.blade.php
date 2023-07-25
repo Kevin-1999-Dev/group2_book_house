@@ -44,6 +44,7 @@ Order Detail
         <div class="my-2 clearfix">
             <h5 class="float-end border border-dark p-1 f-6">Payment : {{ $order->payment->name }} | Total : {{ $order->total_amount }} MMK</h5>
         </div>
+        @if ($order->status=='pending')
         <form action="{{ route('admin.order.update',$order->id)}}" method="post" class="mb-3 float-end">
             @csrf
             <div class="form-group f-6">
@@ -61,6 +62,10 @@ Order Detail
                 <input type="submit" class="btn btn-sm btn-primary float-end d-lg-none" value="Submit">
             </div>
         </form>
+        @else
+        <a href="{{ route('admin.order.index')}}" class="d-none float-end d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
+        <a href="{{ route('admin.order.index')}}" class="float-end d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
+        @endif
     </div>
 </div>
 @endsection

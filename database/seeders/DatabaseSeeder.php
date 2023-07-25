@@ -20,6 +20,9 @@ use App\Models\UserEbook;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**

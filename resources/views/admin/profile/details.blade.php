@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
 Account Info Page
 @endsection
-
 @section('content')
 <div class="profile-pg py-5">
     <div class="col-11 col-md-10 col-lg-6 mx-auto bg-light row p-3 rounded-2 border border-danger-subtle">
@@ -29,5 +27,4 @@ Account Info Page
         </div>
     </div>
 </div>
-
 @endsection

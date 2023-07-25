@@ -1,9 +1,8 @@
 @extends('layouts.master')
-
 @section('title')
 Change Password Page
+Change Password Page
 @endsection
-
 @section('content')
 <div class="change-password">
     <div class="col-11 col-md-6 mx-auto">

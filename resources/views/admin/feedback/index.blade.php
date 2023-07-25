@@ -97,8 +97,8 @@ Feedback List
                             <p class="mb-1">Email : {{$feedback->email}}</p>
                             <p class="mb-1">Subject : {{$feedback->subject}}</p>
                             <div class="text-end">
-                            <a type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#detailModal" data-bs-modal-id="{{$feedback->id}}"><i class="fa-solid fa-eye text-success d-lg-none"></i></a>
-                            <a href="{{route('admin.feedback.delete',$feedback->id)}}" onclick="return confirm('Are you sure?')" class="me-2"><i class="fa-solid fa-trash text-danger d-lg-none"></i></a>
+                                <a type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#detailModal" data-bs-modal-id="{{$feedback->id}}"><i class="fa-solid fa-eye text-success d-lg-none"></i></a>
+                                <a href="{{route('admin.feedback.delete',$feedback->id)}}" onclick="return confirm('Are you sure?')" class="me-2"><i class="fa-solid fa-trash text-danger d-lg-none"></i></a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,6 @@ Feedback List
                 detailModal.querySelector('.modal-body .subject').textContent = response.data['subject'];
                 detailModal.querySelector('.modal-body .message').textContent = response.data['message'];
             });
-
     });
 </script>
 @endsection

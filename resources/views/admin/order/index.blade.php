@@ -83,7 +83,7 @@ Order List
                             <p class="mb-1">Payment : {{$order->payment->name}}</p>
                             <p class="mb-1">Amount : {{$order->total_amount}} MMK</p>
                             <div class="text-end">
-                                <a href="{{route('admin.order.detail',$order->id)}}"class="me-2"><i class="fa-solid fa-eye text-success"></i></a>
+                                <a href="{{route('admin.order.detail',$order->id)}}" class="me-2"><i class="fa-solid fa-eye text-success"></i></a>
                             </div>
                         </div>
                     </div>
