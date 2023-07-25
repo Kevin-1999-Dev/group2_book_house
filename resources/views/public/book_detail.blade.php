@@ -14,7 +14,10 @@ Book Detail Page
         <h5 class="f-4 mb-1">Title : <span class="f-3">{{$book->title}}</span></h5>
         <p class="f-4 mb-1">Author :
           @foreach ($book->author as $author)
-          {{$author->name}} /
+          {{$author->name}}
+          @if (!($loop->last))
+            /
+            @endif
           @endforeach
         </p>
         <p class="f-4 mb-1">

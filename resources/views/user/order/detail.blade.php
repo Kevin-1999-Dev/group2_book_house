@@ -42,7 +42,7 @@ Order Detail
             </div>
         </div>
         <div class="row row-cols-2 d-md-none">
-        @foreach($order->book as $book)
+            @foreach($order->book as $book)
             <div class="col px-2 mb-3">
                 <div class="bg-secondary-subtle rounded-1 p-2 small-card">
                     <p class="f-5">Type : Book</p>
@@ -51,8 +51,8 @@ Order Detail
                     <p class="f-5">Quantity : {{$book->pivot->quantity}}</p>
                 </div>
             </div>
-        @endforeach
-        @foreach($order->ebook as $ebook)
+            @endforeach
+            @foreach($order->ebook as $ebook)
             <div class="col px-2 mb-3">
                 <div class="bg-secondary-subtle rounded-1 p-2 small-card">
                     <p class="f-5">Type : Ebook</p>
@@ -61,7 +61,7 @@ Order Detail
                     <a href="{{($order->status == 'accepted')? $ebook->link : ''}}">{{($order->status == 'accepted')? 'Link' : ''}}</a>
                 </div>
             </div>
-        @endforeach
+            @endforeach
         </div>
         <div class="mt-2 clearfix mb-2 f-5">
             <p class="float-end border border-dark p-1 me-1">Total : {{ $order->total_amount }} MMK</p>
@@ -73,7 +73,5 @@ Order Detail
         @endif
         <a href="{{ route('user.order.index')}}"><span class="btn btn-secondary">Back</span></a>
     </div>
-
-        
 </div>
 @endsection

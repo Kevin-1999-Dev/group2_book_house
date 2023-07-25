@@ -23,7 +23,6 @@ User Dashboard Page
                     Anime,Manga,Drama,Comedy,<br class="sp">Adventure,Horror,Sport, <br class="tb"> Family,Life,Romance,Education <br> and so on ,So You can chooes
                     What ever what u want </p>
                 <p class="text-warning f-3 fw-bold mt-5">We Hope You will enjoy it </p>
-
                 <a href="{{ route('public.book') }}" class="btn btn-sm btn-success w-50 mt-2">Wanna Try?</a>
             </div>
             <div class="col-6">
