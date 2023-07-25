@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Order;
+use App\Exports\BookExport;
 use App\Exports\FeedExport;
 use App\Exports\UserExport;
-use App\Imports\FeedImport;
 use App\Imports\UserImport;
+use App\Exports\EbookExport;
 use App\Exports\OrderExport;
 use Illuminate\Http\Request;
 use App\Exports\AuthorExport;
@@ -115,11 +116,18 @@ class AdminController extends Controller
     {
         return Excel::download(new UserExport(), 'user.xlsx');
     }
+    public function exportBook()
+    {
+        return Excel::download(new BookExport(), 'books.xlsx');
+    }
+    public function exportEbook()
+    {
+        return Excel::download(new EbookExport(), 'ebooks.xlsx');
+    }
 
     //import
     public function importCategory(Request $request)
     {
-
         Excel::import(new CategoryImport, $request->file);
         return redirect()->route('admin.category.index')->with(['importSuccess' => 'Import Successfully...']);
     }
@@ -134,12 +142,6 @@ class AdminController extends Controller
 
         Excel::import(new PaymentImport, $request->file);
         return redirect()->route('admin.payment.index')->with(['importSuccess' => 'Import Successfully...']);
-    }
-    public function importFeed(Request $request)
-    {
-
-        Excel::import(new FeedImport, $request->file);
-        return redirect()->route('admin.feedback.index')->with(['importSuccess' => 'Import Successfully...']);
     }
     public function importUser(Request $request)
     {

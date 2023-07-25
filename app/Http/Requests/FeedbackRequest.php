@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
 class FeedbackRequest extends FormRequest
 {
@@ -26,12 +27,21 @@ class FeedbackRequest extends FormRequest
      */
     public function rules(): array
     {
+        if(empty(Auth::user())){
+            $name = ['required'];
+            $email = ['required', 'email'];
+            $address = ['required'];
+        }else{
+            $name = [];
+            $email = [];
+            $address = [];
+        }
         return [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
+            'name' => $name,
+            'email' => $email,
             'subject' => ['required'],
             'message' => ['required'],
-            'address' => ['required'],
+            'address' => $address,
         ];
     }
 }

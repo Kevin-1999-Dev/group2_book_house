@@ -46,6 +46,7 @@
                     <h2 class="text-center f-3">Forget Password</h2>
                     <div class="form-group mt-3 f-6">
                         <label for="email" class="form-label">{{ __('Email') }}</label>
+                        <span class="text-danger">*</span>
                         <input id="email" class="form-control block" type="email" name="email"
                             :value="old('email')" required autofocus autocomplete="username" />
                     </div>

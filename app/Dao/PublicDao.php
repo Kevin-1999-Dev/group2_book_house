@@ -1,9 +1,11 @@
 <?php
 namespace App\Dao;
-use App\Contracts\Dao\PublicDaoInterface;
 use App\Models\Book;
 use App\Models\Ebook;
 use App\Models\Feedback;
+use Illuminate\Support\Facades\Auth;
+use App\Contracts\Dao\PublicDaoInterface;
+
 class PublicDao implements PublicDaoInterface
 {
     /**
@@ -75,12 +77,22 @@ class PublicDao implements PublicDaoInterface
      */
     public function createFeedback(array $data): void
     {
-        Feedback::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'address' => $data['address'],
-            'subject' => $data['subject'],
-            'message' => $data['message'],
-        ]);
+        if(empty(Auth::user())){
+            Feedback::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'address' => $data['address'],
+                'subject' => $data['subject'],
+                'message' => $data['message'],
+            ]);
+        }else{
+            Feedback::create([
+                'name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+                'address' => Auth::user()->address,
+                'subject' => $data['subject'],
+                'message' => $data['message'],
+            ]);
+        }
     }
 }

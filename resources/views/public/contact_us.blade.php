@@ -19,6 +19,7 @@
                 <p class="mt-2 green-txt f-4">Thank you for your support! <i class="fa-regular fa-face-smile-wink"></i></p>
             </div>
             <!-- Message -->
+            @if (empty(Auth::user()))
             <div class="col-md-6 px-md-3 px-lg-5">
                 <h2 class="f-3 mb-3"><span class="border-bottom border-primary-subtle">Feedback here</span></h2>
                 <form class="row g-3 f-6" action="{{ route('feedbacks.store') }}" method="post">
@@ -66,6 +67,55 @@
                     </div>
                 </form>
             </div>
+            @else
+            <div class="col-md-6 px-md-3 px-lg-5">
+                <h2 class="f-3 mb-3"><span class="border-bottom border-primary-subtle">Feedback here</span></h2>
+                <form class="row g-3 f-6" action="{{ route('feedbacks.store') }}" method="post">
+                    @csrf
+                    <div class="col-md-6 form-floating">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                            value="{{ Auth::user()->email }}" disabled>
+                        <label for="email" class="form-label">Email</label>
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                            value="{{ Auth::user()->name }}" disabled>
+                        <label for="name" class="form-label">Name</label>
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 form-floating">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                            value="{{ Auth::user()->address }}" disabled>
+                        <label for="address" class="form-label">Address</label>
+                        @error('address')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 form-floating">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                        <label for="subject" class="form-label">Subject</label>
+                        @error('subject')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 form-floating">
+                        <textarea class="form-control" placeholder="message" id="message" name="message" style="height: 100px"></textarea>
+                        <label for="message" class="form-label">Message</label>
+                        @error('message')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-dark">Send</button>
+                    </div>
+                </form>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

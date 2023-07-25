@@ -43,6 +43,7 @@
 
                     <div class="form-group mt-3">
                         <label for="email" class="form-label">Email</label>
+                        <span class="text-danger">*</span>
                         <input type="email" name="email" class="form-control"
                             value="{{ old('email', $request->email) }}" required autofocus autocomplete="username">
                         @error('email')
@@ -51,6 +52,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="password" class="form-label">Password</label>
+                        <span class="text-danger">*</span>
                         <input type="password" name="password" class="form-control" required
                             autocomplete="new-password">
                         @error('password')
@@ -60,6 +62,7 @@
 
                     <div class="form-group mt-3 f-6">
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <span class="text-danger">*</span>
                         <input type="password" name="password_confirmation" class="form-control" required
                             autocomplete="new-password">
                         @error('password_confirmation')

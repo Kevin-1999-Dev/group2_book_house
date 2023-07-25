@@ -19,14 +19,12 @@ use Illuminate\Support\Facades\Route;
 //public pages for user and admin
 Route::redirect('/', 'homePage', 301);
 Route::get('/homePage', [PublicController::class, 'home'])->name('public.index');
-Route::get('/books', [PublicController::class, 'index'])->name('public.book');
+Route::get('/books/{sort?}', [PublicController::class, 'index'])->name('public.book');
 Route::get('/ebooks', [PublicController::class, 'ebook'])->name('public.ebook');
 Route::get('/book/{id}', [PublicController::class, 'show_book'])->name('public.book_detail');
 Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public.ebook_detail');
 Route::get('/Contact', [PublicController::class, 'feedback'])->name('public.contact_us');
 Route::post('/Contact', [PublicController::class, 'storeFeedback'])->name('feedbacks.store');
-Route::get('/bookAsc', [PublicController::class, 'indexAsc'])->name('public.book.asc');
-Route::get('/bookDesc', [PublicController::class, 'indexDesc'])->name('public.book.desc');
 Route::get('/ebookAsc', [PublicController::class, 'ebookAsc'])->name('public.ebook.asc');
 Route::get('/ebookDesc', [PublicController::class, 'ebookDesc'])->name('public.ebook.desc');
 
@@ -109,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'bookEdit'])->name('admin.book.edit');
             Route::post('/update/{id}', [AdminController::class, 'bookUpdate'])->name('admin.book.update');
             Route::get('/delete/{id}', [AdminController::class, 'bookDelete'])->name('admin.book.delete');
+            Route::get('/export', [AdminController::class, 'exportBook'])->name('admin.book.export');
         });
         //ebook
         Route::prefix('ebook')->group(function () {
@@ -118,6 +117,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [AdminController::class, 'ebookEdit'])->name('admin.ebook.edit');
             Route::post('/update/{id}', [AdminController::class, 'ebookUpdate'])->name('admin.ebook.update');
             Route::get('/delete/{id}', [AdminController::class, 'ebookDelete'])->name('admin.ebook.delete');
+            Route::get('/export', [AdminController::class, 'exportEbook'])->name('admin.ebook.export');
         });
 
         Route::prefix('user')->group(function () {
@@ -134,7 +134,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/detail/{id}', [AdminController::class, 'feedbackDetail'])->name('admin.feedback.detail');
             Route::get('/delete/{id}', [AdminController::class, 'feedbackDelete'])->name('admin.feedback.delete');
             Route::get('/export', [AdminController::class, 'exportFeed'])->name('admin.feedback.export');
-            Route::post('/import', [AdminController::class, 'importFeed'])->name('admin.feedback.import');
         });
     });
 

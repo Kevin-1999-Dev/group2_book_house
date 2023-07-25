@@ -1,9 +1,6 @@
 <?php
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +11,9 @@ use App\Http\Controllers\Api\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/getUser', [AuthController::class, 'getUser']);
-
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/getUser', [AuthController::class, 'getUser']);
 });
