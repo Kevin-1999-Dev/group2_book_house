@@ -70,7 +70,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 f-6">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 f-5">
                 @if (!empty(Auth::user()))
                     @if (Auth::user()->role == 1)
                         <li class="nav-item me-lg-4 fw-bold">

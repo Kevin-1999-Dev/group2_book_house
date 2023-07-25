@@ -60,18 +60,17 @@ Order History
             <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
         </form>
         <div class="row">
-        @foreach($orders as $order)
+            @foreach($orders as $order)
             <div class="col-6 col-sm-4 px-2 mb-3">
                 <div class="bg-secondary-subtle rounded-1 p-2 small-card">
                     <p class="f-6">Order ID : {{$order->id}}</p>
                     <p class="f-5">Status : {{$order->status}}</p>
                     <p class="f-5">Payment : {{$order->payment->name}}</p>
                     <p class="f-5">Total : {{$order->total_amount}} MMK</p>
-                    <a href="{{route('user.order.detail',$order->id)}}"class="btn btn-sm btn-success">View</a>
+                    <a href="{{route('user.order.detail',$order->id)}}" class="btn btn-sm btn-success">View</a>
                 </div>
             </div>
             @endforeach
-
         </div>
     </div>
 </div>
