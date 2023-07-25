@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * FeedbackRequest
+ */
 class FeedbackRequest extends FormRequest
 {
     /**
@@ -24,7 +27,7 @@ class FeedbackRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required','email'],
+            'email' => ['required', 'email'],
             'subject' => ['required'],
             'message' => ['required'],
             'address' => ['required'],

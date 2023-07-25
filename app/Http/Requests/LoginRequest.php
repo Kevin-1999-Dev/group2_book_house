@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * LoginRequest
+ */
 class LoginRequest extends FormRequest
 {
     /**
@@ -22,8 +25,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=>['required'],
-            'password'=>['required'],
+            'email' => ['required'],
+            'password' => ['required'],
         ];
     }
 }

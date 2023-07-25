@@ -6,6 +6,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * ProfileRequest
+ */
 class ProfileRequest extends FormRequest
 {
     /**
@@ -25,10 +28,11 @@ class ProfileRequest extends FormRequest
     {
         return [
             'image' => [
-            File::types(['jpg', 'jpeg', 'png'])
-                ->max(12 * 1024),],
+                File::types(['jpg', 'jpeg', 'png'])
+                    ->max(12 * 1024),
+            ],
             'name' => ['required', 'max:255'],
-            'email' => ['required',Rule::unique('users')->ignore($this->id)],
+            'email' => ['required', Rule::unique('users')->ignore($this->id)],
             'phone' => ['required', 'min:11'],
             'address' => ['required', 'max:255'],
         ];
