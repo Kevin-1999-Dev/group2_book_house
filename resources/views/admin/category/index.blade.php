@@ -19,7 +19,7 @@ Category List
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{ route('admin.dashboard') }}" class=" d-none d-md-block">
+    <a href="{{ url()->previous() }}" class=" d-none d-md-block">
         <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
     </a>
     <div class="row mt-md-4">

@@ -5,7 +5,7 @@ Order List
 @section('content')
 <div class="auth-order col-11 col-md-10 mx-auto pb-5">
     <div class=" d-none d-md-block">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>

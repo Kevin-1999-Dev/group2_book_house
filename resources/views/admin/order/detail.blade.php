@@ -56,15 +56,15 @@ Order Detail
                 </select>
             </div>
             <div class="form-group mt-2 mt-lg-4">
-                <a href="{{ route('admin.order.index')}}" class="d-none d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
+                <a href="{{ url()->previous() }}" class="d-none d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
                 <input type="submit" class="btn btn-primary float-end d-none d-lg-inline-block" value="Submit">
-                <a href="{{ route('admin.order.index')}}" class="d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
+                <a href="{{ url()->previous() }}" class="d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
                 <input type="submit" class="btn btn-sm btn-primary float-end d-lg-none" value="Submit">
             </div>
         </form>
         @else
-        <a href="{{ route('admin.order.index')}}" class="d-none float-end d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
-        <a href="{{ route('admin.order.index')}}" class="float-end d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
+        <a href="{{ url()->previous() }}" class="d-none float-end d-lg-inline-block"><span class="btn btn-secondary float-start">Back</span></a>
+        <a href="{{ url()->previous() }}" class="float-end d-lg-none"><span class="btn btn-sm btn-secondary float-start">Back</span></a>
         @endif
     </div>
 </div>
