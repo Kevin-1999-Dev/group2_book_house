@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
 Account Edit Page
 @endsection
-
 @section('content')
 <div class="profile-edit pb-5">
     <div class="col-11 col-md-10 mx-auto bg-light row py-3 px-lg-3 rounded-2 border border-danger-subtle">
@@ -84,5 +82,4 @@ Account Edit Page
         </div>
     </div>
 </div>
-
 @endsection
