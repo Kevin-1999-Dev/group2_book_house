@@ -79,7 +79,6 @@ Ebook List
                     {{ $ebooks->links() }}
                 </div>
             </div>
-
         </div>
         <div class="d-md-none card">
             <div class="card-header">
