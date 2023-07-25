@@ -157,10 +157,22 @@ class AdminController extends Controller
     {
         return Excel::download(new UserExport(), 'user.xlsx');
     }
+
+    /**
+     * exportBook
+     *
+     * @return void
+     */
     public function exportBook()
     {
         return Excel::download(new BookExport(), 'books.xlsx');
     }
+
+    /**
+     * exportEbook
+     *
+     * @return void
+     */
     public function exportEbook()
     {
         return Excel::download(new EbookExport(), 'ebooks.xlsx');
