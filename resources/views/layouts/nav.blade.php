@@ -92,10 +92,10 @@
                     <a class="nav-link" href="{{ route('user.order.index') }}"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
                 </li>
                 @else
-                <li class="nav-item mx-3 fw-bold d-none d-lg-block"><a href="" class="btn btn-dark"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order
+                <li class="nav-item mx-3 fw-bold d-none d-lg-block"><a href="{{ route('user.order.index') }}" class="btn btn-dark"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order
                         History</a></li>
                 <li class="nav-item fw-bold d-lg-none">
-                    <a class="nav-link" href=""><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
+                    <a class="nav-link" href="{{ route('user.order.index') }}"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Order History</a>
                 </li>
                 @endif
                 @endif
