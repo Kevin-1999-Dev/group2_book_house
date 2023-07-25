@@ -28,6 +28,9 @@ class UserExport implements FromCollection, WithHeadings, WithMapping
             $user->id,
             $user->name,
             $user->email,
+            $user->phone,
+            $user->address,
+            $user->password,
             ($user->role) ? "admin" : "user",
             ($user->active) ? "enable" : "disable",
         ];
@@ -43,6 +46,9 @@ class UserExport implements FromCollection, WithHeadings, WithMapping
             'Id',
             'Name',
             'Email',
+            'Phone',
+            'Address',
+            'Password',
             'Role',
             'Active',
         ];
