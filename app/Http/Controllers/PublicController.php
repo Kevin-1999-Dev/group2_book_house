@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Book;
 use App\Models\Ebook;
 use App\Models\Order;
@@ -11,6 +9,7 @@ use App\Models\BookOrder;
 use App\Models\EbookOrder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\FeedbackRequest;
 use App\Contracts\Services\PublicServiceInterface;
 
@@ -46,7 +45,7 @@ class PublicController extends Controller
      * @param  mixed $r
      * @return void
      */
-    public function index(Request $r)
+    public function index(Request $r,$sort = "Asc")
     {
         $books = $this->publicService->getbooks();
         $categories = Category::get();
@@ -56,58 +55,19 @@ class PublicController extends Controller
         })->orWhereHas('category', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->get();
-        foreach ($books as $book) {
-            $book['date'] = date_format($book->created_at, "m/d/Y");
-        }
-        return view('public.book', compact('books', 'categories'));
-    }
-    /**
-     * indexAsc
-     *
-     * @param  mixed $r
-     * @return void
-     */
-    public function indexAsc(Request $r)
-    {
-        $books = $this->publicService->getbooks();
-        $s = strtolower($r->get('s'));
-        $books = Book::whereHas('author', function ($query) use ($s) {
-            $query->where('name', 'LIKE', "%$s%");
-        })->orWhereHas('category', function ($query) use ($s) {
-            $query->where('name', 'LIKE', "%$s%");
-        })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->orderby('created_at', 'asc')
-            ->get();
-        foreach ($books as $book) {
-            $book['date'] = date_format($book->created_at, "m/d/Y");
-        }
-        return view('public.book', compact('books'));
-    }
-    /**
-     * indexDesc
-     *
-     * @param  mixed $r
-     * @return void
-     */
-    public function indexDesc(Request $r)
-    {
-        $books = $this->publicService->getbooks();
-        $s = strtolower($r->get('s'));
-        $books = Book::whereHas('author', function ($query) use ($s) {
-            $query->where('name', 'LIKE', "%$s%");
-        })->orWhereHas('category', function ($query) use ($s) {
-            $query->where('name', 'LIKE', "%$s%");
-        })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->orderby('created_at', 'desc')
-            ->get();
-        foreach ($books as $book) {
-            $book['date'] = date_format($book->created_at, "m/d/Y");
-        }
-        return view('public.book', compact('books'));
+            ->orWhere('price', 'LIKE', "%$s%");
+            if($sort == "Asc"){
+              $books = $books->orderBy('created_at','asc')->get();
+                foreach ($books as $book) {
+                    $book['date'] = date_format($book->created_at, "m/d/Y");
+                }
+            }else{
+               $books = $books->orderBy('created_at','desc')->get();
+                foreach ($books as $book) {
+                    $book['date'] = date_format($book->created_at, "m/d/Y");
+                }
+            }
+            return view('public.book', compact('books', 'categories'));
     }
     /**
      * ebook
@@ -215,6 +175,7 @@ class PublicController extends Controller
     }
     public function storeFeedback(FeedbackRequest $request)
     {
+       if(empty(Auth::user())){
         $this->publicService->createFeedback($request->only([
             'name',
             'email',
@@ -222,6 +183,12 @@ class PublicController extends Controller
             'subject',
             'message',
         ]));
+       }else{
+        $this->publicService->createFeedback($request->only([
+            'subject',
+            'message',
+        ]));
+       }
         return redirect()->route('public.contact_us')->with('success', 'Thank you for your feedback');
     }
     /**

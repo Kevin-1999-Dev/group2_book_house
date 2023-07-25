@@ -12,8 +12,7 @@ Book List
     <div class="mt-md-4">
         <a href="{{ route('admin.book.create')}}"><span class="btn btn-primary">Create</span></a>
         <div class="float-end">
-            <a href="" class="btn btn-dark text-white">Import</a>
-            <a href="" class="btn btn-dark text-white">Export</a>
+            <a href="{{ route('admin.book.export') }}" class="btn btn-dark text-white">Export</a>
         </div>
     </div>
     <div class="mt-3">

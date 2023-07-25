@@ -41,6 +41,7 @@
                     <h2 class="text-center f-3">Register Now</h2>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Name</label>
+                        <span class="text-danger">*</span>
                         <input type="text" name="name" value="{{ old('name') }}"
                             class="form-control @error('name') is-invalid @enderror" id="" placeholder="Name">
                         @error('name')
@@ -49,6 +50,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Email</label>
+                        <span class="text-danger">*</span>
                         <input type="email" name="email" value="{{ old('email') }}"
                             class="form-control @error('email') is-invalid @enderror" id=""
                             placeholder="example@gmail.com">
@@ -58,6 +60,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Phone</label>
+                        <span class="text-danger">*</span>
                         <input type="number" name="phone" value="{{ old('phone') }}"
                             class="form-control @error('phone') is-invalid @enderror" id=""
                             placeholder="09*********">
@@ -67,6 +70,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Address</label>
+                        <span class="text-danger">*</span>
                         <input type="text" name="address" value="{{ old('address') }}"
                             class="form-control @error('address') is-invalid @enderror" id=""
                             placeholder="Address">
@@ -76,6 +80,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Password</label>
+                        <span class="text-danger">*</span>
                         <input type="password" name="password"
                             class="form-control @error('password') is-invalid @enderror" id=""
                             placeholder="Password">
@@ -85,6 +90,7 @@
                     </div>
                     <div class="form-group mt-3 f-6">
                         <label for="" class="form-label">Confirm Password</label>
+                        <span class="text-danger">*</span>
                         <input type="password" name="password_confirmation"
                             class="form-control @error('password_confirmation') is-invalid @enderror" id=""
                             placeholder="Confirm Password">
