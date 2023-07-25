@@ -9,13 +9,17 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class PaymentExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return Payment::all();
     }
-
+    /**
+     * headings
+     *
+     * @return array
+     */
     public function headings(): array
     {
         return [

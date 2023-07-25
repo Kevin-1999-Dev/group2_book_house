@@ -10,11 +10,15 @@ class FeedbackRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+    /**
+     * authorize
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +28,7 @@ class FeedbackRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required','email'],
+            'email' => ['required', 'email'],
             'subject' => ['required'],
             'message' => ['required'],
             'address' => ['required'],

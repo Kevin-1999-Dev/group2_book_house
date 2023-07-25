@@ -11,6 +11,12 @@ use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
+    /**
+     * register
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function register(RegisterRequest $request)
     {
         $request['password'] = bcrypt($request->password);
@@ -23,7 +29,12 @@ class AuthController extends Controller
         ];
         return response()->json($result, 200);
     }
-
+    /**
+     * login
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function login(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -39,7 +50,12 @@ class AuthController extends Controller
         ];
         return response()->json($result, 200);
     }
-
+    /**
+     * logout
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

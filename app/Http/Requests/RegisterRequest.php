@@ -9,11 +9,15 @@ class RegisterRequest extends FormRequest
      /**
      * Determine if the user is authorized to make this request.
      */
+    /**
+     * authorize
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -26,7 +30,7 @@ class RegisterRequest extends FormRequest
             'phone'=>['required','min:11'],
             'address'=>['required'],
             'email' => ['required','email','unique:users'],
-            'password' => ['required','min:6'],
+            'password' => ['required','min:8'],
         ];
     }
 }
