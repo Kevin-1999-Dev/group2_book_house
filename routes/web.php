@@ -151,12 +151,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
         });
 
-        Route::prefix('order')->group(function () {
-            Route::get('/', [UserController::class, 'orderIndex'])->name('user.order.index');
-            Route::get('/cancel/{id}', [UserController::class, 'orderCancel'])->name('user.order.cancel');
-            Route::get('/detail/{id}', [UserController::class, 'orderDetail'])->name('user.order.detail');
-        });
-
         Route::get('private/{filename}', [UserController::class, 'userPrivateServe'])->name('user.ebook.serve');
+    });
+
+    Route::prefix('order')->group(function () {
+        Route::get('/', [UserController::class, 'orderIndex'])->name('user.order.index');
+        Route::get('/cancel/{id}', [UserController::class, 'orderCancel'])->name('user.order.cancel');
+        Route::get('/detail/{id}', [UserController::class, 'orderDetail'])->name('user.order.detail');
     });
 });
