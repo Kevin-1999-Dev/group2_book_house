@@ -4,12 +4,12 @@ Order List
 @endsection
 @section('content')
 <div class="auth-order col-11 col-md-10 mx-auto pb-5">
-    <div class=" d-none d-md-block">
+    <div class="">
         <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
-    <div class="row mt-md-2">
+    <div class="row mt-2">
         <div class="col-12 text-end">
             <a href="{{ route('admin.order.export') }}" class="btn btn-dark">Export</a>
         </div>

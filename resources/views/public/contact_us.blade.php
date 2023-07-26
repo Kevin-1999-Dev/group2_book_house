@@ -10,7 +10,7 @@ Contact Us Page
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="row py-3">
+        <div class="row py-3 main-row">
             <div class="col-md-6 ps-md-4 px-lg-5 mb-3 mb-md-0">
                 <h2 class="mark-txt f-3 mb-2 mb-md-4">We value your feedback!</h2>
                 <p class="contact-txt f-4">We would love to hear from you and appreciate any thoughts, suggestions, or
