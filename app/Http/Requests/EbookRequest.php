@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
 
+/**
+ * EbookRequest
+ */
 class EbookRequest extends FormRequest
 {
     /**
@@ -39,7 +42,7 @@ class EbookRequest extends FormRequest
             'authors' => ['required'],
             'categories' => ['required'],
             'ebookfile' => [
-                File::types(['pdf', 'epub','doc','docx','jpg'])
+                File::types(['pdf', 'epub', 'doc', 'docx', 'jpg'])
                     ->max(100 * 1024),
             ],
         ];

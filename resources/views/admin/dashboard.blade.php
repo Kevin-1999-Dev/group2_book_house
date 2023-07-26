@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('title')
 Admin Dashboard
 @endsection
@@ -72,7 +71,6 @@ Admin Dashboard
     </div>
 </section>
 @endsection
-
 @section('script')
 <script>
     // Convert PHP arrays to JavaScript arrays to show on chart

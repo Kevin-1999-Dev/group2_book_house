@@ -5,7 +5,7 @@ Book List
 @section('content')
 <div class="auth-book col-11 col-md-10 mx-auto pb-5">
     <div class="col-12 d-none d-md-block">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>

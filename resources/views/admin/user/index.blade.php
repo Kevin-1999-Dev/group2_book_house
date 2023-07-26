@@ -20,7 +20,7 @@ User List
     </div>
     @endif
     <div class=" d-none d-md-block">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
@@ -97,33 +97,34 @@ User List
             </div>
             <div class="card-body">
                 <div class="row f-5">
-                @foreach($users as $user)
-                        <div class="col-6 px-1">
-                            <div class="col-12 mb-2 p-1 rounded-1 border border-danger-subtle bg-body-secondary shadow-sm small-card">
-                                <p class="mb-1">ID : {{$user->id}}</p>
-                                <p class="mb-1">Name : {{$user->name}}</p>
-                                <p class="mb-1">Email : {{$user->email}}</p>
-                                <p class="mb-1">Role : {{$user->role ? 'admin' : 'user'}}</p>
-                                <p class="mb-1">Active : {{$user->active ? 'enable' : 'disable'}}</p>
-                                <div class="text-end">
-                                    <a href="{{route('admin.user.edit',$user->id)}}" class="me-2"><i class="fa-solid fa-pen-to-square text-success"></i></a>
-                                    <a href="{{route('admin.user.delete',$user->id)}}"class="me-2"><i class="fa-solid fa-trash text-danger"></i></a>
-                                </div>
+                    @foreach($users as $user)
+                    <div class="col-6 px-1">
+                        <div class="col-12 mb-2 p-1 rounded-1 border border-danger-subtle bg-body-secondary shadow-sm small-card">
+                            <p class="mb-1">ID : {{$user->id}}</p>
+                            <p class="mb-1">Name : {{$user->name}}</p>
+                            <p class="mb-1">Email : {{$user->email}}</p>
+                            <p class="mb-1">Role : {{$user->role ? 'admin' : 'user'}}</p>
+                            <p class="mb-1">Active : {{$user->active ? 'enable' : 'disable'}}</p>
+                            <div class="text-end">
+                                <a href="{{route('admin.user.edit',$user->id)}}" class="me-2"><i class="fa-solid fa-pen-to-square text-success"></i></a>
+                                <a href="{{route('admin.user.delete',$user->id)}}" class="me-2"><i class="fa-solid fa-trash text-danger"></i></a>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
-    @endsection
-    @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#show-btn').click(function() {
-                $(this).toggle();
-                $('.import-btn').toggleClass('import-btn');
-            });
+</div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#show-btn').click(function() {
+            $(this).toggle();
+            $('.import-btn').toggleClass('import-btn');
         });
-    </script>
-    @endsection
+    });
+</script>
+@endsection

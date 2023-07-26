@@ -20,7 +20,7 @@ Author List
     </div>
     @endif
     <div class="col-12 d-none d-md-block">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
@@ -55,11 +55,11 @@ Author List
                 <div class="card-header text-center d-md-none">
                     <h3 class="f-3 mb-1">Author List</h3>
                     <form action="{{ route('admin.author.index') }}" method="GET">
-                            <div class="form-group d-inline-block">
-                                <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
-                            </div>
-                            <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
-                        </form>
+                        <div class="form-group d-inline-block">
+                            <input type="text" name="s" class="form-control" placeholder="Search" value="{{Request::get('s')}}" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-danger d-inline">Search</button>
+                    </form>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped f-7">
@@ -92,7 +92,6 @@ Author List
     </div>
 </div>
 @endsection
-
 @section('script')
 <script>
     $(document).ready(function() {

@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * EbookAuthor
+ */
 class EbookAuthor extends Model
 {
     use HasFactory;

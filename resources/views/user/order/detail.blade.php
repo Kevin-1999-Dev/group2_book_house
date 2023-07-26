@@ -71,7 +71,7 @@ Order Detail
         @if ($order->status == 'pending')
         <a href="{{ route('user.order.cancel',$order->id)}}"><span class="btn btn-danger float-end">Cancel</span></a>
         @endif
-        <a href="{{ route('user.order.index')}}"><span class="btn btn-secondary">Back</span></a>
+        <a href="{{ url()->previous() }}"><span class="btn btn-secondary float-end">Back</span></a>
     </div>
 </div>
 @endsection

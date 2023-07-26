@@ -11,6 +11,11 @@ Order History
     </div>
     @endif
     <div class="col-11 col-lg-10 mx-auto mt-4 mt-md-0 d-none d-md-block">
+        <div class="col-12 d-none d-md-block mb-4">
+            <a href="{{ url()->previous() }}">
+                <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
+            </a>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h3 class="float-start f-4 mt-md-2 mt-lg-1">Orders History</h3>
