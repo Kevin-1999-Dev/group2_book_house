@@ -30,8 +30,8 @@ class PasswordRequest extends FormRequest
     {
         return [
             'oldPassword' => ['required'],
-            'newPassword' => ['required', 'min:8'],
-            'confirmPassword' => ['required', 'min:8', 'same:newPassword'],
+            'newPassword' => ['required', 'min:8','max:15'],
+            'confirmPassword' => ['required', 'min:8','max:15', 'same:newPassword'],
         ];
     }
 }

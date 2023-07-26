@@ -31,16 +31,16 @@ class EbookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'max:255'],
+            'title' => ['required','min:4', 'max:225'],
             'cover' => [
                 File::types(['jpg', 'jpeg', 'png'])
                     ->max(12 * 1024),
             ],
-            'description' => ['required'],
-            'pagecount' => ['integer'],
-            'price' => ['integer'],
-            'authors' => ['required'],
-            'categories' => ['required'],
+            'description' => ['required','min:4','max:225'],
+            'pagecount' => ['integer','max:1000'],
+            'price' => ['integer','min:3000','max:30000'],
+            'authors' => ['required','min:3','max:225'],
+            'categories' => ['required','min:3','max:225'],
             'ebookfile' => [
                 File::types(['pdf', 'epub', 'doc', 'docx', 'jpg'])
                     ->max(100 * 1024),
