@@ -4,12 +4,12 @@ Book List
 @endsection
 @section('content')
 <div class="auth-book col-11 col-md-10 mx-auto pb-5">
-    <div class="col-12 d-none d-md-block">
+    <div class="col-12">
         <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
-    <div class="mt-md-4">
+    <div class="mt-4">
         <a href="{{ route('admin.book.create')}}"><span class="btn btn-primary">Create</span></a>
         <div class="float-end">
             <a href="{{ route('admin.book.export') }}" class="btn btn-dark text-white">Export</a>
@@ -109,11 +109,8 @@ Book List
                             </p>
                             <p class="mb-1">Category :
                                 @foreach($book->category as $category)
-                                <span class="bg-danger-subtle rounded-1 px-1">
+                                <span class="bg-danger-subtle rounded-1 px-1 me-1">
                                     {{$category->name}}
-                                    @if (!($loop->last))
-                                    ,
-                                    @endif
                                 </span>
                                 @endforeach
                             </p>

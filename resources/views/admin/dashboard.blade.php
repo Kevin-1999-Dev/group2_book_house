@@ -30,10 +30,10 @@ Admin Dashboard
                     </a>
                 </div>
             </div>
-            <div class="col-2 pt-2 d-none d-md-inline-block small-card">
+            <div class="col-2 pt-2 d-none d-md-inline-block">
                 <img src="{{ asset('images/sign2.avif') }}" alt="" class="w-100">
             </div>
-            <div class="col-5 shadow bg-body rounded p-2">
+            <div class="col-5 shadow bg-body rounded p-2 small-card">
                 <div class="my-3 w-100">
                     <a href="{{ route('admin.user.index') }}" class="text-decoration-none">
                         <button class="btn btn-dark w-50"><i class="fa-solid fa-users d-none d-md-inline-block"></i> User List</button>

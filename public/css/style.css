@@ -1,5 +1,53 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 100;
+  src: url('../fonts/SofiaSansCondensed-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 200;
+  src: url('../fonts/SofiaSansCondensed-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 300;
+  src: url('../fonts/SofiaSansCondensed-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 400;
+  src: url('../fonts/SofiaSansCondensed-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 500;
+  src: url('../fonts/SofiaSansCondensed-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 600;
+  src: url('../fonts/SofiaSansCondensed-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 700;
+  src: url('../fonts/SofiaSansCondensed-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-weight: 800;
+  src: url('../fonts/SofiaSansCondensed-ExtraBold.ttf');
+}
+
 * {
   font-family: 'Sofia Sans Semi Condensed', sans-serif;
 }
@@ -90,7 +138,6 @@ a:hover {
 }
 
 .f-7,
-.btn,
 input,
 textarea {
   font-size: 1.111vw;
@@ -130,7 +177,7 @@ textarea {
 }
 
 .mv .row,
-.contact-pg .row {
+.contact-pg .main-row {
   --bs-gutter-x: 0;
 }
 

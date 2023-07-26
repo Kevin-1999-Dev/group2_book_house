@@ -19,12 +19,12 @@ User List
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <div class=" d-none d-md-block">
+    <div class="">
         <a href="{{ url()->previous() }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
-    <div class="row mt-md-2">
+    <div class="row mt-2">
         <div class="col-12 text-end">
             <form action="{{ route('admin.user.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
                 @csrf
