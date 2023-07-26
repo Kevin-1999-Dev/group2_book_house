@@ -4,7 +4,12 @@
 Account Info Page
 @endsection
 @section('content')
-<div class="profile-pg py-5">
+<div class="profile-pg py-2">
+    <div class="col-11 col-md-10 mx-auto mb-2">
+        <a href="{{ route('user.dashboard') }}">
+            <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
+        </a>
+    </div>
     <div class="col-11 col-md-10 col-lg-6 mx-auto bg-light row p-3 rounded-2 border border-danger-subtle">
         <h2 class="text-center f-3"><span class="border-bottom border-danger-subtle">Your Account Informartion</span></h2>
         <div class="mt-5 row">
