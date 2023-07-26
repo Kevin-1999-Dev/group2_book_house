@@ -4,6 +4,11 @@ Account Edit Page
 @endsection
 @section('content')
 <div class="profile-edit pb-5">
+<div class="col-11 col-md-10 mx-auto mb-2">
+        <a href="{{ url()->previous() }}">
+            <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
+        </a>
+    </div>
     <div class="col-11 col-md-10 mx-auto bg-light row py-3 px-lg-3 rounded-2 border border-danger-subtle">
         <div class="text-center">
             <h2 class="f-3">Your Profile</h2>
