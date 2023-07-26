@@ -418,6 +418,20 @@ class AdminDao implements AdminDaoInterface
             'pagecount' => $data['pagecount'],
             'price' => $data['price'],
         ]);
+        BookAuthor::where('book_id',$id)->delete();
+        foreach ($data['authors'] as $author) {
+            BookAuthor::create([
+                'book_id' => $book->id,
+                'author_id' => $author,
+            ]);
+        }
+        BookCategory::where('book_id',$id)->delete();
+        foreach ($data['categories'] as $category) {
+            BookCategory::create([
+                'book_id' => $book->id,
+                'category_id' => $category,
+            ]);
+        }
         if ($data->file('cover')) {
             $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
             $book->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
@@ -522,6 +536,20 @@ class AdminDao implements AdminDaoInterface
             'price' => $data['price'],
             'link' => $data['link'],
         ]);
+        EbookAuthor::where('ebook_id',$id)->delete();
+        foreach ($data['authors'] as $author) {
+            EbookAuthor::create([
+                'ebook_id' => $ebook->id,
+                'author_id' => $author,
+            ]);
+        }
+        EbookCategory::where('ebook_id',$id)->delete();
+        foreach ($data['categories'] as $category) {
+            EbookCategory::create([
+                'ebook_id' => $ebook->id,
+                'category_id' => $category,
+            ]);
+        }
         if ($data->file('cover')) {
             $filename = $ebook->id . "-book-" . $data->file('cover')->getClientOriginalName();
             $ebook->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
@@ -530,6 +558,7 @@ class AdminDao implements AdminDaoInterface
             $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
             $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
         }
+        $ebook->save();
     }
 
     /**

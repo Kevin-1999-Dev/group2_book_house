@@ -63,7 +63,7 @@ Edit Book
                     <label for="authors[]">Authors<span class=text-danger>*</span></label>
                     <select name="authors[]" class="form-control form-select multiple-select-field" multiple>
                         @foreach ($authors as $author)
-                        <option value="{{ $category->id }}" {{ (old('_token') !== null) ? (collect(old('authors'))->contains($author->id) ? 'selected' : '') : (collect($book->author->pluck('id')->all())->contains($author->id) ? 'selected' : '')}}>
+                        <option value="{{ $author->id }}" {{ (old('_token') !== null) ? (collect(old('authors'))->contains($author->id) ? 'selected' : '') : (collect($book->author->pluck('id')->all())->contains($author->id) ? 'selected' : '')}}>
                             {{ $author->name }}
                         </option>
                         @endforeach
