@@ -47,4 +47,17 @@ class EbookRequest extends FormRequest
             ],
         ];
     }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'cover.max' => "Image size may not be greater than 12 mb.",
+            'ebookfile.max' => "Image size may not be greater than 100 mb.",
+        ];
+    }
 }
