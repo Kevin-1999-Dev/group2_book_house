@@ -50,9 +50,9 @@
                         <input id="email" class="form-control block" type="email" name="email"
                             :value="old('email')" required autofocus autocomplete="username" />
                     </div>
-                    <div>
+                    <div class="text-center">
                         <input type="submit" value="{{ __('Email Password Reset Link') }}"
-                            class="btn btn-sm btn-primary w-100 mt-3">
+                            class="btn btn-sm btn-primary mt-3">
                     </div>
                 </form>
             </div>

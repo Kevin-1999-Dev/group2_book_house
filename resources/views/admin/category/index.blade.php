@@ -19,10 +19,10 @@ Category List
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{ url()->previous() }}" class=" d-none d-md-block">
+    <a href="{{ url()->previous() }}">
         <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
     </a>
-    <div class="row mt-md-4">
+    <div class="row mt-4">
         <div class="col-3">
             <a href="{{ route('admin.category.create') }}"><span class="btn btn-primary">Create</span></a>
         </div>
