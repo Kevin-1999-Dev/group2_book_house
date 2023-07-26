@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Book;
 use App\Models\Ebook;
 use App\Models\Order;
@@ -40,34 +42,40 @@ class PublicController extends Controller
         return view('public.index', compact('books', 'ebooks'));
     }
     /**
-     * index
+     * books
      *
      * @param  mixed $r
      * @return void
      */
-    public function index(Request $r,$sort = "Asc")
+    public function book(Request $r)
     {
         $books = $this->publicService->getbooks();
         $categories = Category::get();
         $s = strtolower($r->get('s'));
+        $sort = strtolower($r->get('sort'));
         $books = Book::whereHas('author', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhereHas('category', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%");
-            if($sort == "Asc"){
-              $books = $books->orderBy('created_at','asc')->get();
-                foreach ($books as $book) {
-                    $book['date'] = date_format($book->created_at, "m/d/Y");
-                }
-            }else{
-               $books = $books->orderBy('created_at','desc')->get();
-                foreach ($books as $book) {
-                    $book['date'] = date_format($book->created_at, "m/d/Y");
-                }
+        if ($sort == "asc") {
+            $books = $books->orderBy('created_at', 'asc')->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
             }
-            return view('public.book', compact('books', 'categories'));
+        } elseif ($sort == "desc") {
+            $books = $books->orderBy('created_at', 'desc')->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
+            }
+        } else {
+            $books = $books->get();
+            foreach ($books as $book) {
+                $book['date'] = date_format($book->created_at, "m/d/Y");
+            }
+        }
+        return view('public.book', compact('books', 'categories'));
     }
     /**
      * ebook
@@ -79,17 +87,29 @@ class PublicController extends Controller
     {
         $ebooks = $this->publicService->getebooks();
         $s = strtolower($r->get('s'));
+        $sort = strtolower($r->get('sort'));
         $ebooks = Ebook::whereHas('author', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhereHas('category', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%");
         })->orWhere('title', 'LIKE', "%$s%")
-            ->orWhere('price', 'LIKE', "%$s%")
-            ->get();
-        foreach ($ebooks as $ebook) {
-            $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            ->orWhere('price', 'LIKE', "%$s%");
+        if ($sort == "asc") {
+            $ebooks = $ebooks->orderBy('created_at', 'asc')->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
+        } elseif ($sort == "desc") {
+            $ebooks = $ebooks->orderBy('created_at', 'desc')->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
+        } else {
+            $ebooks = $ebooks->get();
+            foreach ($ebooks as $ebook) {
+                $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
+            }
         }
-
         return view('public.ebook', compact('ebooks'));
     }
     /**
@@ -175,20 +195,20 @@ class PublicController extends Controller
     }
     public function storeFeedback(FeedbackRequest $request)
     {
-       if(empty(Auth::user())){
-        $this->publicService->createFeedback($request->only([
-            'name',
-            'email',
-            'address',
-            'subject',
-            'message',
-        ]));
-       }else{
-        $this->publicService->createFeedback($request->only([
-            'subject',
-            'message',
-        ]));
-       }
+        if (empty(Auth::user())) {
+            $this->publicService->createFeedback($request->only([
+                'name',
+                'email',
+                'address',
+                'subject',
+                'message',
+            ]));
+        } else {
+            $this->publicService->createFeedback($request->only([
+                'subject',
+                'message',
+            ]));
+        }
         return redirect()->route('public.contact_us')->with('success', 'Thank you for your feedback');
     }
     /**
