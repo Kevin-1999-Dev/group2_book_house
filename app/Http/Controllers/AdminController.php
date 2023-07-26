@@ -97,7 +97,7 @@ class AdminController extends Controller
         $countsOrder = array_values($dataOrder);
         return view('admin.dashboard', compact('monthsUser', 'datesOrder', 'countsUser', 'countsOrder'));
     }
-    //export    
+    //export
     /**
      * exportCategory
      *
@@ -178,7 +178,7 @@ class AdminController extends Controller
         return Excel::download(new EbookExport(), 'ebooks.xlsx');
     }
 
-    //import    
+    //import
     /**
      * importCategory
      *
@@ -217,19 +217,7 @@ class AdminController extends Controller
         return redirect()->route('admin.payment.index')->with(['importSuccess' => 'Import Successfully...']);
     }
 
-    /**
-     * importUser
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function importUser(Request $request)
-    {
-
-        Excel::import(new UserImport, $request->file);
-        return redirect()->route('admin.user.index')->with(['importSuccess' => 'Import Successfully...']);
-    }
-
+    
     private $adminService;
 
     /**

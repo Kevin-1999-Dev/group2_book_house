@@ -31,9 +31,9 @@ class FeedbackRequest extends FormRequest
     public function rules(): array
     {
         if(empty(Auth::user())){
-            $name = ['required'];
-            $email = ['required', 'email'];
-            $address = ['required'];
+            $name = ['required','min:4','max:225'];
+            $email = ['required','email','min:12','max:225'];
+            $address = ['required','min:3','max:225'];
         }else{
             $name = [];
             $email = [];
@@ -42,8 +42,8 @@ class FeedbackRequest extends FormRequest
         return [
             'name' => $name,
             'email' => $email,
-            'subject' => ['required'],
-            'message' => ['required'],
+            'subject' => ['required','min:3','max:225'],
+            'message' => ['required','min:3','max:225'],
             'address' => $address,
         ];
     }

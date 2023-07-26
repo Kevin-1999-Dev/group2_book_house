@@ -35,10 +35,10 @@ class ProfileRequest extends FormRequest
                 File::types(['jpg', 'jpeg', 'png'])
                     ->max(12 * 1024),
             ],
-            'name' => ['required', 'max:255'],
-            'email' => ['required', Rule::unique('users')->ignore($this->id)],
-            'phone' => ['required', 'min:11'],
-            'address' => ['required', 'max:255'],
+            'name' => ['required','min:4', 'max:225'],
+            'email' => ['required','min:12','max:225', Rule::unique('users')->ignore($this->id)],
+            'phone' => ['required', 'min:11','max:15'],
+            'address' => ['required','min:3', 'max:255'],
         ];
     }
 }

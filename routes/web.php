@@ -126,7 +126,6 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('admin.user.update');
             Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('admin.user.delete');
             Route::get('/export', [AdminController::class, 'exportUser'])->name('admin.user.export');
-            Route::post('/import', [AdminController::class, 'importUser'])->name('admin.user.import');
         });
 
         Route::prefix('feedback')->group(function () {

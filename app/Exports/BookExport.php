@@ -3,7 +3,8 @@ namespace App\Exports;
 use App\Models\Book;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
-class BookExport implements FromCollection, WithHeadings
+use Maatwebsite\Excel\Concerns\WithMapping;
+class BookExport implements FromCollection, WithHeadings, WithMapping
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -11,6 +12,30 @@ class BookExport implements FromCollection, WithHeadings
     public function collection()
     {
         return Book::all();
+    }
+    public function map($book): array
+    {
+        $author="";
+        foreach($book->author as $key => $a){
+            $author = $author.','.  $a->name;
+        }
+        $category = "";
+        foreach($book->category as $key => $b){
+            $category = $category.','.  $b->name;
+        }
+
+        return [
+            $book->id,
+            $book->title,
+            $book->cover,
+            $book->description,
+            $book->pagecount,
+            $book->price,
+            $author,
+            $category,
+            $book->created_at,
+            $book->updated_at,
+        ];
     }
     /**
      * headings
@@ -26,8 +51,10 @@ class BookExport implements FromCollection, WithHeadings
             'Description',
             'Page Count',
             'Price',
+            'Author',
+            'Category',
             'Created_at',
-            'Updated_at',
+            'Updated_at'
         ];
     }
 }
