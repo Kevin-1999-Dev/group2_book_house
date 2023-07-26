@@ -558,6 +558,7 @@ class AdminDao implements AdminDaoInterface
             $filename = $ebook->id . "-" . $data->file('ebookfile')->getClientOriginalName();
             $ebook->link = $data->file('ebookfile')->storeAs('', $filename, 'private');
         }
+        $ebook->save();
     }
 
     /**
