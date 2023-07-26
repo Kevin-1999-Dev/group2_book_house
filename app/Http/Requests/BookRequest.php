@@ -42,4 +42,17 @@ class BookRequest extends FormRequest
             'categories' => ['required'],
         ];
     }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'cover.max' => "Image size may not be greater than 12 mb.",
+        ];
+    }
+
 }
