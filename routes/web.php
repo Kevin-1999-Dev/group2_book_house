@@ -25,8 +25,6 @@ Route::get('/book/{id}', [PublicController::class, 'show_book'])->name('public.b
 Route::get('/ebook/{id}', [PublicController::class, 'show_ebook'])->name('public.ebook_detail');
 Route::get('/Contact', [PublicController::class, 'feedback'])->name('public.contact_us');
 Route::post('/Contact', [PublicController::class, 'storeFeedback'])->name('feedbacks.store');
-Route::get('/ebookAsc', [PublicController::class, 'ebookAsc'])->name('public.ebook.asc');
-Route::get('/ebookDesc', [PublicController::class, 'ebookDesc'])->name('public.ebook.desc');
 
 Route::prefix('cart')->group(function () {
     Route::get('/', [PublicController::class, 'cartIndex'])->name('public.cart.index');
