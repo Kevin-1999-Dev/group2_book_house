@@ -4,6 +4,11 @@ Ebook Details Page
 @endsection
 @section('content')
 <div class="detail col-11 col-md-8 mx-auto mt-5 mt-md-0">
+    <div class="col-12 mb-2">
+        <a href="{{ url()->previous() }}">
+            <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
+        </a>
+    </div>
     <div class="card bg-body-secondary">
         <h4 class="card-header font-weight-bold shadow-sm border-bottom border-danger-subtle f-4">"{{$ebook->title}}", the book Detail</h4>
         <div class="row p-3 d-flex align-items-center">

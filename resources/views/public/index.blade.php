@@ -24,7 +24,7 @@ Home Page
                 </span>
                 @else
                 @if (Auth::user()->role == 1)
-                <a href="" class="btn btn-dark btn-sm">See your books</a>
+                <a href="{{ route('user.order.index') }}" class="btn btn-dark btn-sm">See your books</a>
                 @else
                 <a href="{{ route('user.order.index') }}" class="btn btn-dark btn-sm">See your books</a>
                 @endif
@@ -110,6 +110,5 @@ Home Page
             </div>
         </div>
     </div>
-</div>
 </div>
 @endsection
