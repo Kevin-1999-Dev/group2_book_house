@@ -36,11 +36,11 @@ class EbookRequest extends FormRequest
                 File::types(['jpg', 'jpeg', 'png'])
                     ->max(12 * 1024),
             ],
-            'description' => ['required','min:4','max:225'],
+            'description' => ['required','min:4','max:255'],
             'pagecount' => ['integer','max:1000'],
             'price' => ['integer','min:3000','max:30000'],
-            'authors' => ['required','min:3','max:225'],
-            'categories' => ['required','min:3','max:225'],
+            'authors' => ['required','max:225'],
+            'categories' => ['required','max:255'],
             'ebookfile' => [
                 File::types(['pdf', 'epub', 'doc', 'docx', 'jpg'])
                     ->max(100 * 1024),

@@ -30,7 +30,7 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','min:4', 'max:225'],
+            'title' => ['required','min:4', 'max:255'],
             'cover' => [
                 File::types(['jpg', 'jpeg', 'png'])
                     ->max(12 * 1024),
@@ -38,8 +38,8 @@ class BookRequest extends FormRequest
             'description' => ['required'],
             'pagecount' => ['integer','max:1000'],
             'price' => ['integer','min:3000','max:30000'],
-            'authors' => ['required','max:225'],
-            'categories' => ['required','max:225'],
+            'authors' => ['required','max:255'],
+            'categories' => ['required','max:255'],
         ];
     }
 

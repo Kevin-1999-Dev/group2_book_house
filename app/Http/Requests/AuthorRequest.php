@@ -30,7 +30,7 @@ class AuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','min:2', 'max:225', Rule::unique('authors')->ignore($this->id)],
+            'name' => ['required','min:2', 'max:255', Rule::unique('authors')->ignore($this->id)],
         ];
     }
 }
