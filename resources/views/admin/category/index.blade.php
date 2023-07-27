@@ -27,12 +27,6 @@ Category List
             <a href="{{ route('admin.category.create') }}"><span class="btn btn-primary">Create</span></a>
         </div>
         <div class="col-9 text-end">
-            <form action="{{ route('admin.category.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="" id="choose">
-                <button type="button" class="btn btn-dark" id="show-btn" onclick="document.getElementById('choose').click()">Import</button>
-                <button type="submit" class="btn btn-dark import-btn">Import</button>
-            </form>
             <a href="{{ route('admin.category.export') }}" class="btn btn-dark">Export</a>
         </div>
     </div>
@@ -89,14 +83,4 @@ Category List
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-    $(document).ready(function() {
-        $('#show-btn').click(function() {
-            $(this).toggle();
-            $('.import-btn').toggleClass('import-btn');
-        });
-    });
-</script>
 @endsection

@@ -63,7 +63,7 @@ Forget Password
             <div class="mt-4 text-center">
                 <input type="submit" value="Register" class="btn btn-primary w-50">
             </div>
-            <p class="mt-2 mt-lg-3 text-center f-7">Already Have a Account? <a href="{{ route('auth.loginPage') }}" class="text-decoration-none text-primary">Sign
+            <p class="mt-2 mt-lg-3 text-center f-7">Already Have An Account? <a href="{{ route('auth.loginPage') }}" class="text-decoration-none text-primary">Sign
                     In</a></p>
         </form>
     </div>

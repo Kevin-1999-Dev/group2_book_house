@@ -8,17 +8,13 @@ use App\Models\Order;
 use App\Exports\BookExport;
 use App\Exports\FeedExport;
 use App\Exports\UserExport;
-use App\Imports\UserImport;
 use App\Exports\EbookExport;
 use App\Exports\OrderExport;
 use Illuminate\Http\Request;
 use App\Exports\AuthorExport;
-use App\Imports\AuthorImport;
 use App\Exports\PaymentExport;
-use App\Imports\PaymentImport;
 use Illuminate\Support\Carbon;
 use App\Exports\CategoryExport;
-use App\Imports\CategoryImport;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\AuthorRequest;
@@ -178,46 +174,6 @@ class AdminController extends Controller
         return Excel::download(new EbookExport(), 'ebooks.xlsx');
     }
 
-    //import
-    /**
-     * importCategory
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function importCategory(Request $request)
-    {
-        Excel::import(new CategoryImport, $request->file);
-        return redirect()->route('admin.category.index')->with(['importSuccess' => 'Import Successfully...']);
-    }
-
-    /**
-     * importAuthor
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function importAuthor(Request $request)
-    {
-
-        Excel::import(new AuthorImport, $request->file);
-        return redirect()->route('admin.author.index')->with(['importSuccess' => 'Import Successfully...']);
-    }
-
-    /**
-     * importPayment
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function importPayment(Request $request)
-    {
-
-        Excel::import(new PaymentImport, $request->file);
-        return redirect()->route('admin.payment.index')->with(['importSuccess' => 'Import Successfully...']);
-    }
-
-    
     private $adminService;
 
     /**
