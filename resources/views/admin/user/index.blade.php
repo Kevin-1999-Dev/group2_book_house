@@ -26,12 +26,6 @@ User List
     </div>
     <div class="row mt-2">
         <div class="col-12 text-end">
-            <form action="{{ route('admin.user.import') }}" method="POST" class="d-inline" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="" id="choose">
-                <button type="button" class="btn btn-dark" id="show-btn" onclick="document.getElementById('choose').click()">Import</button>
-                <button type="submit" class="btn btn-dark import-btn">Import</button>
-            </form>
             <a href="{{ route('admin.user.export') }}" class="btn btn-dark">Export</a>
         </div>
     </div>
@@ -117,14 +111,4 @@ User List
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-    $(document).ready(function() {
-        $('#show-btn').click(function() {
-            $(this).toggle();
-            $('.import-btn').toggleClass('import-btn');
-        });
-    });
-</script>
 @endsection
