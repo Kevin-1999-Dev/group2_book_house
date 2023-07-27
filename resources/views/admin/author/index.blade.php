@@ -20,7 +20,7 @@ Author List
     </div>
     @endif
     <div class="col-12">
-        <a href="{{ url()->previous() }}">
+        <a href="{{ route('admin.dashboard') }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
