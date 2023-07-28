@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Contracts\Services\UserServiceInterface;
+use App\Models\UserEbook;
 
 class UserController extends Controller
 {
@@ -116,10 +117,12 @@ class UserController extends Controller
 
     public function userPrivateServe(Request $r, String $filename)
     {
-        $ebook = Ebook::where('link', 'LIKE', "%$filename%")->first();
-        $exists = $ebook->user()->where('users.id', $r->user()->id)->exists();
+        $user = User::where('id',$r->user()->id);
+        $exists = $user->whereHas('ebook',function ($query) use ($filename) {
+            $query->where('link','LIKE',"%$filename%");
+        })->exists();
         if ($exists) {
-
+            $ebook = Ebook::where('link', 'LIKE', "%$filename%")->first();
             return response()->download(storage_path("/app/private/" . $ebook->link));
         } else {
             return abort('401');
