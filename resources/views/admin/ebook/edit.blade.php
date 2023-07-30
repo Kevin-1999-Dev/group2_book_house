@@ -80,7 +80,7 @@ Edit Ebook
                     @enderror
                 </div>
                 <div class="form-group m-3">
-                    <a href="{{ url()->previous() }}"><span class="btn btn-secondary float-start">Back</span></a>
+                    <a href="{{ route('admin.ebook.index') }}"><span class="btn btn-secondary float-start">Back</span></a>
                     <input type="submit" class="btn btn-primary float-end" value="Edit">
                 </div>
             </form>

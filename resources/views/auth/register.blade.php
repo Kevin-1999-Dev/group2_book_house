@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Forget Password
+Register
 @endsection
 @section('content')
 <div class="create-pg col-11 col-md-10 col-lg-8 mx-auto pb-5">

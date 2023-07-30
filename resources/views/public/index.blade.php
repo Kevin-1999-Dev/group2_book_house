@@ -65,7 +65,7 @@ Home Page
                             </div>
                         </a>
                         @endforeach
-                        <div class="d-grid gap-2 col-12 mb-4 mb-lg-0">
+                        <div class="d-grid gap-2 col-12 mb-4">
                             <a class="btn btn-sm btn-dark col-6 mx-auto" type="button" href="{{ route('public.book') }}">See More</a>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ Home Page
                             </div>
                         </a>
                         @endforeach
-                        <div class="d-grid gap-2 col-12 mb-4 mb-lg-0">
+                        <div class="d-grid gap-2 col-12 mb-4">
                             <a class="btn btn-sm btn-dark col-6 mx-auto" type="button" href="{{ route('public.ebook') }}">See More</a>
                         </div>
                     </div>
