@@ -26,7 +26,7 @@ Edit User
                     </select>
                 </div>
                 <div class="form-group m-3">
-                    <a href="{{ url()->previous() }}"><span class="btn btn-secondary float-start">Back</span></a>
+                    <a href="{{ route('admin.user.index') }}"><span class="btn btn-secondary float-start">Back</span></a>
                     <input type="submit" class="btn btn-primary float-end" value="Update">
                 </div>
             </form>

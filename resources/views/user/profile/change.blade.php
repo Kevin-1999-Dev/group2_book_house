@@ -6,7 +6,7 @@ Change Password Page
 @section('content')
 <div class="change-password">
     <div class="col-11 col-md-10 mx-auto mb-2">
-        <a href="{{ url()->previous() }}">
+        <a href="{{ route('user.details') }}">
             <i class="fa-solid fa-arrow-left-long"></i> <span class="f-4">Back</span>
         </a>
     </div>
