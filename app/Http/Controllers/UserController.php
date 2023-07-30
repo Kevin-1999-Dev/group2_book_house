@@ -71,8 +71,7 @@ class UserController extends Controller
            $orderquery->WhereHas('payment', function ($query) use ($s) {
                 $query->where('name', 'LIKE', "%$s%")
                     ->orWhere('id', 'LIKE', "%$s%");
-            })->orWhere('comment', 'LIKE', "%$s%")
-                ->orWhere('status', 'LIKE', "%$s%");
+            })->orWhere('status', 'LIKE', "%$s%");
         })->get();
         foreach ($orders as $order) {
             $total_amount = 0;

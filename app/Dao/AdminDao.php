@@ -274,8 +274,7 @@ class AdminDao implements AdminDaoInterface
         })->orWhereHas('payment', function ($query) use ($s) {
             $query->where('name', 'LIKE', "%$s%")
                 ->orWhere('id', 'LIKE', "%$s%");
-        })->orWhere('comment', 'LIKE', "%$s%")
-            ->orWhere('status', 'LIKE', "%$s%");
+        })->orWhere('status', 'LIKE', "%$s%");
         if ($r->route()->named('admin.order.index')) {
             $orders = $orders->paginate(config('app.pagination'))->withQueryString();
         } else {

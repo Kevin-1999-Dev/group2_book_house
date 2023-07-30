@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('cover')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->string('link')->nullable();
             $table->integer('pagecount');
             $table->integer('price');
