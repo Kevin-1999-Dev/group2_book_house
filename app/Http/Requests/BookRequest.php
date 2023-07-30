@@ -36,8 +36,8 @@ class BookRequest extends FormRequest
                     ->max(100 * 1024),
             ],
             'description' => ['required'],
-            'pagecount' => ['integer','max:1000'],
-            'price' => ['integer','min:3000','max:30000'],
+            'pagecount' => ['integer','max:5000'],
+            'price' => ['integer','min:1000','max:30000'],
             'authors' => ['required','max:255'],
             'categories' => ['required','max:255'],
         ];
@@ -51,7 +51,7 @@ class BookRequest extends FormRequest
     public function messages()
     {
         return [
-            'cover.max' => "Image size may not be greater than 12 mb.",
+            'cover.max' => "Image size may not be greater than 100 mb.",
         ];
     }
 
