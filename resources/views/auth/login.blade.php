@@ -17,6 +17,12 @@ Forget Password
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
+            @if (session('not'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fa-solid fa-circle-check"></i> {{ session('not') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <h2 class="text-center f-3">Login</h2>
             <div class="form-group mt-3 f-6">
                 <label for="" class="form-label">Email</label>

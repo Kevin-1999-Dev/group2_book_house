@@ -24,8 +24,16 @@ class AdminAuthMiddleware
             ) {
                 return back();
             }
-            if (Auth::user()->role == 0) {
+            if (Auth::user()->role == 0 ) {
                 return back();
+            }else{
+                if(Auth::user()->active == 1){
+                    return $next($request);
+                }else{
+                    Auth::logout();
+                    return back()->with(['not'=>'Your account is disable']);
+                }
+                return $next($request);
             }
             return $next($request);
         }
