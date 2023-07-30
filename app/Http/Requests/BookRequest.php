@@ -32,8 +32,8 @@ class BookRequest extends FormRequest
         return [
             'title' => ['required','min:4', 'max:255'],
             'cover' => [
-                File::types(['jpg', 'jpeg', 'png'])
-                    ->max(12 * 1024),
+                File::types(['jpg', 'jpeg', 'png', 'webp'])
+                    ->max(100 * 1024),
             ],
             'description' => ['required'],
             'pagecount' => ['integer','max:1000'],
