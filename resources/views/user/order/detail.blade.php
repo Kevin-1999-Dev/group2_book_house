@@ -68,10 +68,13 @@ Order Detail
             <p class="float-end border border-dark p-1 me-1">Payment : {{ $order->payment->name }}</p>
             <p class="float-end border border-dark p-1 me-1">Status : {{ $order->status }}</p>
         </div>
-        @if ($order->status == 'pending')
-        <a href="{{ route('user.order.cancel',$order->id)}}"><span class="btn btn-danger float-end">Cancel</span></a>
-        @endif
-        <a href="{{ url()->previous() }}"><span class="btn btn-secondary float-end">Back</span></a>
+        <div class="clearfix float-end">
+            <a href="{{ url()->previous() }}"><span class="btn btn-secondary">Back</span></a>
+            @if ($order->status == 'pending')
+            <a href="{{ route('user.order.cancel',$order->id)}}" class="ml-2"><span class="btn btn-danger">Cancel</span></a>
+            @endif
+        </div>
+
     </div>
 </div>
 @endsection

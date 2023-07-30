@@ -33,16 +33,16 @@ class EbookRequest extends FormRequest
         return [
             'title' => ['required','min:4', 'max:225'],
             'cover' => [
-                File::types(['jpg', 'jpeg', 'png'])
-                    ->max(12 * 1024),
+                File::types(['jpg', 'jpeg', 'png', 'webp'])
+                    ->max(100 * 1024),
             ],
             'description' => ['required','min:4','max:255'],
-            'pagecount' => ['integer','max:1000'],
-            'price' => ['integer','min:3000','max:30000'],
+            'pagecount' => ['integer','max:5000'],
+            'price' => ['integer','min:1000','max:30000'],
             'authors' => ['required','max:225'],
             'categories' => ['required','max:255'],
             'ebookfile' => [
-                File::types(['pdf', 'epub', 'doc', 'docx', 'jpg'])
+                File::types(['pdf', 'epub', 'doc', 'docx'])
                     ->max(100 * 1024),
             ],
         ];
@@ -56,7 +56,7 @@ class EbookRequest extends FormRequest
     public function messages()
     {
         return [
-            'cover.max' => "Image size may not be greater than 12 mb.",
+            'cover.max' => "Image size may not be greater than 100 mb.",
             'ebookfile.max' => "Image size may not be greater than 100 mb.",
         ];
     }

@@ -93,6 +93,73 @@ class AdminController extends Controller
         $countsOrder = array_values($dataOrder);
         return view('admin.dashboard', compact('monthsUser', 'datesOrder', 'countsUser', 'countsOrder'));
     }
+    
+    /**
+     * chart
+     *
+     * @param  mixed $r
+     * @return void
+     */
+    public function chart(Request $r)
+    {
+        switch ($r->get('type')) {
+            case 'user':
+                switch ($r->get('period')) {
+                    case 'yearly':
+                        $q = User::whereYear('created_at', date('Y'))
+                            ->selectRaw('MONTH(created_at) as month, count(*) as count')
+                            ->groupBy('month')
+                            ->get();
+                        $data = array_fill(0, 12, "0");
+                        for ($i = 0; $i < count($q); $i++) {
+                            $data[$q[$i]['month'] - 1] = $q[$i]['count'];
+                        }
+                        return $data;
+                        break;
+                    case 'monthly':
+                        $q = User::whereYear('created_at', date('Y'))
+                            ->whereMonth('created_at', 7)
+                            ->selectRaw('DAY(created_at) as day, COUNT(*) as count')
+                            ->groupBy('day')
+                            ->get();
+                        $data = array_fill(0, date('t'), "0");
+                        for ($i = 0; $i < count($q); $i++) {
+                            $data[$q[$i]['day'] -  1] = $q[$i]['count'];
+                        }
+                        return $data;
+                        break;
+                }
+                break;
+            case 'order':
+                switch ($r->get('period')) {
+                    case 'yearly':
+                        $q = Order::whereYear('created_at', date('Y'))
+                            ->selectRaw('MONTH(created_at) as month, count(*) as count')
+                            ->groupBy('month')
+                            ->get();
+                        $data = array_fill(0, 12, "0");
+                        for ($i = 0; $i < count($q); $i++) {
+                            $data[$q[$i]['month'] - 1] = $q[$i]['count'];
+                        }
+                        return $data;
+                        break;
+                    case 'monthly':
+                        $q = Order::whereYear('created_at', date('Y'))
+                            ->whereMonth('created_at', 7)
+                            ->selectRaw('DAY(created_at) as day, COUNT(*) as count')
+                            ->groupBy('day')
+                            ->get();
+                        $data = array_fill(0, date('t'), "0");
+                        for ($i = 0; $i < count($q); $i++) {
+                            $data[$q[$i]['day'] -  1] = $q[$i]['count'];
+                        }
+                        return $data;
+                        break;
+                }
+                break;
+        }
+    }
+
     //export
     /**
      * exportCategory

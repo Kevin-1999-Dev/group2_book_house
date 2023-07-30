@@ -21,7 +21,6 @@ class Order extends Model
         'user_id',
         'payment_id',
         'status',
-        'comment',
     ];
 
     /**
