@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 
 /**
@@ -30,7 +31,7 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','min:4', 'max:255'],
+            'title' => ['required','min:4', 'max:255',Rule::unique('books')->ignore($this->id)],
             'cover' => [
                 File::types(['jpg', 'jpeg', 'png', 'webp'])
                     ->max(100 * 1024),

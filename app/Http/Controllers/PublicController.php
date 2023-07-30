@@ -60,12 +60,12 @@ class PublicController extends Controller
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%");
         if ($sort == "asc") {
-            $books = $books->orderBy('created_at', 'asc')->get();
+            $books = $books->orderBy('id', 'asc')->get();
             foreach ($books as $book) {
                 $book['date'] = date_format($book->created_at, "m/d/Y");
             }
         } elseif ($sort == "desc") {
-            $books = $books->orderBy('created_at', 'desc')->get();
+            $books = $books->orderBy('id', 'desc')->get();
             foreach ($books as $book) {
                 $book['date'] = date_format($book->created_at, "m/d/Y");
             }
@@ -95,12 +95,12 @@ class PublicController extends Controller
         })->orWhere('title', 'LIKE', "%$s%")
             ->orWhere('price', 'LIKE', "%$s%");
         if ($sort == "asc") {
-            $ebooks = $ebooks->orderBy('created_at', 'asc')->get();
+            $ebooks = $ebooks->orderBy('id', 'asc')->get();
             foreach ($ebooks as $ebook) {
                 $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
             }
         } elseif ($sort == "desc") {
-            $ebooks = $ebooks->orderBy('created_at', 'desc')->get();
+            $ebooks = $ebooks->orderBy('id', 'desc')->get();
             foreach ($ebooks as $ebook) {
                 $ebook['date'] = date_format($ebook->created_at, "m/d/Y");
             }
