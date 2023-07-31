@@ -432,6 +432,7 @@ class AdminDao implements AdminDaoInterface
             ]);
         }
         if ($data->file('cover')) {
+            Storage::delete('public/covers/'. str_replace("/storage/covers/",'',$book->cover));
             $filename = $book->id . "-book-" . $data->file('cover')->getClientOriginalName();
             $book->cover = '/storage/' . $data->file('cover')->storeAs('covers', $filename, 'public');
         }
