@@ -41,4 +41,17 @@ class ProfileRequest extends FormRequest
             'address' => ['required','min:3', 'max:255'],
         ];
     }
+
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'image.max' => "Image size may not be greater than 100 mb.",
+        ];
+    }
 }
